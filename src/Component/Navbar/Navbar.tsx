@@ -19,14 +19,12 @@ Montserrat] items-center bg-[#252B42] text-[#FFFFFF] p-2 font-bold text-sm"
 
         <div className="flex-1 w-[332px] h-11 p-[10px]  gap-2 text-center">
           <h6 className="leading-6 tracking-[0.2px] text-sm">
-            
             Follow Us and get a chance to win 80% off
           </h6>
         </div>
 
         <div className="flex items-center w-[233px] h-11 gap-[10px] p-[10px] ">
           <h6 className="leading-6 w-auto tracking-[0.2px] text-sm">
-            
             Follow Us :
           </h6>
           <a href="#">
@@ -46,8 +44,8 @@ Montserrat] items-center bg-[#252B42] text-[#FFFFFF] p-2 font-bold text-sm"
 
       <nav className="flex justify-between items-center bg-white py-4 px-5">
         <div className="text-2xl font-bold">
-         <Link href='/'> Bandage</Link>
-          </div>
+          <Link href="/"> Bandage</Link>
+        </div>
 
         <ul className="flex space-x-6">
           <li>

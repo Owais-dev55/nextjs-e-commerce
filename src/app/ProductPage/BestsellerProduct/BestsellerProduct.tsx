@@ -32,7 +32,7 @@ const BestsellerProduct = () => {
         <div className="w-[1049px] h-auto mt-14 gap-8 grid grid-cols-4">
           {Images.map((image, index) => {
             return (
-              <div className="w-[239px] h-[442px] text-[#FFFFFF] ">
+              <div className="w-[239px] h-[442px] text-[#FFFFFF] " key={index}>
                 <div className="w-[239px] h-[280px]">
                   <Image
                     src={image}

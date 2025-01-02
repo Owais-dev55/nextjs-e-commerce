@@ -9,7 +9,7 @@ function EditorPick() {
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center py-10">
       <div className="text-center mb-8">
-        <h1 className="text-2xl font-bold text-[#252B42]">EDITOR'S PICK</h1>
+        <h1 className="text-2xl font-bold text-[#252B42]">EDITOR’S PICK</h1>
         <p className="text-[#737373] text-sm">
           Problems trying to resolve the conflict between
         </p>

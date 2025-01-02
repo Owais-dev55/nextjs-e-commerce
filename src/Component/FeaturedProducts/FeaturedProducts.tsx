@@ -24,7 +24,7 @@ const FeaturedProducts = () => {
         <div className="flex">
           {images.map((image, index) => {
             return (
-              <div className="w-full">
+              <div className="w-full" key={index}>
                 <div className="max-w-[328px] w-full h-[606px] shadow-md">
                   <div className="relative h-[300px] w-full">
                     <div className="absolute top-5 left-5 h-6 w-14 rounded bg-[#E74040] flex justify-center items-center">
@@ -53,11 +53,11 @@ const FeaturedProducts = () => {
 
                   <div className="mt-4 ml-4">
                     <h4 className="text-[#252B42] font-normal text-xl tracking-[0.2px] mb-2">
-                      Loudest à la Madison #1 (L'integral)
+                      Loudest à la Madison #1 (L’integral)
                     </h4>
                     <p className="text-[#737373] w-64 font-normal text-[14px] tracking-[0.2px]">
                       We focus on ergonomics and meeting you where you work.
-                      It's only a keystroke away.
+                      It’s only a keystroke away.
                     </p>
                   </div>
 

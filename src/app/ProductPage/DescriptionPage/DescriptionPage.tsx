@@ -60,7 +60,10 @@ const DescriptionPage = () => {
                   {repeatCountPara.map((_, index) => {
                     return (
                       <>
-                        <h6 className=" font-normal pt-9 text-sm leading-5 tracking-[0.2px] text-[#737373]">
+                        <h6
+                          className=" font-normal pt-9 text-sm leading-5 tracking-[0.2px] text-[#737373]"
+                          key={index}
+                        >
                           Met minim Mollie non desert Alamo est sit cliquey
                           dolor do met sent. RELIT official consequent door ENIM
                           RELIT Mollie. Excitation venial consequent sent

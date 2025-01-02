@@ -8,7 +8,7 @@ const FAQSection = () => {
       <div className="w-full h-[250px] flex justify-center items-center">
         <div className="max-w-[700px] text-center mb-8">
           <h2 className="text-[#252B42] font-bold text-[40px] leading-[50px] ml-5">
-            Pricing FAQ's
+            Pricing FAQ’s
           </h2>
           <p className="text-[#737373] tracking-[0.2px]  font-normal text-sm leading-5 mt-4 w-[496px] h-10  ml-10">
             Problems trying to resolve the conflict between the two major realms

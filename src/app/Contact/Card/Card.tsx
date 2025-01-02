@@ -1,27 +1,27 @@
-import React from 'react';
+import React from "react";
 
 const cards = [
   {
-    color: '#FFFFFF',
-    textColor: '#252B42',
-    icon: 'fa-phone',
+    color: "#FFFFFF",
+    textColor: "#252B42",
+    icon: "fa-phone",
   },
   {
-    color: '#252B42',
-    textColor: '#FFFFFF',
-    icon: 'fa-location-dot',
+    color: "#252B42",
+    textColor: "#FFFFFF",
+    icon: "fa-location-dot",
   },
   {
-    color: '#FFFFFF',
-    textColor: '#252B42',
-    icon: 'fa-envelope',
+    color: "#FFFFFF",
+    textColor: "#252B42",
+    icon: "fa-envelope",
   },
 ];
 
 const Card = () => {
-  const email = 'georgia.young@example.com';
-  const altEmail = 'georgia.young@ple.com';
-  const supportText = 'Get Support';
+  const email = "georgia.young@example.com";
+  const altEmail = "georgia.young@ple.com";
+  const supportText = "Get Support";
 
   return (
     <section className="text-[Montserrat]">
@@ -42,13 +42,21 @@ const Card = () => {
               style={{ backgroundColor: card.color, color: card.textColor }}
             >
               <div className="w-[72px] h-[72px] flex justify-center items-center">
-                <i className={`fa-solid ${card.icon} text-[#23A6F0] text-7xl`} />
+                <i
+                  className={`fa-solid ${card.icon} text-[#23A6F0] text-7xl`}
+                />
               </div>
               <div className="h-auto text-center w-[216px]">
-                <h6 className="font-bold text-sm leading-6 tracking-[0.2px] w-full">{email}</h6>
-                <h6 className="font-bold text-sm leading-6 tracking-[0.2px] pt-2">{altEmail}</h6>
+                <h6 className="font-bold text-sm leading-6 tracking-[0.2px] w-full">
+                  {email}
+                </h6>
+                <h6 className="font-bold text-sm leading-6 tracking-[0.2px] pt-2">
+                  {altEmail}
+                </h6>
               </div>
-              <h6 className="font-bold text-2xl leading-6 tracking-[0.2px]">{supportText}</h6>
+              <h6 className="font-bold text-2xl leading-6 tracking-[0.2px]">
+                {supportText}
+              </h6>
               <button className="w-[189px] h-[53px] border rounded-[37px] border-[#23A6F0] flex justify-center items-center">
                 <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#23A6F0]">
                   Submit Request
@@ -58,26 +66,24 @@ const Card = () => {
           ))}
         </div>
       </div>
-        <div className="flex flex-col items-center justify-center mt-[-192px] mb-10">
-          <i className="fa-solid fa-arrow-turn-down text-[#23A6F0] text-7xl mb-6" />
-          <div className="w-[607px] text-center">
-            <h6 className="font-bold text-base leading-6 tracking-[0.1px] mb-2">
-              WE Can't WAIT TO MEET YOU
-            </h6>
-            <h2 className="font-bold text-[58px] leading-[80px] tracking-[0.2px] text-[#252B42] mb-6">
-              Let’s Talk
-            </h2>
-            <div className='pl-[210px]'>
+      <div className="flex flex-col items-center justify-center mt-[-192px] mb-10">
+        <i className="fa-solid fa-arrow-turn-down text-[#23A6F0] text-7xl mb-6" />
+        <div className="w-[607px] text-center">
+          <h6 className="font-bold text-base leading-6 tracking-[0.1px] mb-2">
+            WE Can’t WAIT TO MEET YOU
+          </h6>
+          <h2 className="font-bold text-[58px] leading-[80px] tracking-[0.2px] text-[#252B42] mb-6">
+            Let’s Talk
+          </h2>
+          <div className="pl-[210px]">
             <button className="w-[186px] h-[52px] border rounded-md bg-[#23A6F0] flex justify-center items-center gap-2 ">
               <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#FFFFFF]">
                 Try it free now
               </h6>
             </button>
-            </div>
           </div>
         </div>
-
-
+      </div>
     </section>
   );
 };

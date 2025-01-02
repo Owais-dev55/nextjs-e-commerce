@@ -34,7 +34,7 @@ Montserrat] gap-2">
       Images.map((image, index) => {
         return (
 
-      <div className="w-[239px] h-[615px] text-[#FFFFFF] ">
+      <div className="w-[239px] h-[615px] text-[#FFFFFF] " key={index}>
         <div className="w-[239px] h-[427px]">
           <Image
           src={image}

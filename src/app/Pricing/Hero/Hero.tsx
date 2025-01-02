@@ -161,7 +161,9 @@ const Hero = () => {
           </div>
         ))}
       </div>
-      <h4 className="mt-20 h-8 text-[#252B42] font-normal tracking-[0.2px] leading-8 text-xl flex justify-center items-center text-center">Trusted By Over 4000 Big Companies</h4>
+      <h4 className="mt-20 h-8 text-[#252B42] font-normal tracking-[0.2px] leading-8 text-xl flex justify-center items-center text-center">
+        Trusted By Over 4000 Big Companies
+      </h4>
       <Brandlogos />
     </div>
   );

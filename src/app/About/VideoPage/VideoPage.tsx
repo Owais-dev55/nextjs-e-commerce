@@ -6,9 +6,8 @@ import image2 from "@/public/image/socailcard2.jpg";
 import image3 from "@/public/image/socailcard3.jpg";
 import SocialCards from "@/Component/SocialCards/SocialCards";
 
-
 const VideoPage = () => {
-  let details = [
+  const details = [
     {
       title: "15K",
       description: "Happy Customers",
@@ -80,7 +79,7 @@ const VideoPage = () => {
             </p>
           </div>
           <div className="w-full gap-8 h-[383px] flex justify-center items-center">
-          {cardImages.map((image, index) => (
+            {cardImages.map((image, index) => (
               <SocialCards key={index} image={image} />
             ))}
           </div>

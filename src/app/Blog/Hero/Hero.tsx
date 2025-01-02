@@ -7,9 +7,8 @@ import image4 from "@/public/image/bloghero4.jpg";
 import image5 from "@/public/image/bloghero5.jpg";
 
 const Hero = () => {
-  return (  
+  return (
     <div>
-
       <div className="w-full h-[280px] flex justify-center mt-16">
         <div className="w-[870px] text-center">
           <div className="w-[788px] mx-auto gap-4">
