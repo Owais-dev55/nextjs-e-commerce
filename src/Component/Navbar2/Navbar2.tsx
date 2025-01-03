@@ -1,10 +1,9 @@
 import Link from "next/link";
 import React from "react";
-
 const Navbar2 = () => {
   return (
-    <div className="w-full h-24 pl-14 flex pt-4">
-      <div className="w-[187px] h-14 pt-4 pl-[136px]">
+    <div className="  md:flex w-full h-24 pl-14 flex pt-4">
+      <div className="  w-[187px] h-14 pt-4 pl-[136px]">
         <h3 className="font-bold text-[#252B42] leading-8 tracking-[0.1px] text-2xl">
           <Link href="/"> Bandage </Link>
         </h3>
@@ -52,6 +51,30 @@ const Navbar2 = () => {
             </button>
           </div>
         </div>
+        <div className="flex flex-col items-center justify-center space-y-4 py-4 md:hidden -ml-[1400px]">
+        <Link href="/" className="text-lg text-[#737373] hover:text-[#23A6F0]">
+          Home
+        </Link>
+        <Link
+          href="/ProductPage"
+          className="text-lg text-[#737373] hover:text-[#23A6F0]"
+        >
+          Product
+        </Link>
+        <Link
+          href="/Pricing"
+          className="text-lg text-[#737373] hover:text-[#23A6F0]"
+        >
+          Pricing
+        </Link>
+        <Link
+          href="/Contact"
+          className="text-lg text-[#737373] hover:text-[#23A6F0]"
+        >
+          Contact
+        </Link>
+      </div>
+    
       </div>
     </div>
   );

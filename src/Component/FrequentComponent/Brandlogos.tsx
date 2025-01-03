@@ -10,19 +10,15 @@ import Image from "next/image";
 const Brandlogos = () => {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
   return (
-    <div>
-      <div className="pl-48 w-screen h-full flex flex-row justify-between bg-[#FAFAFA]">
-        <div className="pt-12 pb-12 gap-8 w-[1250px] h-full flex flex-row justify-evenly">
-          {logos.map((logo, index) => {
-            return (
-              <div className="h-8 w-[173px]" key={index}>
-                <div className="text-[#737373] w-[102px] h-[33px] ">
-                  <Image src={logo} alt="product" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
+    <div className="bg-[#FAFAFA] py-12">
+      <div className="w-screen flex flex-wrap lg:flex-row md:flex-col sm:flex-col justify-center gap-8">
+        {logos.map((logo, index) => (
+          <div className="h-8 w-[173px] flex justify-center" key={index}>
+            <div className="w-[102px] h-[33px] text-[#737373]">
+              <Image src={logo} alt={`Brand logo ${index + 1}`} />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
