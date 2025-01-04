@@ -20,7 +20,7 @@ const BestsellerProduct = () => {
     image8,
   ];
   return (
-    <div className="w-full h-[1086px] bg-[#FAFAFA]">
+    <div className="w-full h-[1386px] bg-[#FAFAFA]">
       <div className="w-[1124px] h-full pl-[195px] pt-12 pb-12 gap-6">
         <div className="w-[1040px] h-8 ">
           <h3 className="w-[299px]  h-8 font-bold leading-8 text-2xl tracking-wider ">
