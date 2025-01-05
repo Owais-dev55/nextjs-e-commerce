@@ -3,42 +3,41 @@ import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 
 interface imagesProp {
-  image: string | StaticImageData ,  
+  image: string | StaticImageData,  
 }
 
-const ProductCard = ( {image }: imagesProp) => {
+const ProductCard = ({ image }: imagesProp) => {
   return (
-    <div>
-         
-      <div className="w-[239px] h-[615px] text-[#FFFFFF] " >
-        <div className="w-[239px] h-[427px]">
+    <div className="w-full max-w-[299px] mx-auto">
+      <div className="flex flex-col h-full text-[#FFFFFF]">
+        <div className="relative w-full pb-[178%]">
           <Image
-          src={image}
-          alt={"Product" }
-          className="h-full w-full"
-          objectFit="cover"
+            src={image}
+            alt={"Product"}
+            className="absolute inset-0 h-full w-full object-cover"
+            layout="fill"
           />
         </div>
-        <div className="w-[239px] h-[188px] top-6 right-6 left-6 bottom-6 gap-2 flex justify-center items-center flex-col">
-        <div className="h-6 w-[131px]">
-        <h5 className=" text-[#252B42] font-bold text-[16px] leading-5 tracking-[0.1]">Graphic Design</h5>
-        </div>
-        <Link href='' className="h-6 w-[146px] text-[#737373] font-bold text-[14px] leading-5 tracking-[0.2]">English Department</Link>
-        <div className="w-[108] h-[34] gap-2 top-[5px] right-[5px] bottom-[5px] left-[3px] flex  ">
-        <h5 className=" font-bold text-[#BDBDBD] text-[16px] leading-5 tracking-[0.1]">$16.48</h5>
-        <h5 className=" h-6 w-[52px] font-bold text-[#23856D] text-[16px] leading-5 tracking-[0.1]">$6.48</h5>
-        </div>
-        <div className="w-[82.32px] h-4 gap-[6.02px] flex ">
-          <div className="w-4 h-4 rounded-[50%] bg-[#23A6F0]"></div>
-          <div className="w-4 h-4 rounded-[50%]  bg-[#23856D]"></div>
-          <div className="w-4 h-4 rounded-[50%] bg-[#E77C40]"></div>
-          <div className="w-4 h-4 rounded-[50%] bg-[#252B42]"></div>
+        <div className="flex-grow flex flex-col justify-center items-center gap-2 p-4 bg-white">
+          <div className="text-center">
+            <h5 className="text-[#252B42] font-bold text-base leading-5 tracking-[0.1px]">Graphic Design</h5>
+          </div>
+          <Link href='' className="text-[#737373] font-bold text-sm leading-5 tracking-[0.2px] text-center">English Department</Link>
+          <div className="flex gap-2 items-center justify-center">
+            <h5 className="font-bold text-[#BDBDBD] text-base leading-5 tracking-[0.1px]">$16.48</h5>
+            <h5 className="font-bold text-[#23856D] text-base leading-5 tracking-[0.1px]">$6.48</h5>
+          </div>
+          <div className="flex gap-[6px]">
+            <div className="w-4 h-4 rounded-full bg-[#23A6F0]"></div>
+            <div className="w-4 h-4 rounded-full bg-[#23856D]"></div>
+            <div className="w-4 h-4 rounded-full bg-[#E77C40]"></div>
+            <div className="w-4 h-4 rounded-full bg-[#252B42]"></div>
+          </div>
         </div>
       </div>
-    </div>   
     </div>
-    
   )
 }
 
 export default ProductCard
+
