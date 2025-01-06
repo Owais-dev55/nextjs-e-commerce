@@ -1,12 +1,11 @@
 'use client'
 
 import Link from "next/link";
-import { useState } from "react";
 
 const Navbar2 = () => {
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
 
       <div className="hidden lg:flex w-full h-24 pl-14  pt-4">
         <div className="w-[187px] h-14 pt-4 pl-[136px]">
@@ -61,7 +60,7 @@ const Navbar2 = () => {
       </div>
 
       {/* Mobile screens */}
-      <div className="lg:hidden w-full bg-[#F6F6F6]">
+      <div className="lg:hidden w-full bg-[#F6F6F6] ">
         <div className="flex justify-between items-center px-4 py-6">
           <h3 className="font-bold text-[#252B42] text-2xl">
             <Link href="/"> Bandage </Link>

@@ -25,16 +25,16 @@ const Card = () => {
 
   return (
     <section className="text-[Montserrat]">
-      <div className="w-full lg:h-[814px] h-[1531px] bg-[#FFFFFF] text-[#252B42] flex flex-col items-center mt-[-172px]">
-        <div className="h-[134px] w-[633px] text-center lg:mb-0 mb-10">
+      <div className="lg:w-full w-[414px] lg:h-[814px] h-[1531px] bg-[#FFFFFF] text-[#252B42] flex flex-col items-center mt-[-172px]">
+        <div className="h-[134px] lg:w-[633px] w-[414px] text-center lg:mb-0 mb-10">
           <h6 className="font-bold tracking-[0.2px] text-sm leading-6">
             VISIT OUR OFFICE
           </h6>
-          <h2 className="font-bold tracking-[0.2px] text-[40px] leading-[50px] mt-4 w-[300px] lg:w-full mx-auto ">
+          <h2 className="font-bold tracking-[0.2px] text-[40px] leading-[50px] mt-4 w-[250px] lg:w-full mx-auto ">
             We help small businesses with big ideas
           </h2>
         </div>
-        <div className="w-full h-auto flex justify-center mt-10 flex-wrap">
+        <div className="lg:w-full w-[414px] h-auto flex justify-center mt-10 flex-wrap">
           {cards.map((card, index) => (
             <div
               key={index}
@@ -68,14 +68,14 @@ const Card = () => {
       </div>
       <div className="flex flex-col items-center justify-center mt-[-192px] mb-10">
         <i className="fa-solid fa-arrow-turn-down text-[#23A6F0] text-7xl mb-6" />
-        <div className="w-[607px] text-center">
+        <div className="lg:w-[607px] w-[414px] text-center">
           <h6 className="font-bold text-base leading-6 tracking-[0.1px] mb-2">
             WE Can’t WAIT TO MEET YOU
           </h6>
           <h2 className="font-bold text-[58px] leading-[80px] tracking-[0.2px] text-[#252B42] mb-6">
             Let’s Talk
           </h2>
-          <div className="pl-[210px]">
+          <div className="lg:pl-[210px] pl-[27%]">
             <button className="w-[186px] h-[52px] border rounded-md bg-[#23A6F0] flex justify-center items-center gap-2 ">
               <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#FFFFFF]">
                 Try it free now

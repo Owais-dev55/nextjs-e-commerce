@@ -35,7 +35,7 @@ const Hero = () => {
     <div className="bg-[#FAFAFA] w-full h-[1762px] pt-24">
       <div className="h-[352px] w-full bg-[#FFFFFF]">
         <Navbar2 />
-        <div className="w-full h-[280px] flex justify-center mt-16">
+        <div className="w-full lg:h-[280px] h-[490px] flex justify-center mt-16">
           <div className="w-[870px] text-center">
             <div className="w-[788px] mx-auto gap-4">
               <h5 className="font-bold text-base leading-6 tracking-[0.1px] text-[#737373]">

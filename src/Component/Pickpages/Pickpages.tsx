@@ -7,7 +7,7 @@ const Pickpages = () => {
   return (
     <div className="w-full overflow-x-hidden">
       {/* First Section - Vita Classic Product */}
-      <div className="w-full lg:w-[1440px] text-[#FFFFFF] h-auto lg:h-[709px] mx-auto mt-[200px] lg:mt-[800px] text-[Montserrat] bg-[#23856D]">
+      <div className="w-full  lg:w-[1440px] text-[#FFFFFF] h-auto lg:h-[709px] mx-auto mt-[200px] lg:mt-[800px] text-[Montserrat] bg-[#23856D]">
         {/* Mobile Layout */}
         <div className="block lg:hidden px-4 py-12 text-center">
           <h4 className="font-normal text-xl mb-4 tracking-[0.2px]">

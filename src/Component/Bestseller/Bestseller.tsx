@@ -22,14 +22,14 @@ export default function BestSeller() {
   ]
   return (
   <main>
-  <div className="relative lg:w-[1124]  lg:max-w-[1124px] md:max-w-[414px] mx-auto top-20 bottom-20  gap-20 left-10">
-    <div className="h-[102] w-[692] flex flex-col items-center mb-12 font-[
+  <div className="relative lg:w-[1124]  lg:max-w-[1124px] md:max-w-[414px] mx-auto top-20 bottom-20  gap-20 lg:eft-10">
+    <div className="h-[102] lg:w-[692] w-[424px] flex flex-col items-center mb-12 font-[
 Montserrat] gap-2">
       <div className="w-[191] h-[30] flex"><h4 className="text-[#737373] font-normal text-[20px] leading-8 tracking-[0.2]">Featured Projects</h4></div>
       <div className="w-[299] h-[32] flex"><h3 className="text-[#252B42] font-bold text-[24px] leading-8 tracking-[0.2]">BestSeller Products</h3></div>
 <div className="w-[347] h-5 flex"><p className="text-[#737373] font-noraml text-[14px] leading-5 tracking-[0.2]">Problems trying to resolve the conflict between </p></div>
     </div>
-    <div className="lg:w-[1049px] lg:h-[615px] md:w-[414px] md:h-[3510px] gap-8 grid lg:grid-cols-4 md:grid-cols-1">
+    <div className="lg:w-[1049px] w-[424px] lg:h-[615px]  md:h-[3510px] gap-8 grid lg:grid-cols-4 md:grid-cols-1">
     {
       Images.map((image, index) => {
         return (

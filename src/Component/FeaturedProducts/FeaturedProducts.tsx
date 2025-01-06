@@ -7,7 +7,7 @@ import image3 from "@/public/image/WhatsApp Image 2024-12-09 at 7.24.35 PM.jpeg"
 const FeaturedProducts = () => {
   const images = [image1, image2, image3];
   return (
-    <div className="w-full max-w-[1440px] h-auto px-4 lg:px-12 py-20 mx-auto">
+    <div className="lg:w-full w-[424px] max-w-[1440px] h-auto px-4 lg:px-12 py-20 mx-auto">
       <div className="w-full max-w-[1050px] h-auto mx-auto">
         <div className="h-auto w-full text-center mb-10">
           <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#23A6F0] mb-2">
@@ -24,7 +24,7 @@ const FeaturedProducts = () => {
         <div className="flex flex-wrap justify-center gap-8">
           {images.map((image, index) => (
             <div
-              className="lg:w-full sm:w-[300px] lg:max-w-[328px] h-auto shadow-md"
+              className="lg:w-full w-[300px] lg:max-w-[328px] h-auto shadow-md"
               key={index}
             >
               {/* Image Section */}

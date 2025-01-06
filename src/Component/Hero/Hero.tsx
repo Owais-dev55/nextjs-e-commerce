@@ -4,7 +4,7 @@ import image from "@/public/image/heroimage.jpeg";
 
 const Hero = () => {
   return (
-    <section className="relative w-screen h-[716px] sm:h-[500px] md:h-[600px] lg:h-[716px]">
+    <section className="relative lg:w-screen w-[414px]  h-[716px] sm:h-[500px] md:h-[600px] lg:h-[716px]">
       <Image
         src={image}
         alt="Background"
@@ -13,8 +13,8 @@ const Hero = () => {
         quality={100}
         className="-z-10"
       />
-      <div className=" w-full h-full flex flex-col justify-center items-start px-6 sm:px-10 md:px-20 lg:px-[197.5px] text-[#FFFFFF]">
-        <div className="w-full max-w-[600px] space-y-6 -mt-20">
+      <div className=" lg:w-full md:w-[424px] h-full flex flex-col justify-center items-start px-6 sm:px-10 md:px-20 lg:px-[197.5px] text-[#FFFFFF]">
+        <div className="w-full lg:max-w-[600px] md:max-w-[414px] space-y-6 -mt-20">
           <h5 className="font-bold text-xs sm:text-sm md:text-base leading-6 tracking-wider">
             SUMMER 2020
           </h5>
