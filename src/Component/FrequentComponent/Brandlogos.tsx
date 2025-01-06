@@ -11,11 +11,18 @@ const Brandlogos = () => {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
   return (
     <div className="bg-[#FAFAFA] py-12">
-      <div className="w-screen flex flex-wrap lg:flex-row md:flex-col sm:flex-col justify-center gap-8">
+      <div className="w-screen flex flex-wrap lg:flex-row md:flex-col sm:flex-col md:mx-auto sm:mx-auto justify-center gap-8">
         {logos.map((logo, index) => (
-          <div className="h-8 w-[173px] flex justify-center" key={index}>
+          <div 
+            className="h-8 w-[173px] flex justify-center lg:block md:mb-12 sm:mb-12 md:mx-auto sm:mx-auto lg:mx-0" 
+            key={index}
+          >
             <div className="w-[102px] h-[33px] text-[#737373]">
-              <Image src={logo} alt={`Brand logo ${index + 1}`} />
+              <Image 
+                src={logo} 
+                alt={`Brand logo ${index + 1}`}
+                quality={100}
+              />
             </div>
           </div>
         ))}
@@ -25,3 +32,4 @@ const Brandlogos = () => {
 };
 
 export default Brandlogos;
+

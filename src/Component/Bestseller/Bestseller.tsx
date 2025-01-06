@@ -22,7 +22,7 @@ export default function BestSeller() {
   ]
   return (
   <main>
-  <div className="relative lg:w-[1124]  lg:max-w-[1124px] mx-auto top-20 bottom-20  gap-20 left-10">
+  <div className="relative lg:w-[1124]  lg:max-w-[1124px] md:max-w-[414px] mx-auto top-20 bottom-20  gap-20 left-10">
     <div className="h-[102] w-[692] flex flex-col items-center mb-12 font-[
 Montserrat] gap-2">
       <div className="w-[191] h-[30] flex"><h4 className="text-[#737373] font-normal text-[20px] leading-8 tracking-[0.2]">Featured Projects</h4></div>

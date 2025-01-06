@@ -78,7 +78,7 @@ const Footer = ({ backgroundColor }: bgcolor) => {
                   placeholder="Your Email"
                   className="w-full bg-[#F9F9F9] border border-[#E6E6E6] h-[58px] rounded-md pl-4 text-sm"
                 />
-                <button className="absolute right-1 top-1/2 transform -translate-y-1/2 rounded-md font-normal w-[117px] h-[58px] bg-[#23A6F0] text-[#FFFFFF]">
+                <button className="absolute right-[1px] top-1/2 transform -translate-y-1/2 rounded-md font-normal w-[117px] h-[58px] bg-[#23A6F0] text-[#FFFFFF]">
                   Subscribe
                 </button>
               </div>
