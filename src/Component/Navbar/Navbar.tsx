@@ -23,16 +23,16 @@ const Navbar = () => {
 
           <div className="flex items-center space-x-4">
             <h6>Follow Us:</h6>
-            <a href="#" className="hover:text-[#23A6F0]">
+            <a href="#" >
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="#" className="hover:text-[#23A6F0]">
+            <a href="#" >
               <i className="fab fa-youtube"></i>
             </a>
-            <a href="#" className="hover:text-[#23A6F0]">
+            <a href="#" >
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#" className="hover:text-[#23A6F0]">
+            <a href="#" >
               <i className="fab fa-twitter"></i>
             </a>
           </div>
@@ -98,20 +98,20 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <div className="flex space-x-4 text-center text-[#23A6F0]">
+          <div className="flex flex-col space-x-4 text-center text-[#23A6F0]">
             <Link href="#" className="hover:text-[#1A7BB9] text-sm">
-              <i className="fas fa-user"></i> Login / Register
+              <i className="fas fa-user "></i> Login / Register
             </Link>
           </div>
           <div className="flex justify-center space-x-6 text-2xl text-gray-800">
-            <Link href="#" className="hover:text-[#23A6F0]">
-              <i className="fas fa-search"></i>
+            <Link href="#" >
+              <i className="fas fa-search text-[#23A6F0]"></i>
             </Link>
-            <Link href="#" className="hover:text-[#23A6F0]">
-              <i className="fas fa-shopping-cart"></i>
+            <Link href="#" >
+              <i className="fas fa-shopping-cart text-[#23A6F0]"></i>
             </Link>
-            <Link href="#" className="hover:text-[#23A6F0]">
-              <i className="fas fa-heart"></i>
+            <Link href="#" >
+              <i className="fas fa-heart text-[#23A6F0]"></i>
             </Link>
           </div>
         </div>
@@ -171,14 +171,17 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="flex items-center space-x-4">
-            <Link href="#" className="text-[#23A6F0] hover:text-[#1A7BB9]">
+            <Link href="#" className="text-[#23A6F0] ">
               Login / Register
             </Link>
-            <Link href="#" className="text-gray-800 hover:text-[#23A6F0]">
-              <i className="fas fa-heart"></i>
+            <Link href="#" >
+              <i className="fas fa-search text-[#23A6F0]"></i>
             </Link>
-            <Link href="#" className="text-gray-800 hover:text-[#23A6F0]">
-              <i className="fas fa-shopping-cart"></i>
+            <Link href="#" className="text-gray-800 ">
+              <i className="fas fa-heart text-[#23A6F0]"></i>
+            </Link>
+            <Link href="#" className="text-gray-800 ">
+              <i className="fas fa-shopping-cart text-[#23A6F0]"></i>
             </Link>
           </div>
         </nav>

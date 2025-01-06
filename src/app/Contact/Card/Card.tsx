@@ -25,12 +25,12 @@ const Card = () => {
 
   return (
     <section className="text-[Montserrat]">
-      <div className="w-full h-[814px] bg-[#FFFFFF] text-[#252B42] flex flex-col items-center mt-[-172px]">
-        <div className="h-[134px] w-[633px] text-center">
+      <div className="w-full lg:h-[814px] h-[1531px] bg-[#FFFFFF] text-[#252B42] flex flex-col items-center mt-[-172px]">
+        <div className="h-[134px] w-[633px] text-center lg:mb-0 mb-10">
           <h6 className="font-bold tracking-[0.2px] text-sm leading-6">
             VISIT OUR OFFICE
           </h6>
-          <h2 className="font-bold tracking-[0.2px] text-[40px] leading-[50px] mt-2">
+          <h2 className="font-bold tracking-[0.2px] text-[40px] leading-[50px] mt-4 w-[300px] lg:w-full mx-auto ">
             We help small businesses with big ideas
           </h2>
         </div>
