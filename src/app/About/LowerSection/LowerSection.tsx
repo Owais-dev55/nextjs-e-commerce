@@ -28,7 +28,7 @@ const LowerSection = () => {
               WORK WITH US
             </h5>
             <h2 className="font-bold tracking-[0.2px] text-3xl lg:text-[40px] leading-tight lg:leading-[50px] lg:pt-7 mb-4 lg:mb-0">
-              Now Let's grow Yours
+              Now Let&apos;s grow Yours
             </h2>
             <p className="font-normal tracking-[0.2px] text-sm leading-5 lg:mt-2 lg:pt-10 mb-8 lg:mb-0">
               The gradual accumulation of information about atomic and

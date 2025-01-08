@@ -72,10 +72,10 @@ const Card = () => {
         <i className="fa-solid fa-arrow-turn-down text-[#23A6F0] text-7xl mb-6" />
         <div className="w-full max-w-[607px] text-center">
           <h6 className="font-bold text-base leading-6 tracking-[0.1px] mb-2">
-            WE Can't WAIT TO MEET YOU
+            WE Can&apos;t WAIT TO MEET YOU
           </h6>
           <h2 className="font-bold text-4xl lg:text-[58px] leading-[1.2] lg:leading-[80px] tracking-[0.2px] text-[#252B42] mb-6">
-            Let's Talk
+            Let&apos;s Talk
           </h2>
           <div className="flex justify-center">
             <button className="w-[186px] h-[52px] border rounded-md bg-[#23A6F0] flex justify-center items-center gap-2">

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import image1 from "@/public/image/image1.jpeg";
 import image2 from "@/public/image/image2.jpeg";
 import image3 from "@/public/image/image3.jpeg";
