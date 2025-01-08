@@ -4,36 +4,39 @@ import image from "@/public/image/Heroabout.png";
 
 const Hero = () => {
   return (
-    <div className="text-[Montserrat] ">
+    <div className="text-[Montserrat]">
       <div className="w-full h-auto lg:h-[729px] text-[#252B42]">
         {/* Mobile Layout */}
         <div className="block lg:hidden px-4 py-8 text-center">
-          <h5 className="font-bold text-base tracking-[0.1px] leading-6">
-            ABOUT COMPANY
-          </h5>
-          <h1 className="font-bold text-4xl tracking-[0.2px] leading-tight mt-6">
-            ABOUT US
-          </h1>
-          <h5 className="font-normal text-lg tracking-[0.2px] leading-8 text-[#737373] mt-8 max-w-[346px] mx-auto">
-            We know how large objects will act, but things on a small scale
-          </h5>
-          <div className="mt-12">
-            <button className="w-[195px] h-[52px] py-4 px-10 rounded-md bg-[#23A6F0]">
-              <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#FFFFFF]">
-                Get Quote Now
-              </h6>
-            </button>
+          <div className="relative z-10">
+            <h5 className="font-bold text-base tracking-[0.1px] leading-6">
+              ABOUT COMPANY
+            </h5>
+            <h1 className="font-bold text-4xl tracking-[0.2px] leading-tight mt-6">
+              ABOUT US
+            </h1>
+            <h5 className="font-normal text-lg tracking-[0.2px] leading-8 text-[#737373] mt-8 max-w-[346px] mx-auto">
+              We know how large objects will act, but things on a small scale
+            </h5>
+            <div className="mt-12">
+              <button className="w-[195px] h-[52px] py-4 px-10 rounded-md bg-[#23A6F0]">
+                <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#FFFFFF]">
+                  Get Quote Now
+                </h6>
+              </button>
+            </div>
           </div>
-          <div className="mt-12 relative w-full max-w-[485px] mx-auto aspect-square">
-            <div className="w-full h-full rounded-full bg-[#FFE9EA] relative overflow-hidden -z-10"></div>
-            <div className="bg-[#977DF4] w-[15px] h-[15px] ml-[561px] mt-[-321px] rounded-[50%]"></div>
-            <div className="bg-[#FFE9EA] -z-10 w-20 h-20 ml-[-60px] mt-[-111px] rounded-[50%]"></div>
-            <div className="bg-[#FFE9EA] w-[485px] h-[485px] rounded-full flex justify-center items-center mt-[-90px] relative">
-              <div className="absolute w-[110%] h-[606px] left-[15%] -translate-x-[20%] -mt-20 ">
+          
+          <div className="mt-12 relative w-full max-w-[415px] mx-auto ">
+            <div className="absolute w-[15px] h-[15px] right-4 top-1/4 bg-[#977DF4] rounded-full z-10"></div>
+            <div className="absolute w-20 h-20 -left-4 top-1/3 bg-[#FFE9EA] rounded-full"></div>
+            <div className="relative bg-[#FFE9EA] w-full aspect-square rounded-full ">
+              <div className="absolute w-[120%] h-[120%] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <Image
                   src={image}
                   alt="Hero Image"
                   className="w-full h-full object-cover"
+                  priority
                 />
               </div>
             </div>
@@ -52,8 +55,7 @@ const Hero = () => {
                   ABOUT US
                 </h1>
                 <h5 className="font-normal text-xl tracking-[0.2px] leading-8 h-10 w-[346px] text-[#737373] pt-16">
-                  We know how large objects will act, but things on a small
-                  scale
+                  We know how large objects will act, but things on a small scale
                 </h5>
                 <div className="pt-28">
                   <button className="w-[195px] h-[52px] py-4 px-10 rounded-md bg-[#23A6F0] flex justify-center items-center gap-2">
@@ -75,6 +77,7 @@ const Hero = () => {
                       src={image}
                       alt="Hero Image"
                       className="w-full h-full object-cover"
+                      priority
                     />
                   </div>
                 </div>
@@ -95,8 +98,8 @@ const Hero = () => {
             Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
           </h2>
           <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#737373] w-[321px] mx-auto">
-            Problems trying to resolve the conflict between the two major realms
-            of Classical physics: Newtonian mechanics
+            Problems trying to resolve the conflict between the two major realms of
+            Classical physics: Newtonian mechanics
           </p>
         </div>
         {/* Desktop Layout - Preserved Exactly as Original */}
@@ -113,8 +116,8 @@ const Hero = () => {
             </div>
             <div className="w-[500px] h-full gap-12 flex items-center">
               <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#737373]">
-                Problems trying to resolve the conflict between the two major
-                realms of Classical physics: Newtonian mechanics
+                Problems trying to resolve the conflict between the two major realms
+                of Classical physics: Newtonian mechanics
               </p>
             </div>
           </div>
@@ -125,3 +128,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

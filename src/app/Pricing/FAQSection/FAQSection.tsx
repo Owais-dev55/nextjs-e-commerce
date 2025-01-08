@@ -20,7 +20,7 @@ const FAQSection = () => {
         <div className="lg:w-full w-[414px] gap-8 grid grid-cols-1 lg:grid-cols-2">
           {repeatdiv.map((_, index) => {
             return (
-              <div className=" lg:w-[491px] w-[400px] h-full p-6 flex" key={index}>
+              <div className=" lg:w-[491px] w-[300px] h-full p-6 flex" key={index}>
                 <i className="fa-solid fa-chevron-right text-xl text-[#23A6F0] flex-shrink-0"></i>
                 <div className="flex-1 gap-1 ml-4 -mt-2">
                   <h3 className="font-bold text-xl lg:text-2xl leading-8 tracking-wider text-[#252B42]">
