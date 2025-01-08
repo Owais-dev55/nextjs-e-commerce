@@ -4,7 +4,7 @@ import image from "@/public/image/heroimage.jpeg";
 
 const Hero = () => {
   return (
-    <section className="relative lg:w-screen w-[414px]  h-[716px] sm:h-[500px] md:h-[600px] lg:h-[716px]">
+    <section className="relative w-screen overflow-x-hidden h-[716px] sm:h-[500px] md:h-[600px] lg:h-[716px]">
       <Image
         src={image}
         alt="Background"
@@ -12,9 +12,10 @@ const Hero = () => {
         objectFit="cover"
         quality={100}
         className="-z-10"
+        priority
       />
-      <div className=" lg:w-full md:w-[424px] h-full flex flex-col justify-center items-start px-6 sm:px-10 md:px-20 lg:px-[197.5px] text-[#FFFFFF]">
-        <div className="w-full lg:max-w-[600px] md:max-w-[414px] space-y-6 -mt-20">
+      <div className="w-full h-full flex flex-col justify-center items-start px-4 sm:px-10 md:px-20 lg:px-[197.5px] text-white">
+        <div className="w-full max-w-[100%] lg:max-w-[600px] md:max-w-[414px] space-y-6 -mt-20">
           <h5 className="font-bold text-xs sm:text-sm md:text-base leading-6 tracking-wider">
             SUMMER 2020
           </h5>
@@ -24,7 +25,7 @@ const Hero = () => {
           <h5 className="font-normal text-sm sm:text-base md:text-lg leading-6 md:leading-8 text-[#FAFAFA] lg:w-[301px]">
             We know how large objects will act, but things on a small scale.
           </h5>
-          <button className="bg-[#2DC071] w-[221px] h-16 mt-4 py-2 px-6 rounded-md">
+          <button className="bg-[#2DC071] hover:bg-[#25A861] transition-colors w-[221px] h-16 rounded-md">
             <h3 className="font-bold text-sm sm:text-base uppercase text-center">
               Shop now
             </h3>
@@ -34,4 +35,6 @@ const Hero = () => {
     </section>
   );
 };
+
 export default Hero;
+

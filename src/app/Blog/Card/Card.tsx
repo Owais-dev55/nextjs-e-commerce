@@ -24,13 +24,13 @@ const images = [
 
 const Card = () => {
   return (
-    <div className="flex flex-col items-center pt-28 w-full h-[1759px]">
-      <div className="h-[134px] w-[633px] text-center flex justify-center items-center">
-        <h6 className="font-bold tracking-[0.2px] text-[40px] leading-[50px] text-[#252B42]">
+    <div className="flex flex-col items-center pt-28 w-full lg:h-[1759px] h-[4140px]">
+      <div className="h-[134px] lg:w-[633px] w-[414px]  text-center flex justify-center items-center">
+        <h6 className="font-bold tracking-[0.2px] text-[40px] leading-[50px] text-[#252B42] lg:w-full w-[200px]">
           Meet Our Team
         </h6>
       </div>
-      <div className="w-full gap-8 h-full grid grid-cols-3 max-w-[1200px]">
+      <div className="w-full h-full grid lg:grid-cols-3 grid-cols-1 justify-items-center max-w-[1200px] min-w-[414px]">
         {images.map((image, index) => {
           return <SocialCards image={image} key={index} />;
         })}

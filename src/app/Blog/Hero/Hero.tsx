@@ -10,12 +10,12 @@ const Hero = () => {
   return (
     <div>
       <div className="w-full h-[280px] flex justify-center mt-16">
-        <div className="w-[870px] text-center">
-          <div className="w-[788px] mx-auto gap-4">
+        <div className="lg:w-[870px] w-[413px] text-center">
+          <div className="lg:w-[788px] w-[353px] mx-auto gap-4">
             <h5 className="font-bold text-base leading-6 tracking-[0.1px] text-[#737373]">
               WHAT WE DO
             </h5>
-            <h1 className="font-bold text-[58px] leading-[80px] tracking-[0.2px] text-[#252B42]">
+            <h1 className="font-bold lg:text-[58px] text-[40px] leading-[80px] tracking-[0.2px] text-[#252B42]">
               Innovation tailored for you
             </h1>
             <div className="w-full gap-4 pt-3 flex justify-center items-center text-center">
@@ -32,8 +32,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-center ">
-        <div className="grid grid-cols-4 gap-4 w-[90%] ">
+      <div className="w-full flex justify-center lg:mt-0 h-[530px] ">
+        <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-4 gap-1 lg:w-[90%] w-[413px] md:h-[1070px] sm:h-[1070px]">
           <div className="relative col-span-2 ">
             <Image
               src={image1}
@@ -42,29 +42,29 @@ const Hero = () => {
             />
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col lg:gap-2 gap-1">
             <Image
               src={image2}
               alt="Small Image 1"
-              className="w-[361px] h-[260px] object-cover rounded-lg scale-x-[-1]"
+              className="lg:w-[361px] w-[204px] lg:h-[260px] h-[260px] object-cover rounded-lg scale-x-[-1]"
             />
             <Image
               src={image3}
               alt="Small Image 2"
-              className="w-[361px] h-[260px] object-cover rounded-lg transform scale-x-[-1]"
+              className="lg:w-[361px] w-[204px] lg:h-[260px] h-[260px] object-cover rounded-lg transform scale-x-[-1]"
             />
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col lg:gap-2 gap-1">
             <Image
               src={image4}
               alt="Small Image 3"
-              className="w-[361px] h-[260px] object-cover rounded-lg scale-x-[-1]"
+              className="lg:w-[361px] w-[204px] lg:h-[260px] h-[260px] object-cover rounded-lg scale-x-[-1]"
             />
             <Image
               src={image5}
               alt="Small Image 4"
-              className="w-[361px] h-[260px] object-cover rounded-lg scale-x-[-1]"
+              className="lg:w-[361px] w-[204px] lg:h-[260px] h-[260px] object-cover rounded-lg scale-x-[-1]"
             />
           </div>
         </div>
