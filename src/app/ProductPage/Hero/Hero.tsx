@@ -24,7 +24,7 @@ const Hero = ({
 }: ProductProps) => {
 
   const { setCount, count, cartItems, setCartItems } = useContext(CartContext);
-  const addItemToCart = (item: any) => {
+  const addItemToCart = (item: Products) => {
     const newItem = { ...item, quantity: 1 };
     
 

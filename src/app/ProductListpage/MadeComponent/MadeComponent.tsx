@@ -56,7 +56,7 @@ const MadeComponent = () => {
     <div>
       <div className="lg:w-[1049px] lg:h-auto md:w-[414px] md:h-[3510px] gap-8 grid lg:grid-cols-4 md:grid-cols-1 mx-auto">
         {currentPosts.length > 0 ? (
-          currentPosts.map((product: any) => (
+          currentPosts.map((product: ProductsProps) => (
             <ProductCard
                 key={product._id}
                 _id={product._id}
