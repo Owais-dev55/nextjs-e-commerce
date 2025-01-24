@@ -21,10 +21,11 @@ function EditorPick() {
             src={image1}
             alt="Men"
             className="w-full h-[300px] sm:h-[500px] object-cover rounded-lg"
+            
           />
-          <div className="absolute bottom-4 left-4">
-            <div className="bg-white px-4 py-2 rounded shadow">
-              <span className="text-gray-800 font-semibold">MEN</span>
+          <div className="absolute bottom-6 left-4">
+            <div className="bg-white px-4 py-2 rounded shadow ">
+              <span className="text-gray-800 font-semibold ">MEN</span>
             </div>
           </div>
         </div>

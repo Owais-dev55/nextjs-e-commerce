@@ -1,77 +1,129 @@
-import Footer from "@/Component/Footer/Footer";
-import React from "react";
-import image1 from "@/public/image/card1.jpeg";
-import image2 from "@/public/image/card2.jpeg";
-import image3 from "@/public/image/card3.jpg";
-import image4 from "@/public/image/card4.jpeg";
-import image5 from "@/public/image/card5.jpg";
-import image6 from "@/public/image/card6.jpg";
-import image7 from "@/public/image/card7.jpg";
-import image8 from "@/public/image/card8.jpg";
-import image9 from "@/public/image/card9.jpg";
-import image10 from "@/public/image/card10.jpg";
-import image11 from "@/public/image/card11.jpg";
-import image12 from "@/public/image/card12.jpg";
+"use client";
+import React, { useState, useEffect } from "react";
+import { client } from "@/sanity/lib/client";
 import ProductCard from "@/Component/ProductCard/ProductCard";
+
+const ITEMS_PER_PAGE = 8;
+
 const MadeComponent = () => {
-  const Images = [
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7,
-    image8,
-    image9,
-    image10,
-    image11,
-    image12,
-  ];
+  const [products, setProducts] = useState<any[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await client.fetch(
+          `*[_type == "product"] {
+            _id,
+            title,
+            "imageUrl": productImage.asset->url,
+            price,
+            tags,
+            dicountPercentage,
+            description,
+            isNew
+          }`
+        );
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+  const currentPosts = products.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const goToPage = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
   return (
     <div>
-      <Footer backgroundColor="#FFFFFF" />
-      <div className="lg:w-[1049px] lg:h-[615px] md:w-[414px] md:h-[3510px] gap-8 grid lg:grid-cols-4 md:grid-cols-1 mx-auto">
-        {Images.map((image, index) => {
-          return (
-           <ProductCard image={image} key={index} />
-          );
-        })}
-        <div className="w-full lg:ml-[240px] flex justify-center">
-  <div className="h-[76px] lg:w-[813px] md:w-[313px] lg:pl-[360px] rounded-md bg-[#FFFFFF] border-[#BDBDBD]">
-    <div className="w-full h-full flex flex-row -mt-5">
-      <div className="bg-[#F3F3F3] h-full w-[84px] flex justify-center items-center border-[#BDBDBD] border rounded-l-lg">
-        <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-8 h-6 text-[#BDBDBD]">
-          First
-        </h6>
+      <div className="lg:w-[1049px] lg:h-auto md:w-[414px] md:h-[3510px] gap-8 grid lg:grid-cols-4 md:grid-cols-1 mx-auto">
+        {currentPosts.length > 0 ? (
+          currentPosts.map((product: any) => (
+            <ProductCard
+              key={product._id}
+              id={product._id}
+              image={product.imageUrl}
+              name={product.title}
+              originalPrice={product.price}
+              discountedPercentage={product.dicountPercentage}
+              category="furniture"
+            />
+          ))
+        ) : (
+          <p className="text-center col-span-full text-gray-500">
+            No products found.
+          </p>
+        )}
       </div>
-      <div className="w-[46px] flex justify-center items-center h-full border border-[#E9E9E9]">
-        <h6 className="font-bold tracking-[0.2px] text-[#23A6F0] leading-6 text-sm w-[6px] h-6">
-          1
-        </h6>
-      </div>
-      <div className="w-[46px] flex justify-center items-center h-full border border-[#E9E9E9] bg-[#23A6F0]">
-        <h6 className="font-bold tracking-[0.2px] text-[#FFFFFF] leading-6 text-sm w-[6px] h-6">
-          2
-        </h6>
-      </div>
-      <div className="w-[46px] flex justify-center items-center h-full border border-[#E9E9E9]">
-        <h6 className="font-bold tracking-[0.2px] text-[#23A6F0] leading-6 text-sm w-[6px] h-6">
-          3
-        </h6>
-      </div>
-      <div className="h-full w-[84px] flex justify-center items-center border-[#BDBDBD] border rounded-r-lg">
-        <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-8 h-6 text-[#23A6F0]">
-          Next
-        </h6>
+
+      <div className="w-[1049px] lg:ml-[470px] flex justify-center mt-8">
+        <div className="h-[76px] lg:w-[813px] md:w-[313px] flex items-center justify-center rounded-md bg-[#FFFFFF] border-[#BDBDBD]">
+          <div className="w-full h-full flex flex-row -mt-5">
+            <div
+              className={`bg-[#F3F3F3] h-full w-[84px] flex justify-center items-center border-[#BDBDBD] border rounded-l-lg ${
+                currentPage === 1
+                  ? "text-gray-300 cursor-not-allowed"
+                  : "cursor-pointer"
+              } hover:bg-[#E9E9E9]`}
+              onClick={() => goToPage(1)}
+            >
+              <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-10 h-6 text-[#BDBDBD]">
+                Previous
+              </h6>
+            </div>
+
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+              (page) => (
+                <div
+                  key={page}
+                  className={`w-[46px] flex justify-center items-center h-full border border-[#E9E9E9] ${
+                    page === currentPage
+                      ? "bg-[#23A6F0] text-white"
+                      : "text-[#23A6F0] hover:bg-[#E9E9E9]"
+                  } cursor-pointer`}
+                  onClick={() => goToPage(page)}
+                >
+                  <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-[6px] h-6">
+                    {page}
+                  </h6>
+                </div>
+              )
+            )}
+
+            <div
+              className={`h-full w-[84px] flex justify-center items-center border-[#BDBDBD] border rounded-r-lg ${
+                currentPage === totalPages
+                  ? "text-gray-300 cursor-not-allowed"
+                  : "cursor-pointer"
+              } hover:bg-[#E9E9E9]`}
+              onClick={() => goToPage(currentPage + 1)}
+            >
+              <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-8 h-6 text-[#23A6F0]">
+                Next
+              </h6>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
-</div>
-
-
   );
 };
 

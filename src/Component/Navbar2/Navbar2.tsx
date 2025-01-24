@@ -1,94 +1,107 @@
-'use client'
+"use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import "./Navbar.css";
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/ProductListpage", label: "Product" },
+  { href: "/Pricing", label: "Pricing" },
+  { href: "/Contact", label: "Contact" },
+];
 
-const Navbar2 = () => {
+const Navbar = () => {
+  const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <div className="w-full ">
-
-      <div className="hidden lg:flex w-full h-24 pl-14  pt-4">
-        <div className="w-[187px] h-14 pt-4 pl-[136px]">
-          <h3 className="font-bold text-[#252B42] leading-8 tracking-[0.1px] text-2xl">
-            <Link href="/"> Bandage </Link>
-          </h3>
-        </div>
-        <div className="w-[1250px] h-14 pt-1 pl-[264px]">
-          <div className="w-[275px] h-6 gap-5 pt-4 flex justify-between">
-            <Link
-              href="/"
-              className="h-full w-11 font-bold text-sm leading-6 tracking-[0.2px] text-[#737373]"
-            >
-              Home
-            </Link>
-            <Link
-              href="/ProductPage"
-              className="h-full w-11 font-bold text-sm leading-6 tracking-[0.2px] text-[#737373]"
-            >
-              Product
-            </Link>
-            <Link
-              href="/Pricing"
-              className="h-full w-11 font-bold text-sm leading-6 tracking-[0.2px] text-[#737373]"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/Contact"
-              className="h-full w-11 font-bold text-sm leading-6 tracking-[0.2px] text-[#737373]"
-            >
-              Contact
+    <nav className="w-full bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-24">
+          <div className="flex items-center">
+            <Link href="/" className="font-bold text-2xl text-[#252B42]">
+              VogueAura
             </Link>
           </div>
-          <div className="w-[900px] h-[52px] pl-[515px] gap-10 flex -my-2">
+          <div className="hidden lg:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`nav-link ${pathname === link.href ? "active" : ""}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="hidden lg:flex items-center space-x-4">
             <Link
-              href="#"
-              className="h-5 w-10 font-bold text-sm leading-[22px] tracking-[0.2px] text-[#23A6F0]"
+              href="/LoginForm"
+              className="font-bold text-sm text-[#23A6F0]"
             >
               Login
             </Link>
-            <div className="h-full w-[214px] -my-4">
-              <button className="w-full h-full rounded-md bg-[#23A6F0] pt-4 pb-4 pl-5 pr-6 gap-4">
-                <h6 className="font-bold text-sm tracking-[0.2px] leading-[22px] text-[#FFFFFF]">
-                  Become a member{" "}
-                  <i className="fa-solid fa-arrow-right text-[#FFFFFF] h-[12px] w-[12px] pl-2"></i>
-                </h6>
-              </button>
-            </div>
+            <Link
+              href="/Pricing"
+              className="bg-[#23A6F0] text-white font-bold text-sm py-2 px-4 rounded-md hover:bg-[#1E8AC0] transition-colors duration-300"
+            >
+              Become a member
+            </Link>
+          </div>
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={toggleMobileMenu}
+              className="text-[#737373] p-2"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <i className="fa-solid fa-bars text-xl"></i>
+              ) : (
+                <i className="fa-solid fa-bars text-xl"></i>
+              )}
+            </button>
           </div>
         </div>
       </div>
-
-      {/* Mobile screens */}
-      <div className="lg:hidden w-full bg-[#F6F6F6] ">
-        <div className="flex justify-between items-center px-4 py-6">
-          <h3 className="font-bold text-[#252B42] text-2xl">
-            <Link href="/"> Bandage </Link>
-          </h3>
-          <button className="text-[#737373] flex justify-center gap-3">
-            <i className="fa-solid fa-magnifying-glass"></i>
-            <i className="fa-solid fa-cart-shopping"></i>
-            <i className="fa-solid fa-bars text-xl"></i>
-          </button>
+      {isMobileMenuOpen && (
+        <div className="lg:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`block px-3 py-2 rounded-md text-base font-medium text-center ${
+                  pathname === link.href
+                    ? "bg-gray-100 text-[#23A6F0] font-semibold"
+                    : "text-[#737373] hover:bg-gray-50"
+                }`}
+                onClick={toggleMobileMenu}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/LoginForm"
+              className="block px-3 py-2 rounded-md text-base font-medium text-[#23A6F0] text-center"
+              onClick={toggleMobileMenu}
+            >
+              Login
+            </Link>
+            <Link
+              href="/Pricing"
+              className="block px-3 py-2 rounded-md text-base font-medium bg-[#23A6F0] text-white hover:bg-[#1E8AC0] transition-colors duration-300 text-center shadow-md hover:shadow-lg"
+              onClick={toggleMobileMenu}
+            >
+              Become a member
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col items-center space-y-8 py-8">
-          <Link href="/" className="text-xl text-[#737373]">
-            Home
-          </Link>
-          <Link href="/ProductPage" className="text-xl text-[#737373]">
-            Product
-          </Link>
-          <Link href="/Pricing" className="text-xl text-[#737373]">
-            Pricing
-          </Link>
-          <Link href="/Contact" className="text-xl text-[#737373]">
-            Contact
-          </Link>
-        </div>
-      </div>
-    </div>
+      )}
+    </nav>
   );
 };
 
-export default Navbar2;
-
+export default Navbar;

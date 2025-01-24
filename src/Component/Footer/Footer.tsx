@@ -37,7 +37,7 @@ const Footer = ({ backgroundColor }: bgcolor) => {
           style={{ backgroundColor: backgroundColor }}
         >
           <div className="max-w-[1350px] mx-auto flex justify-between items-center h-full">
-            <h3 className="text-[#252B42] font-bold text-2xl leading-8">Bandage</h3>
+            <h3 className="text-[#252B42] font-bold text-2xl leading-8">VogueAura</h3>
             <div className="flex space-x-4 text-[#23A6F0]">
               <i className="fab fa-facebook-f"></i>
               <i className="fab fa-instagram"></i>
@@ -45,9 +45,7 @@ const Footer = ({ backgroundColor }: bgcolor) => {
             </div>
           </div>
         </div>
-
         <hr className="text-[#E6E6E6] border-t-[1px] max-w-[1157px] mx-auto" />
-
         <div className="max-w-[1200px] mx-auto pt-8 pb-8 flex flex-wrap gap-8 px-6">
           {sections.map((section, index) => (
             <div key={index} className="min-w-[148px]">
@@ -66,7 +64,6 @@ const Footer = ({ backgroundColor }: bgcolor) => {
               </ul>
             </div>
           ))}
-
           <div className="flex-1 lg:w-[321px]">
             <h5 className="font-bold text-[#252B42] text-base leading-6 tracking-wider mb-4">
               Get In Touch
@@ -88,10 +85,9 @@ const Footer = ({ backgroundColor }: bgcolor) => {
             </div>
           </div>
         </div>
-
         <div className="bg-[#FAFAFA] py-4">
           <div className="max-w-[1050px] mx-auto text-center text-[#737373] text-sm font-medium">
-            Made With Love By Finland All Right Reserved
+            Made With Love By VogueAura All Right Reserved
           </div>
         </div>
       </div>

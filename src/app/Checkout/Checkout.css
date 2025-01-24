@@ -1,0 +1,9 @@
+
+
+.checkInput {
+    @apply w-full p-3 text-base text-[#252B42] border border-gray-300 rounded-lg  focus:ring focus:ring-[#23A6F0] focus:border-[#23A6F0] hover:outline-none transition duration-300   
+}
+
+.label {
+    @apply block text-sm font-medium text-[#252B42] mb-2
+}

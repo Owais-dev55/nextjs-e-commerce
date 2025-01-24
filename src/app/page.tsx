@@ -8,7 +8,7 @@ import FeaturedProducts from "@/Component/FeaturedProducts/FeaturedProducts";
 
 export default function Home() {
   return (
-    <>
+    <div>
     <Navbar/>
     <Hero/>
     <EditorPick/>
@@ -16,6 +16,6 @@ export default function Home() {
     <Pickpages/>
     <FeaturedProducts/>
     <Footer backgroundColor="#FAFAFA"/>
-    </>
+    </div>
   );
 }

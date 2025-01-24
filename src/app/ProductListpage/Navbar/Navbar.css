@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+  .nav-link {
+    @apply font-bold text-sm text-[#737373] hover:text-[#252B42] transition-colors duration-300;
+    position: relative;
+  }
+
+  .nav-link.active {
+    @apply text-[#23A6F0] relative font-semibold;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #23a6f0;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+

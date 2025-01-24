@@ -1,25 +1,41 @@
-import image1 from "@/public/image/image1.jpeg";
-import image2 from "@/public/image/image2.jpeg";
-import image3 from "@/public/image/image3.jpeg";
-import image4 from "@/public/image/image4.jpeg";
-import image5 from "@/public/image/image5.jpeg";
-import image6 from "@/public/image/image6.jpeg";
-import image7 from "@/public/image/image7.jpeg";
-import image8 from "@/public/image/image8.jpeg";
-
+'use client'
+import React, { useState, useEffect } from 'react'
+import { client } from '@/sanity/lib/client'
 import ProductCard from "../ProductCard/ProductCard";
 
 export default function BestSeller() {
-  const Images = [
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7,
-    image8,
-  ];
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await client.fetch(
+          `*[_type == "product" && ("modern" in tags  || "furniture" in tags)] {
+            _id,
+            title,
+            "imageUrl": productImage.asset->url,
+            price,
+            tags,
+            dicountPercentage,
+            description,
+            isNew
+          }`
+        );
+        setProducts(products);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main className="px-4 sm:px-6 lg:px-8 py-12  lg:h-auto h-[5510px]">
@@ -36,10 +52,21 @@ export default function BestSeller() {
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 lg:h-[615px]  h-[5510px]">
-         
-          {Images.map((image, index) => (
-            <ProductCard image={image} key={index} />
-          ))}
+          {products.length > 0 ? (
+            products.map((product: any) => (
+              <ProductCard
+                key={product._id}
+                id={product._id}
+                image={product.imageUrl}
+                name={product.title}
+                originalPrice={product.price}
+                discountedPercentage={product.dicountPercentage}
+                category='furniture'
+              />
+            ))
+          ) : (
+            <p className="text-center col-span-full text-gray-500">No products found.</p>
+          )}
         </div>
       </div>
     </main>
