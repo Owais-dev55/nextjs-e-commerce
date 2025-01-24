@@ -2,15 +2,16 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "@/Component/ProductCard/ProductCard";
 import { client } from "@/sanity/lib/client";
+import { ProductsProps } from "@/Component/ProductCard/ProductCard";
 
 const BestsellerProduct = () => {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<ProductsProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await client.fetch(
+        const data:ProductsProps[] = await client.fetch(
           `*[_type == "product" && ("modern" in tags || "elegance" in tags || "furniture" in tags)] {
             _id,
             title,
@@ -50,14 +51,14 @@ const BestsellerProduct = () => {
           {products.length > 0 ? (
             products.map((product) => (
               <ProductCard
-                key={product._id}
-                id={product._id}
-                image={product.imageUrl}
-                name={product.title}
-                originalPrice={product.price}
-                discountedPercentage={product.dicountPercentage}
-                category="furniture"
-              />
+              key={product._id}
+              _id={product._id}
+              imageUrl={product.imageUrl}
+              title={product.title}
+              price={product.price}
+              dicountPercentage={product.dicountPercentage}
+              category='furniture'
+            />
             ))
           ) : (
             <p className="text-center col-span-full text-gray-500">

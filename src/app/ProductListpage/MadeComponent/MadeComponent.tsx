@@ -2,18 +2,18 @@
 import React, { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
 import ProductCard from "@/Component/ProductCard/ProductCard";
-
+import { ProductsProps } from "@/Component/ProductCard/ProductCard";
 const ITEMS_PER_PAGE = 8;
 
 const MadeComponent = () => {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<ProductsProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await client.fetch(
+        const data:ProductsProps[] = await client.fetch(
           `*[_type == "product"] {
             _id,
             title,
@@ -58,14 +58,14 @@ const MadeComponent = () => {
         {currentPosts.length > 0 ? (
           currentPosts.map((product: any) => (
             <ProductCard
-              key={product._id}
-              id={product._id}
-              image={product.imageUrl}
-              name={product.title}
-              originalPrice={product.price}
-              discountedPercentage={product.dicountPercentage}
-              category="furniture"
-            />
+                key={product._id}
+                _id={product._id}
+                imageUrl={product.imageUrl}
+                title={product.title}
+                price={product.price}
+                dicountPercentage={product.dicountPercentage}
+                category='furniture'
+              />
           ))
         ) : (
           <p className="text-center col-span-full text-gray-500">
