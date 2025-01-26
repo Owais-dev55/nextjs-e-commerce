@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { CartContext } from '@/Utilities/Context';
-import { StaticImageData } from 'next/image';
-import React, { useContext } from 'react';
+import { CartContext } from "@/Utilities/Context";
+import type { StaticImageData } from "next/image";
+import React, { useContext, useState, useEffect } from "react";
 
 interface WishProps {
   _id: string;
@@ -12,33 +12,34 @@ interface WishProps {
 }
 
 const AddtoWishList = ({ _id, title, price, imageUrl }: WishProps) => {
+  const { wishlitItems = [], setWishlitItems } = useContext(CartContext);
+  const [isInWishlist, setIsInWishlist] = useState(false);
 
-    const { wishlitItems = [], setWishlitItems } = useContext(CartContext);
+  useEffect(() => {
+    const itemInWishlist = wishlitItems.some((item) => item._id === _id);
+    setIsInWishlist(itemInWishlist);
+  }, [wishlitItems, _id]);
 
-  const handleClick = (item: WishProps) => {
-    const newItem = { ...item };
-    const existingItem = wishlitItems.find(
-      (wishlitItem) => wishlitItem._id === newItem._id
-    );
-    if (!existingItem) {
+  const handleClick = () => {
+    const newItem = { _id, title, price, imageUrl };
+    if (isInWishlist) {
+      setWishlitItems(wishlitItems.filter((item) => item._id !== _id));
+    } else {
       setWishlitItems([...wishlitItems, newItem]);
     }
+    setIsInWishlist(!isInWishlist);
   };
 
   return (
     <div>
       <div
-        onClick={() =>
-          handleClick({
-            _id,
-            title,
-            price,
-            imageUrl,
-          })
-        }
-        className="w-10 h-10 rounded-full bg-white border border-gray-300 flex cursor-pointer"
+        onClick={handleClick}
+        className="w-10 h-10 rounded-full bg-white border border-gray-300 flex cursor-pointer items-center justify-center"
+        aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
       >
-        <i className="fa-regular fa-heart w-5 h-5 pt-3 pl-[9px] text-gray-800"></i>
+        <i
+          className={`fa-${isInWishlist ? "solid" : "regular"} fa-heart w-5 h-5 text-center text-lg ${isInWishlist ? "text-red-500" : "text-gray-800"}`}
+        ></i>
       </div>
     </div>
   );
