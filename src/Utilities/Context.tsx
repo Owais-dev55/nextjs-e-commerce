@@ -15,12 +15,16 @@ export const CartContext = createContext<{
     setCount: React.Dispatch<React.SetStateAction<number>>
     cartItems: Products[] ;
     setCartItems: (items: Products[]) => void
+    wishlitItems: Products[]
+    setWishlitItems: (items: Products[]) => void
 
 }>({
     count: 0,
     setCount: () => {},
     cartItems:[],
-    setCartItems: () => {}
+    setCartItems: () => {},
+    wishlitItems: [],
+    setWishlitItems: () => {}
 })
 
 

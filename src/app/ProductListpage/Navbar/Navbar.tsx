@@ -131,7 +131,7 @@ const Navbar = () => {
               Login / Register
             </Link>
             <Link href="#" className="text-gray-800">
-              <i className="fas fa-heart "></i>
+         <Link href={'/WishList'}><i className="fas fa-heart "></i></Link>
             </Link>
             <Link href="/Cart" className="relative">
               <i className="fas fa-shopping-cart relative">

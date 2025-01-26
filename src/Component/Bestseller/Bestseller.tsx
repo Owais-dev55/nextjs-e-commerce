@@ -1,10 +1,8 @@
-'use client'
-import React, { useState, useEffect } from 'react'
-import { client } from '@/sanity/lib/client'
-import ProductCard  from "../ProductCard/ProductCard";
-import { ProductsProps } from '../ProductCard/ProductCard';
-
-
+"use client";
+import React, { useState, useEffect } from "react";
+import { client } from "@/sanity/lib/client";
+import ProductCard from "../ProductCard/ProductCard";
+import { ProductsProps } from "../ProductCard/ProductCard";
 
 export default function BestSeller() {
   const [products, setProducts] = useState<ProductsProps[]>([]);
@@ -13,7 +11,7 @@ export default function BestSeller() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const products:ProductsProps[] = await client.fetch(
+        const products: ProductsProps[] = await client.fetch(
           `*[_type == "product" && ("modern" in tags  || "furniture" in tags)] {
             _id,
             title,
@@ -37,7 +35,7 @@ export default function BestSeller() {
   }, []);
 
   if (loading) {
-    return <div className='text-7xl flex justify-center mt-10'>Loading...</div>;
+    return <div className="text-3xl flex justify-center mt-10">Loading...</div>;
   }
 
   return (
@@ -64,11 +62,13 @@ export default function BestSeller() {
                 title={product.title}
                 price={product.price}
                 dicountPercentage={product.dicountPercentage}
-                category='furniture'
+                category="furniture"
               />
             ))
           ) : (
-            <p className="text-center col-span-full text-gray-500">No products found.</p>
+            <p className="text-center col-span-full text-gray-500">
+              No products found.
+            </p>
           )}
         </div>
       </div>

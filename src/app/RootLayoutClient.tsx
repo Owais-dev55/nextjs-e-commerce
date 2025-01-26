@@ -10,9 +10,11 @@ export default function RootLayoutClient({
 }) {
   const [count, setCount] = useState(0);
   const [cartItems , setCartItems] = useState<Products[]>([])
+  const [wishlitItems , setWishlitItems] = useState<Products[]>([])
+
   
   return (
-    <CartContext.Provider value={{ count, setCount , cartItems , setCartItems }}>
+    <CartContext.Provider value={{ count, setCount , cartItems , setCartItems  , wishlitItems , setWishlitItems }}>
       {children}
     </CartContext.Provider>
   );

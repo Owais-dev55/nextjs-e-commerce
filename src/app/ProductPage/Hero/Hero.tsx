@@ -1,9 +1,8 @@
-"use client";
 import Image, { StaticImageData } from "next/image";
 import Navbar from "@/app/ProductListpage/Navbar/Navbar";
 import Link from "next/link";
-import { useContext } from "react";
-import { CartContext, Products } from "@/Utilities/Context";
+import AddtoCart from "@/Component/FrequentComponent/AddtoCart";
+import AddtoWishList from "@/Component/FrequentComponent/AddtoWishList";
 
 interface ProductProps {
   _id: string;
@@ -22,48 +21,22 @@ const Hero = ({
   description,
   colors = ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
 }: ProductProps) => {
-
-  const { setCount, count, cartItems, setCartItems } = useContext(CartContext);
-  const addItemToCart = (item: Products) => {
-    const newItem = { ...item, quantity: 1 };
-    
-
-    const existingItemIndex = cartItems.findIndex(
-      (cartItem) => cartItem._id === newItem._id
-    );
-  
-    if (existingItemIndex >= 0) {
-      // Item exists, update its quantity
-      const updatedCartItems = [...cartItems];
-      updatedCartItems[existingItemIndex] = {
-        ...updatedCartItems[existingItemIndex],
-        quantity: updatedCartItems[existingItemIndex].quantity! + 1,
-      };
-      setCartItems(updatedCartItems);
-    } else {
-  
-      setCartItems([...cartItems, newItem]);
-    }
-  
-    setCount(count + 1);
-  };
-  
   return (
     <div className="text-[Montserrat]">
       <Navbar />
       <div className="gap-8 w-full h-24 bg-[#FAFAFA] flex items-center">
         <div className="h-8 w-[510px] -mt-2">
           <div className="w-[119px] h-11 gap-4 pt-3 bt-3 flex">
-            <Link href={'/'}>
-            <h3 className="w-11 h-6 font-bold ml-44 text-[#252B42] tracking-[0.2px] leading-6 text-sm">
-              Home
-            </h3>
+            <Link href={"/"}>
+              <h3 className="w-11 h-6 font-bold ml-44 text-[#252B42] tracking-[0.2px] leading-6 text-sm">
+                Home
+              </h3>
             </Link>
             <div className="w-auto h-4 text-[#BDBDBD]">
               <i className="fa-solid fa-chevron-right"></i>
             </div>
             <h6 className="w-9 h-6 font-bold text-[#BDBDBD] tracking-[0.2px] leading-6 text-sm">
-            Product
+              Product
             </h6>
           </div>
         </div>
@@ -85,7 +58,7 @@ const Hero = ({
                   src={imageUrl}
                   alt="product"
                   layout="fill"
-                  objectFit="cover"
+                  style={{objectFit: 'cover'}}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -96,16 +69,16 @@ const Hero = ({
                   src={imageUrl}
                   alt="productImage"
                   layout="fill"
-                  objectFit="cover"
+                  style={{objectFit: 'cover'}}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
               <div className="w-[100px] h-full relative overflow-hidden rounded-md opacity-50">
                 <Image
-                  src={imageUrl }
+                  src={imageUrl}
                   alt="productImage"
                   layout="fill"
-                  objectFit="cover"
+                  style={{objectFit: 'cover'}}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -156,33 +129,21 @@ const Hero = ({
             </div>
 
             <div className="w-[298px] h-11 gap-2 pl-6 pt-14 flex">
-              <button
-                className="bg-[#23A6F0] w-[148px] h-11 rounded-md pt-[10px] pb-[10px] pr-5 pl-5"
-                onClick={() =>
-                  addItemToCart({
-                    _id,
-                    title,
-                    price,
-                    imageUrl,
-                    quantity: 1,
-                  })
-                }
-              >
-                <h6 className="w-[108px] h-6 font-bold text-sm text-[#FFFFFF] tracking-[0.2px] leading-6">
-                  Add to cart
-                </h6>
-              </button>
-              <div className="w-10 h-10 rounded-[50%] bg-[#FFFFFF] border border-[#E8E8E8] flex">
-                <i className="fa-regular fa-heart w-5 h-5 pt-3 pl-[9px] text-[#252B42]"></i>
-              </div>
-              <div className="w-10 h-10 rounded-[50%] bg-[#FFFFFF] border border-[#E8E8E8] flex">
-                <Link href={"/Cart"}>
-                  <i className="fa-solid fa-cart-shopping w-5 h-5 pt-3 pl-[9px] text-[#252B42]"></i>
-                </Link>
-              </div>
-              <div className="w-10 h-10 rounded-[50%] bg-[#FFFFFF] border border-[#E8E8E8] flex">
-                <i className="fa-solid fa-eye w-5 h-5 pt-3 pl-[9px] text-[#252B42]"></i>
-              </div>
+              <AddtoCart
+                _id={_id}
+                imageUrl={imageUrl}
+                price={price}
+                title={title}
+                key={_id}
+                quantity={1}
+              />
+              <AddtoWishList
+                _id={_id}
+                imageUrl={imageUrl}
+                price={price}
+                title={title}
+                key={_id}
+              />
             </div>
           </div>
         </div>
@@ -203,7 +164,7 @@ const Hero = ({
                   src={imageUrl}
                   alt="product"
                   layout="fill"
-                  objectFit="cover"
+                  style={{objectFit: 'cover'}}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -211,10 +172,10 @@ const Hero = ({
             <div className="w-[219px] h-[75px] mt-8 flex gap-4">
               <div className="w-[100px] h-full relative overflow-hidden rounded-md">
                 <Image
-                  src="/image/listimage2.jpg"
+                  src={imageUrl}
                   alt="productImage"
                   layout="fill"
-                  objectFit="cover"
+                  style={{objectFit: 'cover'}}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -223,7 +184,7 @@ const Hero = ({
                   src={imageUrl}
                   alt="productImage"
                   layout="fill"
-                  objectFit="cover"
+                  style={{objectFit: 'cover'}}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -265,29 +226,21 @@ const Hero = ({
             </div>
 
             <div className="flex gap-2">
-              <button
-                className="bg-[#23A6F0] px-5 py-[10px] rounded-md"
-                onClick={() =>
-                  addItemToCart({
-                    _id,
-                    title,
-                    price,
-                    imageUrl,
-                    quantity: 1,
-                  })
-                }
-              >
-                <h6 className="font-bold text-sm text-white">Add to cart</h6>
-              </button>
-              <div className="w-10 h-10 rounded-full bg-white border border-[#E8E8E8] flex items-center justify-center">
-                <i className="fa-regular fa-heart text-[#252B42]"></i>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-white border border-[#E8E8E8] flex items-center justify-center">
-                <i className="fa-solid fa-cart-shopping text-[#252B42]"></i>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-white border border-[#E8E8E8] flex items-center justify-center">
-                <i className="fa-solid fa-eye text-[#252B42]"></i>
-              </div>
+              <AddtoCart
+                _id={_id}
+                imageUrl={imageUrl}
+                price={price}
+                title={title}
+                key={_id}
+                quantity={1}
+              />
+              <AddtoWishList
+                _id={_id}
+                imageUrl={imageUrl}
+                price={price}
+                title={title}
+                key={_id}
+              />
             </div>
           </div>
         </div>

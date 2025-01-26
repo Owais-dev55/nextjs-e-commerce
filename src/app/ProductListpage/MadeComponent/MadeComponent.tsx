@@ -13,7 +13,7 @@ const MadeComponent = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data:ProductsProps[] = await client.fetch(
+        const data: ProductsProps[] = await client.fetch(
           `*[_type == "product"] {
             _id,
             title,
@@ -58,14 +58,14 @@ const MadeComponent = () => {
         {currentPosts.length > 0 ? (
           currentPosts.map((product: ProductsProps) => (
             <ProductCard
-                key={product._id}
-                _id={product._id}
-                imageUrl={product.imageUrl}
-                title={product.title}
-                price={product.price}
-                dicountPercentage={product.dicountPercentage}
-                category='furniture'
-              />
+              key={product._id}
+              _id={product._id}
+              imageUrl={product.imageUrl}
+              title={product.title}
+              price={product.price}
+              dicountPercentage={product.dicountPercentage}
+              category="furniture"
+            />
           ))
         ) : (
           <p className="text-center col-span-full text-gray-500">
@@ -73,8 +73,7 @@ const MadeComponent = () => {
           </p>
         )}
       </div>
-
-      <div className="w-[1049px] lg:ml-[470px] flex justify-center mt-8">
+      <div className="lg:w-[1049px] lg:ml-[470px] w-full mr-10  flex justify-center mt-8">
         <div className="h-[76px] lg:w-[813px] md:w-[313px] flex items-center justify-center rounded-md bg-[#FFFFFF] border-[#BDBDBD]">
           <div className="w-full h-full flex flex-row -mt-5">
             <div
