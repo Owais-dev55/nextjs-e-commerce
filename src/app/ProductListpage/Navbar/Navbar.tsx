@@ -8,7 +8,7 @@ import { SearchDropdown } from "@/Component/FrequentComponent/SearchDropdown";
 
 const Navbar = () => {
   const { count } = useContext(CartContext);
-  const pathname = usePathname(); 
+  const pathname = usePathname();
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -72,7 +72,7 @@ const Navbar = () => {
                   href={link.href}
                   className={`text-lg font-medium ${
                     pathname === link.href
-                      ? "text-[#23A6F0] font-semibold border-b-2 border-[#23A6F0]" 
+                      ? "text-[#23A6F0] font-semibold border-b-2 border-[#23A6F0]"
                       : "text-gray-800 hover:text-[#23A6F0]"
                   }`}
                 >
@@ -88,17 +88,14 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex justify-center space-x-6 text-2xl text-gray-800">
-            <Link
-              href="/Cart"
-              className="relative hover:text-[#23A6F0]"
-            >
+            <Link href="/Cart" className="relative hover:text-[#23A6F0]">
               <i className="fas fa-shopping-cart relative">
                 <span className="absolute top-[-10px] right-[-10px] bg-[#23A6F0] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                   {count}
                 </span>
               </i>
             </Link>
-            <Link href="#">
+            <Link href="/WishList">
               <i className="fas fa-heart text-[#23A6F0]"></i>
             </Link>
           </div>
@@ -116,7 +113,7 @@ const Navbar = () => {
                   href={link.href}
                   className={`font-medium ${
                     pathname === link.href
-                      ? "text-[#23A6F0] font-semibold border-b-2 border-[#23A6F0]" 
+                      ? "text-[#23A6F0] font-semibold border-b-2 border-[#23A6F0]"
                       : "text-gray-800 hover:text-[#23A6F0]"
                   }`}
                 >
@@ -130,8 +127,10 @@ const Navbar = () => {
             <Link href="/LoginForm" className="text-[#23A6F0]">
               Login / Register
             </Link>
-            <Link href="#" className="text-gray-800">
-         <Link href={'/WishList'}><i className="fas fa-heart "></i></Link>
+            <Link href="/WishList" className="text-gray-800">
+              <Link href={"/WishList"}>
+                <i className="fas fa-heart "></i>
+              </Link>
             </Link>
             <Link href="/Cart" className="relative">
               <i className="fas fa-shopping-cart relative">

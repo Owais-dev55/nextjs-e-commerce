@@ -88,9 +88,6 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex justify-center space-x-6 text-2xl text-gray-800">
-            <Link href="#">
-              <i className="fas fa-search text-[#23A6F0]"></i>
-            </Link>
             <Link
               href="/Cart"
               className="relative hover:text-[#23A6F0]"
@@ -101,7 +98,7 @@ const Navbar = () => {
                 </span>
               </i>
             </Link>
-            <Link href="#">
+            <Link href="/WishList">
               <i className="fas fa-heart text-[#23A6F0]"></i>
             </Link>
           </div>
@@ -133,7 +130,7 @@ const Navbar = () => {
             <Link href="/LoginForm" className="text-[#23A6F0]">
               Login / Register
             </Link>
-            <Link href="#" className="text-gray-800">
+            <Link href="WishList" className="text-gray-800">
               <i className="fas fa-heart "></i>
             </Link>
             <Link href="/Cart" className="relative">

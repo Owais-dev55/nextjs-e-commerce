@@ -1,25 +1,29 @@
-"use client"
-import type React from "react"
-import mastercard from "@/public/image/mastercard-icon-2048x1286-s6y46dfh.png"
-import visa from "@/public/image/purepng.com-visa-logologobrand-logoiconslogos-251519938794uqvcz.png"
-import payonner from "@/public/image/Payoneer-New-Logo.png"
-import Paypal from "@/public/image/PayPal-Logo.png"
-import unionpay from "@/public/image/unionpay-international-vector-logo.png"
-import Image from "next/image"
-import './Checkout.css'
+"use client";
+import type React from "react";
+import mastercard from "@/public/image/mastercard-icon-2048x1286-s6y46dfh.png";
+import visa from "@/public/image/purepng.com-visa-logologobrand-logoiconslogos-251519938794uqvcz.png";
+import payonner from "@/public/image/Payoneer-New-Logo.png";
+import Paypal from "@/public/image/PayPal-Logo.png";
+import unionpay from "@/public/image/unionpay-international-vector-logo.png";
+import Image, { StaticImageData } from "next/image";
+import "./Checkout.css";
 
 const Checkout: React.FC = () => {
   const onsubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert("Order placed successfully")
-  }
+    e.preventDefault();
+    alert("Order placed successfully");
+  };
+
+  const Images = [mastercard, visa, payonner, Paypal, unionpay];
 
   return (
     <div className="max-w-[100%] mx-auto p-10 bg-white shadow-lg font-sans text-[Montserrat]">
       <form onSubmit={onsubmit}>
         <div className="flex flex-wrap justify-between">
           <div className="w-full lg:w-[48%] p-5">
-            <h2 className="text-3xl text-[#252B42] font-bold mb-5 pb-2 border-b-2 border-gray-300">Billing Address</h2>
+            <h2 className="text-3xl text-[#252B42] font-bold mb-5 pb-2 border-b-2 border-gray-300">
+              Billing Address
+            </h2>
             <div className="mb-5">
               <label htmlFor="fullName" className="label">
                 full name:
@@ -103,37 +107,27 @@ const Checkout: React.FC = () => {
           </div>
 
           <div className="w-full lg:w-[48%] p-5">
-            <h2 className="text-3xl text-[#252B42] font-bold mb-5 pb-2 border-b-2 border-gray-300">Payment</h2>
+            <h2 className="text-3xl text-[#252B42] font-bold mb-5 pb-2 border-b-2 border-gray-300">
+              Payment
+            </h2>
             <div className="mb-5">
               <span className="label">cards accepted :</span>
-              <div className="flex gap-3 mt-2">
-                <Image
-                  src={mastercard }
-                  alt="Mastercard"
-                  className="w-16 h-auto transition-transform duration-300 hover:scale-110"
-                />
-                <Image
-                  src={visa }
-                  alt="Visa"
-                  className="w-16 h-auto transition-transform duration-300 hover:scale-110"
-                />
-                <Image
-                  src={Paypal }
-                  alt="PayPal"
-                  className="w-16 h-auto transition-transform duration-300 hover:scale-110"
-                />
-                <Image
-                  src={payonner }
-                  alt="Payoneer"
-                  className="w-16 h-auto transition-transform duration-300 hover:scale-110"
-                />
-                <Image
-                  src={unionpay }
-                  alt="UnionPay"
-                  className="w-16 h-auto transition-transform duration-300 hover:scale-110"
-                />
+              <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mt-4">
+                {Images.map((image, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-center p-2 border rounded-lg bg-gray-100 hover:shadow-md transition duration-300"
+                  >
+                    <Image
+                      src={image}
+                      alt={`Card logo ${index + 1}`}
+                      className="w-12 h-auto object-contain"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
+
             <div className="mb-5">
               <label htmlFor="name-on-card" className="label">
                 name on card:
@@ -196,8 +190,7 @@ const Checkout: React.FC = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Checkout
-
+export default Checkout;
