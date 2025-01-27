@@ -5,7 +5,7 @@ import visa from "@/public/image/purepng.com-visa-logologobrand-logoiconslogos-2
 import payonner from "@/public/image/Payoneer-New-Logo.png";
 import Paypal from "@/public/image/PayPal-Logo.png";
 import unionpay from "@/public/image/unionpay-international-vector-logo.png";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import "./Checkout.css";
 
 const Checkout: React.FC = () => {
