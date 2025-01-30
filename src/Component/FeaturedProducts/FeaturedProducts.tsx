@@ -27,7 +27,7 @@ const FeaturedProducts = () => {
               className="lg:w-full w-[300px] lg:max-w-[328px] h-auto shadow-md"
               key={index}
             >
-              {/* Image Section */}
+              
               <div className="relative h-[200px] sm:h-[300px] w-full">
                 <div className="absolute top-5 left-5 h-6 w-14 rounded bg-[#E74040] flex justify-center items-center">
                   <h6 className="font-bold text-sm tracking-[0.2px] text-white">
@@ -41,7 +41,6 @@ const FeaturedProducts = () => {
                 />
               </div>
 
-              {/* Text Section */}
               <div className="px-4 py-4">
                 <div className="flex gap-4 mb-4">
                   <h6 className="text-[#8EC2F2] font-normal text-[12px] tracking-[0.2px]">

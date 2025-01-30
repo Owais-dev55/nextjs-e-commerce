@@ -4,6 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import "./Navbar.css";
+import Image from "next/image";
+import { signOut, useSession } from "next-auth/react";
+import avator from "@/public/image/avator image.jpg";
+
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/ProductListpage", label: "Product" },
@@ -14,6 +18,7 @@ const navLinks = [
 const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { data: session, status } = useSession();
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -38,12 +43,31 @@ const Navbar = () => {
             ))}
           </div>
           <div className="hidden lg:flex items-center space-x-4">
-            <Link
-              href="/LoginForm"
-              className="font-bold text-sm text-[#23A6F0]"
-            >
-              Login
-            </Link>
+            {status === "authenticated" && session?.user ? (
+              <div className="flex items-center space-x-2">
+                <Image
+                  src={session.user.image || avator}
+                  alt="User Avatar"
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+                <span className="text-sm font-medium">{session.user.name}</span>
+                <button
+                  onClick={() => signOut()}
+                  className="text-sm text-[#23A6F0] hover:text-[#1A7BB9]"
+                >
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/signin"
+                className="text-[#23A6F0] hover:text-[#1A7BB9]"
+              >
+                Login
+              </Link>
+            )}
             <Link
               href="/Pricing"
               className="bg-[#23A6F0] text-white font-bold text-sm py-2 px-4 rounded-md hover:bg-[#1E8AC0] transition-colors duration-300"

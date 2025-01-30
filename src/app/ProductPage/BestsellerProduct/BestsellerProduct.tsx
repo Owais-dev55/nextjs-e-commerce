@@ -35,8 +35,10 @@ const BestsellerProduct = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
-  }
+    return <div className="w-screen h-screen flex justify-center items-center">
+         <div className="loader"></div>
+       </div>; 
+ }
 
   return (
     <div className="w-full min-h-screen lg:h-[1986px] bg-[#FAFAFA]">

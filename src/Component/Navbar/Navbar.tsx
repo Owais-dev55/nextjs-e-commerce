@@ -5,10 +5,14 @@ import Link from "next/link";
 import React, { useContext } from "react";
 import { usePathname } from "next/navigation";
 import { SearchDropdown } from "../FrequentComponent/SearchDropdown";
+import Image from "next/image";
+import {  signOut, useSession } from "next-auth/react";
+import avator from '@/public/image/avator image.jpg'
 
 const Navbar = () => {
   const { count } = useContext(CartContext);
-  const pathname = usePathname(); 
+  const pathname = usePathname();
+  const { data: session, status } = useSession();
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -72,7 +76,7 @@ const Navbar = () => {
                   href={link.href}
                   className={`text-lg font-medium ${
                     pathname === link.href
-                      ? "text-[#23A6F0] font-semibold border-b-2 border-[#23A6F0]" 
+                      ? "text-[#23A6F0] font-semibold border-b-2 border-[#23A6F0]"
                       : "text-gray-800 hover:text-[#23A6F0]"
                   }`}
                 >
@@ -82,16 +86,35 @@ const Navbar = () => {
             ))}
           </ul>
           <SearchDropdown />
-          <div className="flex flex-col text-center text-[#23A6F0]">
-            <Link href="/LoginForm" className="hover:text-[#1A7BB9] text-sm">
-              <i className="fas fa-user"></i> Login / Register
-            </Link>
+          <div className="flex flex-col items-center space-y-2">
+            {status === "authenticated" && session?.user ? (
+              <div className="flex items-center space-x-2">
+                <Image
+                  src={session.user.image || avator}
+                  alt="User Avatar"
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+                <span className="text-sm font-medium">{session.user.name}</span>
+                <button
+                  onClick={() => signOut()}
+                  className="text-sm text-[#23A6F0] hover:text-[#1A7BB9]"
+                >
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/signin"
+                className="text-[#23A6F0] hover:text-[#1A7BB9] text-sm"
+              >
+                Login
+              </Link>
+            )}
           </div>
           <div className="flex justify-center space-x-6 text-2xl text-gray-800">
-            <Link
-              href="/Cart"
-              className="relative hover:text-[#23A6F0]"
-            >
+            <Link href="/Cart" className="relative hover:text-[#23A6F0]">
               <i className="fas fa-shopping-cart relative">
                 <span className="absolute top-[-10px] right-[-10px] bg-[#23A6F0] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                   {count}
@@ -116,7 +139,7 @@ const Navbar = () => {
                   href={link.href}
                   className={`font-medium ${
                     pathname === link.href
-                      ? "text-[#23A6F0] font-semibold border-b-2 border-[#23A6F0]" 
+                      ? "text-[#23A6F0] font-semibold border-b-2 border-[#23A6F0]"
                       : "text-gray-800 hover:text-[#23A6F0]"
                   }`}
                 >
@@ -127,9 +150,31 @@ const Navbar = () => {
           </ul>
           <SearchDropdown />
           <div className="flex items-center space-x-4">
-            <Link href="/LoginForm" className="text-[#23A6F0]">
-              Login / Register
-            </Link>
+            {status === "authenticated" && session?.user ? (
+              <div className="flex items-center space-x-2">
+                <Image
+                  src={session.user.image || avator}
+                  alt="User Avatar"
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+                <span className="text-sm font-medium">{session.user.name}</span>
+                <button
+                  onClick={() => signOut()}
+                  className="text-sm text-[#23A6F0] hover:text-[#1A7BB9]"
+                >
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/signin"
+                className="text-[#23A6F0] hover:text-[#1A7BB9]"
+              >
+                Login
+              </Link>
+            )}
             <Link href="WishList" className="text-gray-800">
               <i className="fas fa-heart "></i>
             </Link>
