@@ -35,10 +35,10 @@ const FeaturedProducts = () => {
                   <h6 className="text-[#737373] font-normal text-[12px] tracking-[0.2px]">New</h6>
                 </div>
                 <h4 className="text-[#252B42] font-normal text-base sm:text-lg lg:text-xl tracking-[0.2px] mb-2">
-                  Loudest à la Madison #1 (L'integral)
+                  Loudest à la Madison #1 (L&apos;integral)
                 </h4>
                 <p className="text-[#737373] font-normal text-[14px] tracking-[0.2px] mb-4">
-                  We focus on ergonomics and meeting you where you work. It's only a keystroke away.
+                  We focus on ergonomics and meeting you where you work. It&apos;s only a keystroke away.
                 </p>
 
                 <div className="flex justify-between items-center text-[14px] tracking-[0.2px] text-[#737373]">
