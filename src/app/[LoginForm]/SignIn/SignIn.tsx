@@ -16,6 +16,11 @@ const SignIn = () => {
     signIn(provider, { 
       callbackUrl: '/', 
     })
+    .then(()=> {
+      setTimeout(()=> {
+        router.push('/')
+        }, 2000)
+    })
   }
 
   if (!isClient) return null
