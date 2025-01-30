@@ -35,9 +35,10 @@ export default function BestSeller() {
   }, []);
 
   if (loading) {
-    return <div className="text-3xl flex justify-center mt-10">Loading...</div>;
-  }
-
+    return <div className="w-screen h-screen flex justify-center items-center">
+         <div className="loader"></div>
+       </div>; 
+ }
   return (
     <main className="px-4 sm:px-6 lg:px-8 py-12  lg:h-auto h-[5510px]">
       <div className="max-w-7xl mx-auto">
