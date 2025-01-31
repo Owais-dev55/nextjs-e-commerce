@@ -24,23 +24,29 @@ const Hero = ({
   return (
     <div className="text-[Montserrat]">
       <Navbar />
-      <div className="gap-8 w-full h-24 bg-[#FAFAFA] flex items-center">
-        <div className="h-8 w-[510px] -mt-2">
-          <div className="w-[119px] h-11 gap-4 pt-3 bt-3 flex">
-            <Link href={"/"}>
-              <h3 className="w-11 h-6 font-bold ml-44 text-[#252B42] tracking-[0.2px] leading-6 text-sm">
+      <div className="w-full bg-[#FAFAFA]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-24 flex items-center justify-center sm:justify-between">
+            <nav
+              className="flex items-center space-x-4"
+              aria-label="Breadcrumb"
+            >
+              <Link
+                href="/"
+                className="text-sm font-bold text-[#252B42] tracking-[0.2px] hover:text-[#23A6F0] transition-colors"
+              >
                 Home
-              </h3>
-            </Link>
-            <div className="w-auto h-4 text-[#BDBDBD]">
+              </Link>
               <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <h6 className="w-9 h-6 font-bold text-[#BDBDBD] tracking-[0.2px] leading-6 text-sm">
-              Product
-            </h6>
+
+              <span className="text-sm font-bold text-[#BDBDBD] tracking-[0.2px]">
+                Product
+              </span>
+            </nav>
+            {/* You can add additional content here for larger screens */}
+            <div className="hidden sm:block">{/* Additional content */}</div>
           </div>
         </div>
-        <div className="gap-1 w-[509px] h-11 flex justify-end"></div>
       </div>
 
       {/* Product Section - Desktop layout */}
@@ -49,7 +55,7 @@ const Hero = ({
           {/* Left Side - Images */}
           <div className="w-[510px] h-full rounded-md">
             <div className="w-[506px] h-[440px] relative">
-              <div className="absolute top-[60%] ml-4 flex justify-between w-[470px] z-20 text-4xl text-[#FAFAFA]">
+              <div className="absolute top-[50%] ml-4 flex justify-between items-center w-[470px] z-20 text-4xl text-[#FAFAFA]">
                 <i className="fa-solid fa-chevron-left"></i>
                 <i className="fa-solid fa-chevron-right"></i>
               </div>
@@ -58,7 +64,7 @@ const Hero = ({
                   src={imageUrl}
                   alt="product"
                   layout="fill"
-                  style={{objectFit: 'cover'}}
+                  style={{ objectFit: "cover" }}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -69,7 +75,7 @@ const Hero = ({
                   src={imageUrl}
                   alt="productImage"
                   layout="fill"
-                  style={{objectFit: 'cover'}}
+                  style={{ objectFit: "cover" }}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -78,7 +84,7 @@ const Hero = ({
                   src={imageUrl}
                   alt="productImage"
                   layout="fill"
-                  style={{objectFit: 'cover'}}
+                  style={{ objectFit: "cover" }}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -155,7 +161,7 @@ const Hero = ({
           {/* Mobile Product Images */}
           <div className="w-full">
             <div className="relative w-full h-[440px]">
-              <div className="absolute top-[60%] w-full px-4 flex justify-between z-20 text-4xl text-[#FAFAFA]">
+              <div className="absolute top-[50%] w-full px-4 flex justify-between z-20 text-4xl text-[#FAFAFA]">
                 <i className="fa-solid fa-chevron-left"></i>
                 <i className="fa-solid fa-chevron-right"></i>
               </div>
@@ -164,7 +170,7 @@ const Hero = ({
                   src={imageUrl}
                   alt="product"
                   layout="fill"
-                  style={{objectFit: 'cover'}}
+                  style={{ objectFit: "cover" }}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -175,7 +181,7 @@ const Hero = ({
                   src={imageUrl}
                   alt="productImage"
                   layout="fill"
-                  style={{objectFit: 'cover'}}
+                  style={{ objectFit: "cover" }}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>
@@ -184,7 +190,7 @@ const Hero = ({
                   src={imageUrl}
                   alt="productImage"
                   layout="fill"
-                  style={{objectFit: 'cover'}}
+                  style={{ objectFit: "cover" }}
                   className="transition-all duration-300 ease-in-out"
                 />
               </div>

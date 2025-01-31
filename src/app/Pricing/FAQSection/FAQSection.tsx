@@ -4,29 +4,31 @@ const repeatdiv = Array(6).fill(null);
 
 const FAQSection = () => {
   return (
-    <div className="lg:w-full w-[414] min-h-[837px] lg:h-[837px] bg-[#FFFFFF] px-4 sm:px-6 lg:px-0">
-      <div className="lg:w-full w-[414] h-auto lg:h-[250px] flex justify-center items-center py-8 lg:py-0">
-        <div className="lg:max-w-[700px] w-[414px] text-center mb-8">
-          <h1 className="font-bold text-4xl lg:text-5xl leading-10 text-[#252B42]">
-            Pricing FAQs
-          </h1>
-          <p className="text-[#737373] tracking-[0.2px] font-normal text-sm leading-5 mt-4 lg:max-w-[496px] w-[313px] mx-auto px-4 lg:px-0">
+    <div className="w-full min-h-screen bg-white px-4 sm:px-6 lg:px-12 py-12">
+      <div className="w-full max-w-screen-lg mx-auto text-center mb-12">
+        <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-[#252B42]">
+          Pricing FAQs
+        </h1>
+        <p className="text-[#737373] mt-4 max-w-3xl mx-auto text-sm sm:text-base">
           Problems trying to resolve the conflict between the two major realms
-          of Classical physics
-          </p>
-        </div>
+          of Classical physics.
+        </p>
       </div>
-      <div className="lg:w-[1250px] w-[414px]  mx-auto px-4 lg:px-0 lg:ml-[10%]">
-        <div className="lg:w-full w-[414px] gap-8 grid grid-cols-1 lg:grid-cols-2">
+
+      <div className="w-full max-w-screen-lg mx-auto px-4 lg:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
           {repeatdiv.map((_, index) => {
             return (
-              <div className=" lg:w-[491px] w-[300px] h-full p-6 flex" key={index}>
-                <i className="fa-solid fa-chevron-right text-xl text-[#23A6F0] flex-shrink-0"></i>
-                <div className="flex-1 gap-1 ml-4 -mt-2">
-                  <h3 className="font-bold text-xl lg:text-2xl leading-8 tracking-wider text-[#252B42]">
-                    the quick fox jumps over
+              <div
+                className="w-full h-full bg-white p-6 rounded-lg shadow-lg flex items-start"
+                key={index}
+              >
+                <i className="fa-solid fa-chevron-right text-2xl text-[#23A6F0] flex-shrink-0"></i>
+                <div className="ml-4 flex-1">
+                  <h3 className="font-bold text-xl sm:text-2xl lg:text-2xl text-[#252B42] leading-8">
+                    The quick fox jumps over
                   </h3>
-                  <h6 className="font-normal pt-3 text-sm leading-5 tracking-[0.2px] text-[#737373] ">
+                  <h6 className="font-normal text-sm sm:text-base mt-3 text-[#737373] leading-6">
                     Met minim Mollie non desert Alamo est sit cliquey dolor do
                     met sent. RELIT official consequent door ENIM RELIT Mollie.
                     Excitation venial consequent sent nostrum met.
