@@ -9,7 +9,7 @@ const PaymentFailedPage = () => {
           <i className="fas fa-times-circle text-red-500 text-6xl"></i>
           <h2 className="mt-6 text-3xl font-extrabold text-[#252B42]">Payment Failed</h2>
           <p className="mt-2 text-sm text-[#737373]">
-            We're sorry, but there was an issue processing your payment. Please try again or contact support.
+            We&apos;re sorry, but there was an issue processing your payment. Please try again or contact support.
           </p>
         </div>
         <div className="mt-8 space-y-6">

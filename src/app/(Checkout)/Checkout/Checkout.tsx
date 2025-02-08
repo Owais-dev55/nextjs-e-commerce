@@ -24,6 +24,7 @@ const Checkout: React.FC = () => {
   const total = searchParams.get("total");
 
   useEffect(() => {
+    if (!total) return;
     const fetchClientSecret = async () => {
       const response = await fetch("/api/payment-intent", {
         method: "POST",
@@ -34,7 +35,7 @@ const Checkout: React.FC = () => {
       setClientSecret(data.client_secret);
     };
     fetchClientSecret();
-  }, []);
+  }, [total]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -69,7 +70,6 @@ const Checkout: React.FC = () => {
       // Handle COD
       router.push("/payment-success");
       clearCart();
-
     }
 
     setLoading(false);
