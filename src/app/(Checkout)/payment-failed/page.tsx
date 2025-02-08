@@ -15,7 +15,7 @@ const PaymentFailedPage = () => {
         <div className="mt-8 space-y-6">
           <div className="rounded-md shadow">
             <Link
-              href="/Checkout"
+              href="/Cart"
               className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#23A6F0] hover:bg-[#1a7ac0] md:py-4 md:text-lg md:px-10 transition duration-300"
             >
               <i className="fas fa-redo mr-2"></i>
