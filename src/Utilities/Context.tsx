@@ -17,6 +17,7 @@ export const CartContext = createContext<{
     setCartItems: (items: Products[]) => void
     wishlitItems: Products[]
     setWishlitItems: (items: Products[]) => void
+    clearCart: () => void
 
 }>({
     count: 0,
@@ -24,7 +25,8 @@ export const CartContext = createContext<{
     cartItems:[],
     setCartItems: () => {},
     wishlitItems: [],
-    setWishlitItems: () => {}
+    setWishlitItems: () => {},
+    clearCart: () => {}
 })
 
 

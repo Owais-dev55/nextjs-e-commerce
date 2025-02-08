@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import { CartContext , Products } from "@/Utilities/Context";
 import { SessionProvider } from "next-auth/react";
 
+import { Elements } from '@stripe/react-stripe-js';
+import { stripePromise } from '@/Utilities/stripe'; 
+
 
 export default function RootLayoutClient({
   children,
@@ -14,6 +17,11 @@ export default function RootLayoutClient({
   const [cartItems , setCartItems] = useState<Products[]>([])
   const [wishlitItems , setWishlitItems] = useState<Products[]>([])
   const [isClient, setisClient] = useState(false)
+
+  const clearCart = () => {
+    setCartItems([]);
+    setCount(0);
+  };
 
   useEffect(()=> {
     setisClient(true)
@@ -48,9 +56,11 @@ export default function RootLayoutClient({
 
   
   return (
-    <CartContext.Provider value={{ count, setCount , cartItems , setCartItems  , wishlitItems , setWishlitItems }}>
+    <CartContext.Provider value={{ count, setCount , cartItems , setCartItems  , wishlitItems , setWishlitItems , clearCart }}>
       <SessionProvider >    
+        <Elements stripe={stripePromise}>
           {children}
+        </Elements>
       </SessionProvider>
     </CartContext.Provider>
   );

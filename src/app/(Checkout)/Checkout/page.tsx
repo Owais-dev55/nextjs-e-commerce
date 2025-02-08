@@ -1,6 +1,6 @@
 import React from 'react'
 import Checkout from './Checkout'
-import Navbar from '../ProductListpage/Navbar/Navbar'
+import Navbar from '@/app/ProductListpage/Navbar/Navbar'
 
 const page = () => {
   return (
