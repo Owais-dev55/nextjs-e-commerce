@@ -15,10 +15,10 @@ const SocialCards: React.FC<CardProps> = ({ image }) => {
         <h1 className="font-bold text-base leading-6 tracking-[0.1px]">
           Username
         </h1>
-        <h6 className="font-bold text-[#737373] text-sm leading-6 tracking-[0.2px]">
+        <h6 className="font-bold text-[#4A4A4A] text-sm leading-6 tracking-[0.2px]">
           Profession
         </h6>
-        <div className="w-28 h-6 mt-5 gap-5 text-[#23A6F0] flex justify-center items-center">
+        <div className="w-28 h-6 mt-5 gap-5 text-[#1B263B] flex justify-center items-center">
           <i className="w-6 h-6 text-2xl fa-brands fa-facebook"></i>
           <i className="w-6 h-6 text-2xl fa-brands fa-instagram"></i>
           <i className="w-6 h-6 text-2xl fa-brands fa-twitter"></i>

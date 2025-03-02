@@ -10,13 +10,23 @@ import Paypal from "@/public/image/PayPal-Logo.png";
 import unionpay from "@/public/image/unionpay-international-vector-logo.png";
 import "./Checkout.css";
 import { CartContext } from "@/Utilities/Context";
+import { addDoc, collection, getFirestore } from "@firebase/firestore";
+import { app } from "@/firebase/config";
 
 const Checkout: React.FC = () => {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<"card" | "cod">("card");
-  const { clearCart } = useContext(CartContext);
+  const { cartItems, clearCart } = useContext(CartContext);
+  const [fullName, setfullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipCode, setZipCode] = useState("");
 
+  const firestore = getFirestore(app);
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
@@ -37,29 +47,47 @@ const Checkout: React.FC = () => {
     fetchClientSecret();
   }, [total]);
 
+  const infoToDB = async () => {
+    try {
+      const orderData = {
+        fullName,
+        email,
+        number,
+        address,
+        city,
+        state,
+        zipCode,
+        paymentMethod,
+        total: total ? parseFloat(total) : 0,
+        items: cartItems,
+        timestamp: new Date(),
+        paymentStatus: paymentMethod === "card" ? "Paid" : "Pending",
+      };
+      await addDoc(collection(firestore, "orders"), orderData);
+    } catch (error) {
+      console.error("❌ Error saving order:", error);
+    }
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
 
+    await infoToDB();
     if (paymentMethod === "card") {
       if (!stripe || !elements || !clientSecret) {
         setLoading(false);
         return;
       }
-
       const card = elements.getElement(CardElement);
       if (!card) {
         setLoading(false);
         return;
       }
-
       const { error, paymentIntent } = await stripe.confirmCardPayment(
         clientSecret,
-        {
-          payment_method: { card },
-        }
+        { payment_method: { card } }
       );
-
       if (error) {
         router.push("/payment-failed");
       } else if (paymentIntent?.status === "succeeded") {
@@ -67,11 +95,10 @@ const Checkout: React.FC = () => {
         router.push("/payment-success");
       }
     } else {
-      // Handle COD
-      router.push("/payment-success");
+      // COD
       clearCart();
+      router.push("/payment-success");
     }
-
     setLoading(false);
   };
 
@@ -82,12 +109,12 @@ const Checkout: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <div className="flex flex-wrap justify-between">
           <div className="w-full lg:w-[48%] p-5">
-            <h2 className="text-3xl text-[#252B42] font-bold mb-5 pb-2 border-b-2 border-gray-300">
+            <h2 className="text-3xl text-[#1A1A1A] font-bold mb-5 pb-2 border-b-2 border-gray-300">
               Billing Address
             </h2>
             <div className="mb-5">
               <label htmlFor="fullName" className="label">
-                full name:
+                full name :
               </label>
               <input
                 type="text"
@@ -96,11 +123,13 @@ const Checkout: React.FC = () => {
                 placeholder="Mr You"
                 required
                 className="checkInput"
+                value={fullName}
+                onChange={(e) => setfullName(e.target.value)}
               />
             </div>
             <div className="mb-5">
               <label htmlFor="email" className="label">
-                email:
+                email :
               </label>
               <input
                 type="email"
@@ -109,6 +138,23 @@ const Checkout: React.FC = () => {
                 placeholder="you@you.com"
                 required
                 className="checkInput"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="mb-5">
+              <label htmlFor="number" className="label">
+                number :
+              </label>
+              <input
+                type="number"
+                id="number"
+                name="number"
+                placeholder="+92 300 1234567"
+                required
+                className="checkInput"
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
               />
             </div>
             <div className="mb-5">
@@ -122,6 +168,8 @@ const Checkout: React.FC = () => {
                 id="address"
                 required
                 className="checkInput"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
               />
             </div>
             <div className="mb-5">
@@ -135,6 +183,8 @@ const Checkout: React.FC = () => {
                 required
                 id="city"
                 className="checkInput"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
               />
             </div>
             <div className="flex gap-5">
@@ -149,6 +199,8 @@ const Checkout: React.FC = () => {
                   placeholder="Pakistan"
                   required
                   className="checkInput"
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
                 />
               </div>
               <div className="mb-5 flex-1">
@@ -162,13 +214,15 @@ const Checkout: React.FC = () => {
                   placeholder="71000"
                   required
                   className="checkInput"
+                  value={zipCode}
+                  onChange={(e) => setZipCode(e.target.value)}
                 />
               </div>
             </div>
           </div>
 
           <div className="w-full lg:w-[48%] p-5">
-            <h2 className="text-3xl text-[#252B42] font-bold mb-5 pb-2 border-b-2 border-gray-300">
+            <h2 className="text-3xl text-[#1A1A1A] font-bold mb-5 pb-2 border-b-2 border-gray-300">
               Payment
             </h2>
             <div className="mb-5">
@@ -238,7 +292,7 @@ const Checkout: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full py-4 px-6 bg-[#23A6F0] text-white text-lg font-semibold rounded-lg uppercase cursor-pointer transition duration-300 hover:opacity-90 hover:shadow-lg"
+          className="w-full py-4 px-6 bg-[#0E3A5D] text-white text-lg font-semibold rounded-lg uppercase cursor-pointer transition duration-300 hover:opacity-90 hover:shadow-lg"
         >
           {loading ? "Processing..." : `Proceed to Checkout $${total}`}
         </button>

@@ -7,7 +7,7 @@ const Pickpages = () => {
   return (
     <div className="w-full overflow-x-hidden">
       {/* First Section - Vita Classic Product */}
-      <div className="w-full  lg:w-[1440px] text-[#FFFFFF] h-auto lg:h-[709px] mx-auto mt-[200px] lg:mt-[800px] text-[Montserrat] bg-[#23856D]">
+      <div className="w-full  lg:w-[1440px] text-[#FFFFFF] h-auto lg:h-[709px] mx-auto mt-[200px] lg:mt-[800px] text-[Montserrat] bg-[#0E3A5D]">
         {/* Mobile Layout */}
         <div className="block lg:hidden px-4 py-12 text-center">
           <h4 className="font-normal text-xl mb-4 tracking-[0.2px]">
@@ -22,7 +22,7 @@ const Pickpages = () => {
           </p>
           <div className="flex flex-col items-center gap-4 mb-12">
             <h3 className="font-bold text-2xl tracking-[0.1px]">$16.48</h3>
-            <button className="w-full max-w-[165px] h-[52px] rounded-md font-bold uppercase bg-[#2DC071] text-white">
+            <button className="w-full max-w-[165px] h-[52px] rounded-md font-bold uppercase bg-[#1C4B6E] text-white">
               Add to cart
             </button>
           </div>
@@ -62,7 +62,7 @@ const Pickpages = () => {
                   $16.48
                 </h3>
                 <div className="w-[295px] h-[52px]">
-                  <button className="w-full h-full rounded-md font-bold uppercase text-[Montserrat] text-base bg-[#2DC071] text-white flex items-center justify-center">
+                  <button className="w-full h-full rounded-md font-bold uppercase text-[Montserrat] text-base bg-[#1C4B6E] hover:bg-[#FFFFFF] hover:text-[#1C4B6E] text-white flex items-center justify-center">
                     Add to cart
                   </button>
                 </div>
@@ -81,20 +81,20 @@ const Pickpages = () => {
       <div className="w-full lg:w-[1440px] h-auto lg:h-[682px] -z-40">
         {/* Mobile layout */}
         <div className="block lg:hidden px-4 py-2 text-center mt-10">
-          <h5 className="font-bold text-sm tracking-widest uppercase text-[#BDBDBD] mb-6">
+          <h5 className="font-bold text-sm tracking-widest uppercase text-[#4A4A4A] mb-6">
             SUMMER 2020
           </h5>
-          <h2 className="font-bold text-2xl tracking-wider text-[#252B42] mb-6 w-[262px] mx-auto">
+          <h2 className="font-bold text-2xl tracking-wider text-[#1A1A1A] mb-6 w-[262px] mx-auto">
             Part of the Neural Universe
           </h2>
-          <p className="font-normal text-base text-[#737373] tracking-[0.2px] mb-6 px-4 w-[212px] mx-auto">
+          <p className="font-normal text-base text-[#4A4A4A] tracking-[0.2px] mb-6 px-4 w-[212px] mx-auto">
             We know how large objects will act, but things on a small scale.
           </p>
           <div className="flex flex-col gap-4 items-center">
-            <button className="w-full max-w-[156px] h-14 rounded-md bg-[#23A6F0] text-white font-bold text-sm">
+            <button className="w-full max-w-[156px] h-14 rounded-md bg-[#0E3A5D] text-white font-bold text-sm">
               BUY NOW
             </button>
-            <button className="w-full max-w-[156px] h-14 rounded-md border  border-[#23A6F0] text-[#23A6F0]  font-bold text-sm">
+            <button className="w-full max-w-[156px] h-14 rounded-md border  border-[#0E3A5D] text-[#0E3A5D] font-bold text-sm">
               READ MORE
             </button>
           </div>
@@ -123,23 +123,23 @@ const Pickpages = () => {
           </div>
           <div className="w-1/2 flex flex-col justify-center ml-[100px] -mt-10 text-[Montserrat]">
             <div className="w-[573px] h-[326px] gap-7">
-              <h5 className="font-bold text-base leading-6 tracking-widest uppercase text-[#BDBDBD] mb-10">
+              <h5 className="font-bold text-base leading-6 tracking-widest uppercase text-[#4A4A4A] mb-10">
                 SUMMER 2020
               </h5>
-              <h2 className="font-bold text-[40px] leading-[50px] tracking-widest text-[#252B42] mb-10">
+              <h2 className="font-bold text-[40px] leading-[50px] tracking-widest text-[#1A1A1A] mb-10">
                 Part of the Neural Universe
               </h2>
-              <p className="font-normal w-[350px] h-14 text-xl leading-[30px] tracking-[0.2px] text-[#737373] mb-10">
+              <p className="font-normal w-[350px] h-14 text-xl leading-[30px] tracking-[0.2px] text-[#4A4A4A] mb-10">
                 We know how large objects will act, but things on a small scale.
               </p>
               <div className="h-14 w-[339px] flex gap-2">
-                <div className="w-[156px] rounded-md bg-[#2DC071] flex justify-center items-center">
+                <div className="w-[156px] rounded-md bg-[#0E3A5D] flex justify-center items-center">
                   <button className="font-bold text-sm leading-6 tracking-[0.2] text-[#FFFFFF]">
                     BUY NOW
                   </button>
                 </div>
-                <div className="h-14 w-[156px] rounded-md border border-[#2DC071] flex justify-center items-center">
-                  <button className="font-bold text-sm leading-6 tracking-[0.2] text-[#2DC071]">
+                <div className="h-14 w-[156px] rounded-md border border-[#0E3A5D] flex justify-center items-center">
+                  <button className="font-bold text-sm leading-6 tracking-[0.2] text-[#0E3A5D]">
                     READ MORE
                   </button>
                 </div>

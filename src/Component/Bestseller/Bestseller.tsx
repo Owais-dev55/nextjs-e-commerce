@@ -43,13 +43,13 @@ export default function BestSeller() {
     <main className="px-4 sm:px-6 lg:px-8 py-12  lg:h-auto h-[5510px]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 text-[Montserrat] space-y-2">
-          <h4 className="text-[#737373] font-normal text-lg sm:text-xl lg:text-2xl leading-8 tracking-wide">
+          <h4 className="text-[#4A4A4A] font-normal text-lg sm:text-xl lg:text-2xl leading-8 tracking-wide">
             Featured Projects
           </h4>
-          <h3 className="text-[#252B42] font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-wide">
+          <h3 className="text-[#1A1A1A] font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-wide">
             BestSeller Products
           </h3>
-          <p className="text-[#737373] font-normal text-sm sm:text-base lg:text-lg leading-relaxed tracking-wide max-w-2xl mx-auto">
+          <p className="text-[#4A4A4A] font-normal text-sm sm:text-base lg:text-lg leading-relaxed tracking-wide max-w-2xl mx-auto">
             Problems trying to resolve the conflict between
           </p>
         </div>

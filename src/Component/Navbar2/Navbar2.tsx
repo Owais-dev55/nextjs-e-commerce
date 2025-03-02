@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Navbar.css";
 import Image from "next/image";
-import { signOut, useSession } from "next-auth/react";
+import { auth } from "@/firebase/config"; 
+import { onAuthStateChanged, signOut } from "firebase/auth"; 
 import avator from "@/public/image/avator image.jpg";
 
 const navLinks = [
@@ -18,7 +19,33 @@ const navLinks = [
 const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { data: session, status } = useSession();
+    const [user, setUser] = useState<any>(null);
+    const [loading, setLoading] = useState(true); 
+
+    
+      useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setUser(user); 
+          } else {
+            setUser(null); 
+          }
+          setLoading(false);
+        });
+    
+        return () => unsubscribe();
+      }, []);
+    
+      const handleSignOut = async () => {
+        try {
+          await signOut(auth);
+        } catch (error) {
+          console.error("Error signing out: ", error);
+        }
+      };
+    
+      if (loading) return null; 
+    
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -43,18 +70,18 @@ const Navbar = () => {
             ))}
           </div>
           <div className="hidden lg:flex items-center space-x-4">
-            {status === "authenticated" && session?.user ? (
+          {user ? (
               <div className="flex items-center space-x-2">
                 <Image
-                  src={session.user.image || avator}
+                  src={user.photoURL || avator}
                   alt="User Avatar"
                   width={32}
                   height={32}
                   className="rounded-full"
                 />
-                <span className="text-sm font-medium">{session.user.name}</span>
+                <span className="text-sm font-medium">{user.displayName}</span>
                 <button
-                  onClick={() => signOut()}
+                  onClick={handleSignOut}
                   className="text-sm text-[#23A6F0] hover:text-[#1A7BB9]"
                 >
                   Sign out
@@ -63,7 +90,7 @@ const Navbar = () => {
             ) : (
               <Link
                 href="/signin"
-                className="text-[#23A6F0] hover:text-[#1A7BB9]"
+                className="text-[#23A6F0] hover:text-[#1A7BB9] text-sm"
               >
                 Login
               </Link>

@@ -9,11 +9,11 @@ const FeaturedProducts = () => {
     <div className="w-full max-w-[1440px] px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20 mx-auto">
       <div className="w-full max-w-[1050px] mx-auto">
         <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-          <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#23A6F0] mb-2">Practice Advice</h6>
-          <h2 className="font-bold text-2xl sm:text-3xl lg:text-[40px] leading-tight sm:leading-snug lg:leading-[50px] tracking-[0.2px] text-[#252B42] mb-4">
+          <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#0E3A5D] mb-2">Practice Advice</h6>
+          <h2 className="font-bold text-2xl sm:text-3xl lg:text-[40px] leading-tight sm:leading-snug lg:leading-[50px] tracking-[0.2px] text-[#1A1A1A] mb-4">
             Featured Posts
           </h2>
-          <p className="font-bold text-sm sm:text-base leading-5 sm:leading-6 tracking-[0.2px] text-[#737373] max-w-[469px] mx-auto">
+          <p className="font-bold text-sm sm:text-base leading-5 sm:leading-6 tracking-[0.2px] text-[#4A4A4A] max-w-[469px] mx-auto">
             Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian
             mechanics.
           </p>
@@ -31,17 +31,17 @@ const FeaturedProducts = () => {
               <div className="px-4 py-4">
                 <div className="flex gap-4 mb-4 flex-wrap">
                   <h6 className="text-[#8EC2F2] font-normal text-[12px] tracking-[0.2px]">Google</h6>
-                  <h6 className="text-[#737373] font-normal text-[12px] tracking-[0.2px]">Trending</h6>
-                  <h6 className="text-[#737373] font-normal text-[12px] tracking-[0.2px]">New</h6>
+                  <h6 className="text-[#4A4A4A] font-normal text-[12px] tracking-[0.2px]">Trending</h6>
+                  <h6 className="text-[#4A4A4A] font-normal text-[12px] tracking-[0.2px]">New</h6>
                 </div>
                 <h4 className="text-[#252B42] font-normal text-base sm:text-lg lg:text-xl tracking-[0.2px] mb-2">
                   Loudest à la Madison #1 (L&apos;integral)
                 </h4>
-                <p className="text-[#737373] font-normal text-[14px] tracking-[0.2px] mb-4">
+                <p className="text-[#4A4A4A] font-normal text-[14px] tracking-[0.2px] mb-4">
                   We focus on ergonomics and meeting you where you work. It&apos;s only a keystroke away.
                 </p>
 
-                <div className="flex justify-between items-center text-[14px] tracking-[0.2px] text-[#737373]">
+                <div className="flex justify-between items-center text-[14px] tracking-[0.2px] text-[#4A4A4A]">
                   <div className="flex items-center gap-2">
                     <i className="fa-regular fa-alarm-clock text-[#23A6F0]"></i>
                     <span>22 April 2021</span>
@@ -49,7 +49,7 @@ const FeaturedProducts = () => {
                   <span>10 comments</span>
                 </div>
 
-                <h4 className="mt-4 text-[#737373] font-bold text-[14px] tracking-[0.2px] cursor-pointer hover:underline">
+                <h4 className="mt-4 text-[#4A4A4A] font-bold text-[14px] tracking-[0.2px] cursor-pointer hover:underline">
                   Learn More
                 </h4>
               </div>

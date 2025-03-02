@@ -41,15 +41,15 @@ const BestsellerProduct = () => {
  }
 
   return (
-    <div className="w-full min-h-screen lg:h-[1986px] bg-[#FAFAFA]">
+    <div className="w-full min-h-screen lg:h-auto bg-[#FAFAFA]">
       <div className="w-full max-w-[1124px] px-4 lg:px-0 lg:pl-[195px] py-12 lg:pt-12 lg:pb-12">
         <div className="w-full lg:w-[1040px]">
-          <h3 className="font-bold leading-8 text-2xl tracking-wider mb-10 lg:pl-0 pl-24">
+          <h3 className="font-bold leading-8 text-2xl tracking-wider mb-10 lg:pl-0 pl-24 text-[#1A1A1A]">
             BESTSELLER PRODUCTS
           </h3>
           <div className="w-full h-[2px] bg-[#ECECEC]"></div>
         </div>
-        <div className="w-full lg:w-[1049px] mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+        <div className="w-full lg:w-[1209px]  mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
           {products.length > 0 ? (
             products.map((product) => (
               <ProductCard

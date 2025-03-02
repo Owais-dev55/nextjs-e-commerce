@@ -34,11 +34,11 @@ const VideoPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {details.map((detail, index) => (
             <div key={index} className="text-center flex flex-col items-center justify-center">
-              <h1 className="font-bold text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-[58px] leading-tight tracking-[0.2px] text-[#252B42] mb-2">
+              <h1 className="font-bold text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-[58px] leading-tight tracking-[0.2px] text-[#1A1A1A] mb-2">
                 {detail.title}
               </h1>
               <h5
-                className="font-bold text-sm sm:text-base leading-6 tracking-[0.1px] text-[#737373]"
+                className="font-bold text-sm sm:text-base leading-6 tracking-[0.1px] text-[#4A4A4A]"
                 style={{ maxWidth: detail.width }}
               >
                 {detail.description}
@@ -66,10 +66,10 @@ const VideoPage = () => {
       <div className="container mx-auto px-4 py-10 lg:py-16">
         <div className="flex flex-col items-center">
           <div className="text-center max-w-[633px] mb-16">
-            <h2 className="font-bold tracking-[0.2px] text-3xl sm:text-4xl lg:text-[40px] leading-tight mb-4 text-[#252B42]">
+            <h2 className="font-bold tracking-[0.2px] text-3xl sm:text-4xl lg:text-[40px] leading-tight mb-4 text-[#1A1A1A]">
               Meet Our Team
             </h2>
-            <p className="font-normal tracking-[0.2px] text-sm sm:text-base leading-relaxed text-[#737373] max-w-[469px] mx-auto">
+            <p className="font-normal tracking-[0.2px] text-sm sm:text-base leading-relaxed text-[#4A4A4A] max-w-[469px] mx-auto">
               Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian
               mechanics
             </p>

@@ -12,20 +12,20 @@ const Hero = () => {
       <div className="w-full h-[280px] flex justify-center mt-16">
         <div className="lg:w-[870px] w-[413px] text-center">
           <div className="lg:w-[788px] w-[353px] mx-auto gap-4">
-            <h5 className="font-bold text-base leading-6 tracking-[0.1px] text-[#737373]">
+            <h5 className="font-bold text-base leading-6 tracking-[0.1px] text-[#4A4A4A]">
               WHAT WE DO
             </h5>
-            <h1 className="font-bold lg:text-[58px] text-[40px] leading-[80px] tracking-[0.2px] text-[#252B42]">
+            <h1 className="font-bold lg:text-[58px] text-[40px] leading-[80px] tracking-[0.2px] text-[#141414]">
               Innovation tailored for you
             </h1>
             <div className="w-full gap-4 pt-3 flex justify-center items-center text-center">
-              <h3 className="font-bold text-[#252B42] tracking-[0.2px] leading-6 text-sm">
+              <h3 className="font-bold text-[#141414] tracking-[0.2px] leading-6 text-sm">
                 Home
               </h3>
               <div className="text-[#BDBDBD] px-2">
                 <i className="fa-solid fa-chevron-right"></i>
               </div>
-              <h6 className="font-bold text-[#737373] tracking-[0.2px] leading-6 text-sm">
+              <h6 className="font-bold text-[#4A4A4A] tracking-[0.2px] leading-6 text-sm">
                 Team
               </h6>
             </div>

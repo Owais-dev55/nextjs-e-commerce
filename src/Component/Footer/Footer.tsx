@@ -35,10 +35,10 @@ const Footer = ({ backgroundColor }: bgcolor) => {
           style={{ backgroundColor }}
         >
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center">
-            <h3 className="text-[#252B42] font-bold text-2xl leading-8 mb-4 sm:mb-0">
+            <h3 className="text-[#1A1A1A] font-bold text-2xl leading-8 mb-4 sm:mb-0">
               VogueAura
             </h3>
-            <div className="flex space-x-4 text-[#23A6F0]">
+            <div className="flex space-x-4 text-[#0E3A5D]">
               <i className="fab fa-facebook-f"></i>
               <i className="fab fa-instagram"></i>
               <i className="fab fa-twitter"></i>
@@ -50,14 +50,14 @@ const Footer = ({ backgroundColor }: bgcolor) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {sections.map((section, index) => (
               <div key={index}>
-                <h5 className="font-bold text-base leading-6 tracking-wider mb-4">
+                <h5 className="font-bold text-base leading-6 tracking-wider mb-4 text-[#1A1A1A]">
                   {section.title}
                 </h5>
                 <ul className="space-y-2">
                   {section.links.map((link, i) => (
                     <li
                       key={i}
-                      className="text-sm font-medium leading-6 tracking-[0.2px] text-[#737373]"
+                      className="text-sm font-medium leading-6 tracking-[0.2px] text-[#4A4A4A]"
                     >
                       {link}
                     </li>
@@ -66,7 +66,7 @@ const Footer = ({ backgroundColor }: bgcolor) => {
               </div>
             ))}
             <div className="col-span-full lg:col-span-1">
-              <h5 className="font-bold text-[#252B42] text-base leading-6 tracking-wider mb-4">
+              <h5 className="font-bold text-[#1A1A1A] text-base leading-6 tracking-wider mb-4">
                 Get In Touch
               </h5>
               <div className="space-y-4">
@@ -76,11 +76,11 @@ const Footer = ({ backgroundColor }: bgcolor) => {
                     placeholder="Your Email"
                     className="w-full bg-[#F9F9F9] border border-[#E6E6E6] h-12 rounded-md pl-4 text-sm"
                   />
-                  <button className="absolute right-0 top-0 rounded-r-md font-normal w-28 h-12 bg-[#23A6F0] text-white text-sm">
+                  <button className="absolute right-0 top-0 rounded-r-md font-normal w-28 h-12 bg-[#0E3A5D] text-white text-sm">
                     Subscribe
                   </button>
                 </div>
-                <p className="text-[#737373] text-xs leading-6">
+                <p className="text-[#4A4A4A] text-xs leading-6">
                   Lorem ipsum dolor sit Amet
                 </p>
               </div>
@@ -88,7 +88,7 @@ const Footer = ({ backgroundColor }: bgcolor) => {
           </div>
         </div>
         <div className="bg-[#FAFAFA] py-4">
-          <div className="max-w-7xl mx-auto text-center text-[#737373] text-sm font-medium px-4">
+          <div className="max-w-7xl mx-auto text-center text-[#4A4A4A] text-sm font-medium px-4">
             Made With Love By VogueAura All Right Reserved
           </div>
         </div>

@@ -5,17 +5,17 @@ const Pricing = () => {
     
     <div className="w-full h-auto flex flex-col items-center justify-center text-center py-10">
     <div className="lg:max-w-[700px] [414px] text-center mb-8">
-      <h2 className="text-[#252B42] font-bold text-[40px] leading-[50px] lg:ml-3 lg:w-full w-[259px] mx-auto">
+      <h2 className="text-[#1A1A1A] font-bold text-[40px] leading-[50px] lg:ml-3 lg:w-full w-[259px] mx-auto">
         Start your 14 days free trial
       </h2>
-      <p className="text-[#737373] tracking-[0.2px]  font-normal text-sm leading-5 mt-4 lg:w-[411px] w-[313px] mx-auto h-10 lg:pl-10 lg:ml-10">
+      <p className="text-[#4A4A4A] tracking-[0.2px]  font-normal text-sm leading-5 mt-4 lg:w-[411px] w-[313px] mx-auto h-10 lg:pl-10 lg:ml-10">
         Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
         RELIT official consequent.
       </p>
     </div>
 
     <div className="mb-8 lg:ml-8">
-      <button className="w-[186px] h-[52px] py-3 px-6 rounded-md bg-[#23A6F0] flex justify-center items-center">
+      <button className="w-[186px] h-[52px] py-3 px-6 rounded-md bg-[#0E3A5D] flex justify-center items-center">
         <h6 className="font-bold text-sm text-white">Try it free now</h6>
       </button>
     </div>

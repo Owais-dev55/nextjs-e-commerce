@@ -14,10 +14,10 @@ const Hero = () => {
     <main className="w-full">
       <div className="bg-[#FAFAFA] text-[Montserrat] py-6 px-4 lg:px-20">
         <div className="lg:flex lg:justify-between md:items-end">
-          <h3 className="font-bold text-[#252B42] leading-8 tracking-wider text-2xl text-center lg:text-left lg:ml-[10%]">
+          <h3 className="font-bold text-[#1A1A1A] leading-8 tracking-wider text-2xl text-center lg:text-left lg:ml-[10%]">
             Shop
           </h3>
-          <div className="flex items-center gap-5 justify-center lg:justify-end text-sm text-[#252B42] mt-4 lg:mt-0 lg:mr-28">
+          <div className="flex items-center gap-5 justify-center lg:justify-end text-sm text-[#1A1A1A] mt-4 lg:mt-0 lg:mr-28">
             <h3 className="font-bold">Home</h3>
             <i className="fa-solid fa-chevron-right text-[#BDBDBD] tracking-wider"></i>
             <h6 className="font-bold text-[#BDBDBD] tracking-wider">Shop</h6>

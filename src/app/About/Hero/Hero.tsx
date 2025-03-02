@@ -5,7 +5,7 @@ import image from "@/public/image/Heroabout.png";
 const Hero = () => {
   return (
     <div className="text-[Montserrat]">
-      <div className="w-full h-auto lg:h-[729px] text-[#252B42]">
+      <div className="w-full h-auto lg:h-[729px] text-[#1A1A1A]">
         {/* Mobile Layout */}
         <div className="block lg:hidden px-4 py-8 text-center">
           <div className="relative z-10">
@@ -15,11 +15,11 @@ const Hero = () => {
             <h1 className="font-bold text-4xl tracking-[0.2px] leading-tight mt-6">
               ABOUT US
             </h1>
-            <h5 className="font-normal text-lg tracking-[0.2px] leading-8 text-[#737373] mt-8 max-w-[346px] mx-auto">
+            <h5 className="font-normal text-lg tracking-[0.2px] leading-8 text-[#4A4A4A] mt-8 max-w-[346px] mx-auto">
               We know how large objects will act, but things on a small scale
             </h5>
             <div className="mt-12">
-              <button className="w-[195px] h-[52px] py-4 px-10 rounded-md bg-[#23A6F0]">
+              <button className="w-[195px] h-[52px] py-4 px-10 rounded-md bg-[#0E3A5D]">
                 <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#FFFFFF]">
                   Get Quote Now
                 </h6>
@@ -43,7 +43,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Desktop Layout - Preserved Exactly as Original */}
+        {/* Desktop Layout   */}
         <div className="hidden lg:block">
           <div className="w-[1050px] h-[545px] py-[112px] gap-[80px] pl-[195px]">
             <div className="gap-8 h-[321px] w-[1044px]">
@@ -54,11 +54,11 @@ const Hero = () => {
                 <h1 className="font-bold text-[58px] tracking-[0.2px] leading-[80px] h-[80px] pt-10">
                   ABOUT US
                 </h1>
-                <h5 className="font-normal text-xl tracking-[0.2px] leading-8 h-10 w-[346px] text-[#737373] pt-16">
+                <h5 className="font-normal text-xl tracking-[0.2px] leading-8 h-10 w-[346px] text-[#4A4A4A] pt-16">
                   We know how large objects will act, but things on a small scale
                 </h5>
                 <div className="pt-28">
-                  <button className="w-[195px] h-[52px] py-4 px-10 rounded-md bg-[#23A6F0] flex justify-center items-center gap-2">
+                  <button className="w-[195px] h-[52px] py-4 px-10 rounded-md bg-[#0E3A5D] flex justify-center items-center gap-2">
                     <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#FFFFFF]">
                       Get Quote Now
                     </h6>
@@ -94,7 +94,7 @@ const Hero = () => {
           <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#E74040] mb-5">
             Problems trying
           </p>
-          <h2 className="font-bold text-xl leading-8 tracking-[0.1px] text-[#252B42] mb-6 w-[321px] mx-auto">
+          <h2 className="font-bold text-xl leading-8 tracking-[0.1px] text-[#1A1A1A] mb-6 w-[321px] mx-auto">
             Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
           </h2>
           <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#737373] w-[321px] mx-auto">
@@ -109,13 +109,13 @@ const Hero = () => {
               <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#E74040] pb-5">
                 Problems trying
               </p>
-              <h2 className="font-bold text-2xl leading-8 tracking-[0.1px] text-[#252B42] h-24 w-[394px]">
+              <h2 className="font-bold text-2xl leading-8 tracking-[0.1px] text-[#1A1A1A] h-24 w-[394px]">
                 Met minim Mollie non desert Alamo est sit cliquey dolor do met
                 sent.
               </h2>
             </div>
             <div className="w-[500px] h-full gap-12 flex items-center">
-              <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#737373]">
+              <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#4A4A4A]">
                 Problems trying to resolve the conflict between the two major realms
                 of Classical physics: Newtonian mechanics
               </p>

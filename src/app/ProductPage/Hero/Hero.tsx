@@ -19,7 +19,7 @@ const Hero = ({
   imageUrl,
   price,
   description,
-  colors = ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
+  colors = ["#23A6F0", "#23856D", "#E77C40", "#1A1A1A"],
 }: ProductProps) => {
   return (
     <div className="text-[Montserrat]">
@@ -33,7 +33,7 @@ const Hero = ({
             >
               <Link
                 href="/"
-                className="text-sm font-bold text-[#252B42] tracking-[0.2px] hover:text-[#23A6F0] transition-colors"
+                className="text-sm font-bold text-[#1A1A1A] tracking-[0.2px] hover:text-[#23A6F0] transition-colors"
               >
                 Home
               </Link>
@@ -43,8 +43,6 @@ const Hero = ({
                 Product
               </span>
             </nav>
-            {/* You can add additional content here for larger screens */}
-            <div className="hidden sm:block">{/* Additional content */}</div>
           </div>
         </div>
       </div>
@@ -93,7 +91,7 @@ const Hero = ({
 
           {/* Right Side - Product Details */}
           <div className="w-[510px] h-auto -mt-3">
-            <h4 className="h-8 w-auto pt-3 pl-6 font-normal text-xl leading-8 tracking-[0.2px] text-[#252B42]">
+            <h4 className="h-8 w-auto pt-3 pl-6 font-normal text-xl leading-8 tracking-[0.2px] text-[#1A1A1A]">
               {title}
             </h4>
             <div className="w-[221px] h-6 pt-5 pl-6 left-6 gap-[10px] flex">
@@ -104,22 +102,22 @@ const Hero = ({
                 <i className="fa-solid fa-star w-[22px]"></i>
                 <i className="fa-regular fa-star w-[22px]"></i>
               </div>
-              <h6 className="h-6 w-24 font-bold text-sm leading-6 tracking-[0.2px] text-[#737373]">
+              <h6 className="h-6 w-24 font-bold text-sm leading-6 tracking-[0.2px] text-[#4A4A4A]">
                 10 Reviews
               </h6>
             </div>
-            <h6 className="h-8 w-[108px] pl-6 pt-10 font-bold text-2xl leading-8 tracking-wider text-[#252B42]">
+            <h6 className="h-8 w-[108px] pl-6 pt-10 font-bold text-2xl leading-8 tracking-wider text-[#1A1A1A]">
               ${price}
             </h6>
             <div className="w-[169px] h-6 pt-9 pl-6 gap-1 flex">
-              <h6 className="h-6 w-[94px] font-bold text-sm leading-6 tracking-[0.2px] text-[#737373]">
+              <h6 className="h-6 w-[94px] font-bold text-sm leading-6 tracking-[0.2px] text-[#4A4A4A]">
                 Availability :
               </h6>
-              <h6 className="h-6 w-[60px] font-bold text-sm leading-6 tracking-[0.2px] text-[#23A6F0]">
+              <h6 className="h-6 w-[60px] font-bold text-sm leading-6 tracking-[0.2px] text-[#D8A31A]">
                 In Stock
               </h6>
             </div>
-            <p className="h-auto w-[464px] pt-16 pl-6 font-normal text-sm leading-5 tracking-[0.2px] text-[#858585] -mb-14">
+            <p className="h-auto w-[464px] pt-16 pl-6 font-normal text-sm leading-5 tracking-[0.2px] text-[#4A4A4A] -mb-14">
               {description.substring(0, 400)}
             </p>
             <hr className="w-[455px] relative top-20 pl-6 text-center border text-[#BDBDBD]" />
@@ -196,10 +194,9 @@ const Hero = ({
               </div>
             </div>
           </div>
-
           {/* Mobile Product Details */}
           <div className="w-full">
-            <h4 className="font-normal text-xl mb-4 text-[#252B42]">{title}</h4>
+            <h4 className="font-normal text-xl mb-4 text-[#1A1A1A]">{title}</h4>
             <div className="flex items-center gap-2 mb-6">
               <div className="text-[#F3CD03] flex">
                 {[1, 2, 3, 4].map((star) => (
@@ -207,14 +204,14 @@ const Hero = ({
                 ))}
                 <i className="fa-regular fa-star w-[22px]"></i>
               </div>
-              <h6 className="font-bold text-sm text-[#737373]">10 Reviews</h6>
+              <h6 className="font-bold text-sm text-[#4A4A4A]">10 Reviews</h6>
             </div>
-            <h6 className="font-bold text-2xl text-[#252B42] mb-4">${price}</h6>
+            <h6 className="font-bold text-2xl text-[#1A1A1A] mb-4">${price}</h6>
             <div className="flex items-center gap-1 mb-6">
-              <h6 className="font-bold text-sm text-[#737373]">
+              <h6 className="font-bold text-sm text-[#4A4A4A]">
                 Availability :
               </h6>
-              <h6 className="font-bold text-sm text-[#23A6F0]">In Stock</h6>
+              <h6 className="font-bold text-sm text-[#1C4B6E]">In Stock</h6>
             </div>
             <p className="text-sm text-[#858585] mb-8">
               {description.substring(0, 400)}

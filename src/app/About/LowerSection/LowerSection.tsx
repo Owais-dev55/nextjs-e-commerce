@@ -20,7 +20,7 @@ const LowerSection = () => {
         </div>
         <Brandlogos />
       </div>
-      <div className="w-full bg-[#2A7CC7] text-[#FFFFFF]">
+      <div className="w-full bg-[#0E3A5D] text-[#FFFFFF]">
       <div className="flex flex-col lg:flex-row">
         <div className="w-full lg:w-3/5 flex justify-center items-center py-12 lg:py-0">
           <div className="w-full max-w-[438px] px-4 lg:px-0 mx-auto">
@@ -35,8 +35,8 @@ const LowerSection = () => {
               small-scale behavior during the first quarter of the 20th
             </p>
             <div className="lg:pt-20">
-              <button className="hover:bg-[#FAFAFA] hover:text-[#2A7CC7] w-[132px] h-[52px] py-4 px-10 rounded-md border-[#FAFAFA] border flex justify-center items-center gap-2">
-                <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#FAFAFA] hover:text-[#2A7CC7]">
+              <button className="hover:bg-[#FAFAFA] hover:text-[#0E3A5D] w-[132px] h-[52px] py-4 px-10 rounded-md border-[#FAFAFA] border flex justify-center items-center gap-2">
+                <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#FAFAFA] hover:text-[#0E3A5D]">
                   Button
                 </h6>
               </button>

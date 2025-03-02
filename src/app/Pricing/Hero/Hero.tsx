@@ -7,12 +7,12 @@ const Hero = () => {
     {
       title: "FREE",
       color: "#FFFFFF",
-      textColor: "#252B42",
+      textColor: "#1A1A1A",
       Price: 0,
     },
     {
       title: "STANDARD",
-      color: "#252B42",
+      color: "#1A1A1A",
       textColor: "#FFFFFF",
       Price: 9.99,
       Height: "680px",
@@ -20,7 +20,7 @@ const Hero = () => {
     {
       title: "PREMIUM",
       color: "#FFFFFF",
-      textColor: "#252B42",
+      textColor: "#1A1A1A",
       Price: 19.99,
     },
   ];
@@ -34,16 +34,16 @@ const Hero = () => {
         <div className="min-h-[280px] flex justify-center mt-16">
           <div className="w-full max-w-screen-md text-center px-4">
             <div className="mx-auto">
-              <h5 className="font-bold text-base text-[#737373]">Pricing</h5>
-              <h1 className="font-bold text-4xl lg:text-[58px] text-[#252B42] leading-tight">
+              <h5 className="font-bold text-base text-[#4A4A4A]">Pricing</h5>
+              <h1 className="font-bold text-4xl lg:text-[58px] text-[#1A1A1A] leading-tight">
                 Simple Pricing
               </h1>
               <div className="w-full gap-4 pt-3 flex justify-center items-center">
-                <h3 className="font-bold text-[#252B42] text-sm">Home</h3>
+                <h3 className="font-bold text-[#1A1A1A] text-sm">Home</h3>
                 <div className="text-[#BDBDBD] px-2">
                   <i className="fa-solid fa-chevron-right"></i>
                 </div>
-                <h6 className="font-bold text-[#737373] text-sm">Pricing</h6>
+                <h6 className="font-bold text-[#4A4A4A] text-sm">Pricing</h6>
               </div>
             </div>
           </div>
@@ -51,8 +51,8 @@ const Hero = () => {
       </div>
       <div className="w-full flex justify-center items-center px-4">
         <div className="max-w-screen-md text-center mb-8">
-          <h2 className="text-[#252B42] font-bold text-4xl">Pricing</h2>
-          <p className="text-[#737373] text-sm mt-4 max-w-md mx-auto">
+          <h2 className="text-[#1A1A1A] font-bold text-4xl">Pricing</h2>
+          <p className="text-[#4A4A4A] text-sm mt-4 max-w-md mx-auto">
             Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian mechanics.
           </p>
         </div>
@@ -60,13 +60,13 @@ const Hero = () => {
 
       <div className="w-full flex justify-center items-center px-4 mb-10">
         <div className="flex items-center gap-4">
-          <h6 className="font-bold text-[#252B42] text-base">Monthly</h6>
-          <div className="w-11 h-6 rounded-2xl border-[#23A6F0] border">
+          <h6 className="font-bold text-[#1A1A1A] text-base">Monthly</h6>
+          <div className="w-11 h-6 rounded-2xl border-[#0E3A5D] border">
             <div className="w-5 h-5 border bg-[#EBEBEB] rounded-full ml-[3px] mt-[1px]"></div>
           </div>
-          <h6 className="font-bold text-[#252B42] text-base">Yearly</h6>
+          <h6 className="font-bold text-[#1A1A1A] text-base">Yearly</h6>
           <button className="px-5 py-2 rounded-full bg-[#B2E3FF]">
-            <h6 className="font-bold text-[#23A6F0] text-base">Save 25%</h6>
+            <h6 className="font-bold text-[#0E3A5D] text-base">Save 25%</h6>
           </button>
         </div>
       </div>
@@ -87,10 +87,10 @@ const Hero = () => {
               <h6 className="font-bold text-base pt-2 max-w-xs">Organize across all apps by hand</h6>
             </div>
             <div className="flex items-start gap-3 mt-5">
-              <h2 className="font-bold text-[#23A6F0] text-[40px]">{card.Price}</h2>
+              <h2 className="font-bold text-[#0E3A5D] text-[40px]">{card.Price}</h2>
               <div className="flex flex-col">
-                <h3 className="font-bold text-2xl text-[#23A6F0]">$</h3>
-                <h5 className="font-bold text-sm text-[#23A6F0]">Per Month</h5>
+                <h3 className="font-bold text-2xl text-[#0E3A5D]">$</h3>
+                <h5 className="font-bold text-sm text-[#0E3A5D]">Per Month</h5>
               </div>
             </div>
             <div className="w-full max-w-[247px] space-y-3">
@@ -110,7 +110,7 @@ const Hero = () => {
                   <h6 className="font-bold text-sm">1GB Cloud storage</h6>
                 </div>
               ))}
-              <button className="w-full h-12 bg-[#23A6F0] rounded-md flex justify-center items-center mt-8">
+              <button className="w-full h-12 bg-[#0E3A5D] rounded-md flex justify-center items-center mt-8">
                 <h6 className="font-bold text-white text-base">Try for free</h6>
               </button>
             </div>
@@ -119,7 +119,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4">
-        <h4 className="text-[#252B42] text-xl text-center mb-5">Trusted By Over 4000 Big Companies</h4>
+        <h4 className="text-[#1A1A1A] text-xl text-center mb-5">Trusted By Over 4000 Big Companies</h4>
         <Brandlogos />
       </div>
     </div>

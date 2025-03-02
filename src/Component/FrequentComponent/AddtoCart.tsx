@@ -27,7 +27,7 @@ const AddtoCart = ({ _id, title, price, imageUrl }: Products) => {
   return (
     <div>
       <button
-        className="bg-[#23A6F0] w-[148px] h-11 rounded-md pt-[10px] pb-[10px] pr-5 pl-5"
+        className="bg-[#0E3A5D] w-[148px] h-11 rounded-md pt-[10px] pb-[10px] pr-5 pl-5"
         onClick={() =>
           addItemToCart({
             _id,

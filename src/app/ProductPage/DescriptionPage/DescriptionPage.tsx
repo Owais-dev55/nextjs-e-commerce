@@ -16,17 +16,17 @@ const DescriptionPage = ({
       {/* Navigation Section */}
       <div className="flex justify-center py-4 border-b border-[#ECECEC]">
         <Link href="" className="mx-4">
-          <h6 className="font-semibold text-sm text-[#737373]">Description</h6>
+          <h6 className="font-semibold text-sm text-[#4A4A4A]">Description</h6>
         </Link>
         <Link href="" className="mx-4">
-          <h6 className="font-semibold text-sm text-[#737373]">
+          <h6 className="font-semibold text-sm text-[#4A4A4A]">
             Additional Information
           </h6>
         </Link>
         <Link href="" className="mx-4">
-          <h6 className="font-semibold text-sm text-[#737373]">
+          <h6 className="font-semibold text-sm text-[#4A4A4A]">
             Reviews
-            <span className="font-bold text-sm text-[#23856D] pl-2">(10)</span>
+            <span className="font-bold text-sm text-[#D8A31A] pl-2">( 10 )</span>
           </h6>
         </Link>
       </div>
@@ -46,7 +46,7 @@ const DescriptionPage = ({
 
         {/* Description Section */}
         <div className="flex-grow w-full lg:w-1/2">
-          <p className="text-[#737373] text-base leading-6">
+          <p className="text-[#4A4A4A] text-base leading-6">
             {description}
           </p>
         </div>

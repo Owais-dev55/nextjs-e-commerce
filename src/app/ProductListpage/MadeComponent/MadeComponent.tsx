@@ -97,8 +97,8 @@ const MadeComponent = () => {
                   key={page}
                   className={`w-[46px] flex justify-center items-center h-full border border-[#E9E9E9] ${
                     page === currentPage
-                      ? "bg-[#23A6F0] text-white"
-                      : "text-[#23A6F0] hover:bg-[#E9E9E9]"
+                      ? "bg-[#0E3A5D] text-white"
+                      : "text-[#0E3A5D] hover:bg-[#E9E9E9]"
                   } cursor-pointer`}
                   onClick={() => goToPage(page)}
                 >
@@ -117,7 +117,7 @@ const MadeComponent = () => {
               } hover:bg-[#E9E9E9]`}
               onClick={() => goToPage(currentPage + 1)}
             >
-              <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-8 h-6 text-[#23A6F0]">
+              <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-8 h-6 text-[#0E3A5D]">
                 Next
               </h6>
             </div>

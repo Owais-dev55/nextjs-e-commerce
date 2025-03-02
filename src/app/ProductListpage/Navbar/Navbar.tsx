@@ -2,18 +2,19 @@
 
 import { CartContext } from "@/Utilities/Context";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { SearchDropdown } from "@/Component/FrequentComponent/SearchDropdown";
 import Image from "next/image";
-import {  signOut, useSession } from "next-auth/react";
-import avator from '@/public/image/avator image.jpg'
-
+import { auth } from "@/firebase/config";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import avator from "@/public/image/avator image.jpg";
 
 const Navbar = () => {
   const { count } = useContext(CartContext);
   const pathname = usePathname();
-  const { data: session, status } = useSession();
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -22,6 +23,29 @@ const Navbar = () => {
     { href: "/Blog", label: "Blog" },
     { href: "/Contact", label: "Contact" },
   ];
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
+
+  if (loading) return null;
 
   return (
     <nav>
@@ -88,18 +112,18 @@ const Navbar = () => {
           </ul>
           <SearchDropdown />
           <div className="flex flex-col items-center space-y-2">
-            {status === "authenticated" && session?.user ? (
+            {user ? (
               <div className="flex items-center space-x-2">
                 <Image
-                  src={session.user.image || avator}
+                  src={user.photoURL || avator}
                   alt="User Avatar"
                   width={32}
                   height={32}
                   className="rounded-full"
                 />
-                <span className="text-sm font-medium">{session.user.name}</span>
+                <span className="text-sm font-medium">{user.displayName}</span>
                 <button
-                  onClick={() => signOut()}
+                  onClick={handleSignOut}
                   className="text-sm text-[#23A6F0] hover:text-[#1A7BB9]"
                 >
                   Sign out
@@ -151,18 +175,18 @@ const Navbar = () => {
           </ul>
           <SearchDropdown />
           <div className="flex items-center space-x-4">
-        {  status === "authenticated" && session?.user ? (
+            {user ? (
               <div className="flex items-center space-x-2">
                 <Image
-                  src={session.user.image || avator}
+                  src={user.photoURL || avator}
                   alt="User Avatar"
                   width={32}
                   height={32}
                   className="rounded-full"
                 />
-                <span className="text-sm font-medium">{session.user.name}</span>
+                <span className="text-sm font-medium">{user.displayName}</span>
                 <button
-                  onClick={() => signOut()}
+                  onClick={handleSignOut}
                   className="text-sm text-[#23A6F0] hover:text-[#1A7BB9]"
                 >
                   Sign out
@@ -176,6 +200,7 @@ const Navbar = () => {
                 Login
               </Link>
             )}
+
             <Link href="/WishList" className="text-gray-800">
               <Link href={"/WishList"}>
                 <i className="fas fa-heart "></i>

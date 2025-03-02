@@ -6,6 +6,7 @@ import BestsellerProduct from '@/app/ProductPage/BestsellerProduct/BestsellerPro
 import Footer from '@/Component/Footer/Footer';
 import Brandlogos from '@/Component/FrequentComponent/Brandlogos';
 import { Metadata } from 'next';
+import ReviewSection from '@/app/ProductPage/ReviewSection/ReviewSection';
 
 export const metadata: Metadata = {
   title: "About Product ",
@@ -37,6 +38,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
     return (<><Hero
       {...data} /><DescriptionPage description={data.description} imageUrl={data.imageUrl} />
+      <ReviewSection   productId={data._id}/>
       <BestsellerProduct />
       <Brandlogos />
       <Footer  backgroundColor='#FFFFFF'/>

@@ -78,7 +78,7 @@ const Card = () => {
             Let&apos;s Talk
           </h2>
           <div className="flex justify-center">
-            <button className="w-[186px] h-[52px] border rounded-md bg-[#23A6F0] flex justify-center items-center gap-2">
+            <button className="w-[186px] h-[52px] border rounded-md bg-[#0E3A5D] flex justify-center items-center gap-2">
               <h6 className="font-bold text-sm leading-6 tracking-[0.2px] text-[#FFFFFF]">
                 Try it free now
               </h6>
