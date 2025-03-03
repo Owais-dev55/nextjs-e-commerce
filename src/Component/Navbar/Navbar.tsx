@@ -8,11 +8,13 @@ import Image from "next/image";
 import { auth } from "@/firebase/config"; 
 import { onAuthStateChanged, signOut } from "firebase/auth"; 
 import avator from '@/public/image/avator image.jpg'
+import { User } from "firebase/auth";
 
 const Navbar = () => {
   const { count } = useContext(CartContext);
   const pathname = usePathname();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
+  
   const [loading, setLoading] = useState(true); 
 
   const navLinks = [

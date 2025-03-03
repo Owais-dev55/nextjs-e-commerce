@@ -1,5 +1,5 @@
 "use client";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, UserCredential } from "firebase/auth";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -39,7 +39,7 @@ const SignIn = () => {
     setUserError(false);
 
     try {
-      let result: any;
+      let result: UserCredential | null = null;
       if (provider === "google") {
         result = await signInWithPopup(auth, new GoogleAuthProvider());
 
@@ -74,21 +74,25 @@ const SignIn = () => {
         console.log("User signed in successfully:", result.user);
         router.push("/");
       }
-    } catch (error: any) {
-      console.error("Error signing in:", error);
-      if (error.code === "auth/user-not-found") {
-        setErrorMessage("User does not exist. Please sign up first.");
-      } else if (error.code === "auth/wrong-password") {
-        setErrorMessage("Incorrect password. Please try again.");
-      } else if (error.code === "auth/too-many-requests") {
-        setErrorMessage("Too many failed attempts. Please try again later.");
+    } catch (error: unknown) {
+      if (error instanceof Error && "code" in error) {
+        const firebaseError = error as { code: string };
+    
+        if (firebaseError.code === "auth/user-not-found") {
+          setErrorMessage("User does not exist. Please sign up first.");
+        } else if (firebaseError.code === "auth/wrong-password") {
+          setErrorMessage("Incorrect password. Please try again.");
+        } else if (firebaseError.code === "auth/too-many-requests") {
+          setErrorMessage("Too many failed attempts. Please try again later.");
+        } else {
+          setErrorMessage("Failed to sign in. Please check your credentials.");
+        }
       } else {
-        setErrorMessage("Failed to sign in. Please check your credentials.");
+        console.error("Unexpected error:", error);
+        setErrorMessage("An unexpected error occurred. Please try again.");
       }
-      setTimeout(() => setErrorMessage(""), 3000);
-    } finally {
-      setLoading(false);
     }
+    
   };
 
   return (
@@ -185,7 +189,7 @@ const SignIn = () => {
           <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
         )}
         <p className="text-sm text-[#737373] mt-[15px]">
-          Don't have an account?{" "}
+          Don&apos;t have an account?
           <Link
             href="/LoginForm/SignUp"
             className="text-[#23A6F0] no-underline font-semibold hover:underline"

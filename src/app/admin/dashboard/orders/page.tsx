@@ -1,12 +1,35 @@
 "use client";
 import { useEffect, useState } from "react";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore, DocumentData } from "firebase/firestore";
 import { app } from "@/firebase/config";
 import Image from "next/image";
 
+interface OrderItem {
+  _id: string;
+  title: string;
+  price: number;
+  quantity: number;
+  imageUrl: string;
+}
+
+interface Order {
+  id: string;
+  fullName: string;
+  email: string;
+  number: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  paymentMethod: string;
+  paymentStatus: string;
+  total: number;
+  items: OrderItem[];
+}
+
 const AdminOrders = () => {
-  const [orders, setOrders] = useState<any[]>([]);
-  const [selectedOrder, setSelectedOrder] = useState<any | null>(null);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
 
   const firestore = getFirestore(app);
 
@@ -15,10 +38,10 @@ const AdminOrders = () => {
       try {
         const ordersCollection = collection(firestore, "orders");
         const orderSnapshot = await getDocs(ordersCollection);
-        const ordersList = orderSnapshot.docs.map((doc) => ({
+        const ordersList = orderSnapshot.docs.map((doc): Order => ({
           id: doc.id,
           ...doc.data(),
-        }));
+        } as Order)); 
         setOrders(ordersList);
       } catch (error) {
         console.error("❌ Error fetching orders:", error);
@@ -26,7 +49,7 @@ const AdminOrders = () => {
     };
 
     fetchOrders();
-  }, []);
+  }, [firestore]);
 
   return (
     <div className="p-6">
@@ -88,18 +111,17 @@ const AdminOrders = () => {
 
             <h4 className="text-lg font-semibold mt-4">🛒 Ordered Items</h4>
             <ul className="border-t mt-2 pt-2">
-  {selectedOrder.items.map((item: any, index: number) => (
-    <li key={index} className="flex items-center gap-4 border-b p-2">
-      <Image src={item.imageUrl} alt={item.name} width={50} height={50} className="rounded-md" />
-      <div>
-        <strong>{item.title}</strong>  
-        <p>ID: {item._id}</p>
-        <p>${item.price} × {item.quantity}</p>
-      </div>
-    </li>
-  ))}
-</ul>
-
+              {selectedOrder.items.map((item, index) => (
+                <li key={index} className="flex items-center gap-4 border-b p-2">
+                  <Image src={item.imageUrl} alt={item.title} width={50} height={50} className="rounded-md" />
+                  <div>
+                    <strong>{item.title}</strong>
+                    <p>ID: {item._id}</p>
+                    <p>${item.price} × {item.quantity}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
 
             <button
               onClick={() => setSelectedOrder(null)}

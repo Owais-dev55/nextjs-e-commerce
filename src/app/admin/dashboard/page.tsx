@@ -2,10 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { auth, db } from "@/firebase/config";
-import { doc, getDoc } from "firebase/firestore";
-import SideBar from "../SideBar/SideBar";
-import Header from "../SideBar/Header";
+import { auth } from "@/firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 
 export default function DashboardPage() {
@@ -39,7 +36,7 @@ export default function DashboardPage() {
     });
 
     return () => unsubscribe();
-  }, [router]);
+  }, [adminEmails, router]);
 
   if (loading) {
     return (

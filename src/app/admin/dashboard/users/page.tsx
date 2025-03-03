@@ -6,14 +6,22 @@ import { auth, db } from "@/firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
+
+interface User {
+  id: string;
+  name?: string;
+  email?: string;
+}
+
+
 export default function DashboardPage() {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const adminEmails = ["ksam45180@gmail.com", "admin2@example.com"];
+  const adminEmails = ["ksam45180@gmail.com"];
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {

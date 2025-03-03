@@ -22,13 +22,28 @@ const SignUp = () => {
       return;
     }
 
-    const docRef = await addDoc(collection(firestore, "users"), {
-      name: fullName,
-      email: email,
-      password: password,
-      createdAt: new Date(),
-    });
     const res = await createUserWithEmailAndPassword(email, password);
+    if (res) {
+      await addDoc(collection(firestore, "users"), {
+        name: fullName,
+        email: email,
+        password: password,
+        createdAt: new Date(),
+        uid: res.user.uid,
+      });
+      console.log("User signed up successfully:", res.user);
+      setFullName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+    } else {
+      console.error("Error signing up:", error);
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert("Error signing up");
+      }
+    }
     if (res) {
       console.log("User signed up successfully:", res.user);
       setFullName("");

@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import Image from "next/image";
 import { auth } from "@/firebase/config"; 
-import { onAuthStateChanged, signOut } from "firebase/auth"; 
+import { onAuthStateChanged, signOut, User } from "firebase/auth"; 
 import avator from "@/public/image/avator image.jpg";
 
 const navLinks = [
@@ -19,7 +19,7 @@ const navLinks = [
 const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [user, setUser] = useState<any>(null);
+    const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true); 
 
     
