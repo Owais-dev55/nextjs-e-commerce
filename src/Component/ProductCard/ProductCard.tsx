@@ -20,7 +20,7 @@ const ProductCard = ({ imageUrl, _id, title, price, dicountPercentage, category,
       onClick={onclick}
       className="w-full max-w-[320px] mx-auto flex justify-center items-center mt-4 transition-transform transform hover:scale-[1.03]"
     >
-      <div className="relative flex flex-col h-full w-full border border-[#ADB5BD] rounded-xl bg-[#F8F9FA] text-[#1B263B] shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+      <div className="relative flex flex-col h-auto w-full border border-[#ADB5BD] rounded-xl bg-[#F8F9FA] text-[#1B263B] shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
         {/* Image Section */}
         <div className="relative w-full pb-[160%] overflow-hidden rounded-t-xl">
           <Link href={`/products/${_id}`}>

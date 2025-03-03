@@ -40,39 +40,41 @@ export default function BestSeller() {
        </div>; 
  }
   return (
-    <main className="px-4 sm:px-6 lg:px-8 py-12  lg:h-auto h-[5510px]">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 text-[Montserrat] space-y-2">
-          <h4 className="text-[#4A4A4A] font-normal text-lg sm:text-xl lg:text-2xl leading-8 tracking-wide">
-            Featured Projects
-          </h4>
-          <h3 className="text-[#1A1A1A] font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-wide">
-            BestSeller Products
-          </h3>
-          <p className="text-[#4A4A4A] font-normal text-sm sm:text-base lg:text-lg leading-relaxed tracking-wide max-w-2xl mx-auto">
-            Problems trying to resolve the conflict between
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 lg:h-[615px]  h-[5510px]">
+    <main className="px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <div className="max-w-7xl mx-auto">
+      <div className="text-center mb-8 lg:mb-12 text-[Montserrat] space-y-2">
+        <h4 className="text-[#4A4A4A] font-normal text-lg sm:text-xl lg:text-2xl leading-8 tracking-wide">
+          Featured Projects
+        </h4>
+        <h3 className="text-[#1A1A1A] font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-wide">
+          BestSeller Products
+        </h3>
+        <p className="text-[#4A4A4A] font-normal text-sm sm:text-base lg:text-lg leading-relaxed tracking-wide max-w-2xl mx-auto">
+          Problems trying to resolve the conflict between
+        </p>
+      </div>
+
+      <div className="min-h-screen lg:min-h-0 lg:h-[615px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 h-full">
           {products.length > 0 ? (
             products.map((product: ProductsProps) => (
-              <ProductCard
-                key={product._id}
-                _id={product._id}
-                imageUrl={product.imageUrl}
-                title={product.title}
-                price={product.price}
-                dicountPercentage={product.dicountPercentage}
-                category="furniture"
-              />
+              <div key={product._id} className="relative h-full">
+                <ProductCard
+                  _id={product._id}
+                  imageUrl={product.imageUrl}
+                  title={product.title}
+                  price={product.price}
+                  dicountPercentage={product.dicountPercentage}
+                  category="furniture"
+                />
+              </div>
             ))
           ) : (
-            <p className="text-center col-span-full text-gray-500">
-              No products found.
-            </p>
+            <p className="text-center col-span-full text-gray-500">No products found.</p>
           )}
         </div>
       </div>
-    </main>
+    </div>
+  </main>
   );
 }
