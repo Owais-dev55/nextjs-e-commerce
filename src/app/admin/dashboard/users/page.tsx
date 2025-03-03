@@ -6,13 +6,11 @@ import { auth, db } from "@/firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
-
 interface User {
   id: string;
   name?: string;
   email?: string;
 }
-
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -46,7 +44,7 @@ export default function DashboardPage() {
     });
 
     return () => unsubscribe();
-  }, [router]);
+  }, [adminEmails]);
 
   const fetchUsers = async () => {
     try {

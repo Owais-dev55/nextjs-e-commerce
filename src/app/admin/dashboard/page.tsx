@@ -10,8 +10,7 @@ export default function DashboardPage() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Define a list of admin emails
-  const adminEmails = ["ksam45180@gmail.com", "admin2@example.com"]; // Add your admin emails here
+  const adminEmails = ["ksam45180@gmail.com", "hashirshaikh729@gmail.com"];
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -21,7 +20,6 @@ export default function DashboardPage() {
       }
 
       try {
-        // ✅ Check if user's email is in the admin list
         if (adminEmails.includes(user.email || "")) {
           setIsAuthorized(true);
         } else {
@@ -36,7 +34,7 @@ export default function DashboardPage() {
     });
 
     return () => unsubscribe();
-  }, [adminEmails, router]);
+  }, [adminEmails]);
 
   if (loading) {
     return (
@@ -47,11 +45,8 @@ export default function DashboardPage() {
   }
 
   if (!isAuthorized) {
-    return null; // Prevent rendering unauthorized content
+    return null; 
   }
 
-  return (
-    <>
-    </>
-  );
+  return <></>;
 }

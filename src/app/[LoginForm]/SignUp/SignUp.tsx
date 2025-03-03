@@ -23,7 +23,7 @@ const SignUp = () => {
     }
 
     const res = await createUserWithEmailAndPassword(email, password);
-    if (res) {
+    if (res && user) {
       await addDoc(collection(firestore, "users"), {
         name: fullName,
         email: email,
@@ -31,13 +31,12 @@ const SignUp = () => {
         createdAt: new Date(),
         uid: res.user.uid,
       });
-      console.log("User signed up successfully:", res.user);
+
       setFullName("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
     } else {
-      console.error("Error signing up:", error);
       if (error instanceof Error) {
         alert(error.message);
       } else {

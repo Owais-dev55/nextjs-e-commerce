@@ -37,11 +37,12 @@ const CartPage = () => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (!currentUser) {
         router.push(`/Login?callbackUrl=${window.location.pathname}`);
       } else {
-        setUser(user);
+        setUser(currentUser);
+        console.log(user);
       }
       setLoading(false);
     });
@@ -56,14 +57,6 @@ const CartPage = () => {
       (total, item) => total + item.price * (item.quantity || 0),
       0
     );
-  };
-
-  const goToCheckout = () => {
-    if (cartItems.length === 0) {
-      return;
-    } else {
-      router.push(`/Checkout?total=${total}`);
-    }
   };
 
   const handleRemoveItem = (itemId: string) => {
@@ -101,6 +94,14 @@ const CartPage = () => {
   const shipping = totalAmount > 100 ? 0 : 50;
   const discount = couponApplied ? totalAmount * 0.1 : 0;
   const total = totalAmount + tax + shipping - discount;
+
+  const goToCheckout = () => {
+    if (cartItems.length === 0) {
+      return;
+    } else {
+      router.push(`/Checkout?total=${total}`);
+    }
+  };
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-[#FAFAFA] to-[#F0F0F0] py-12 px-4 sm:px-6 lg:px-8">
