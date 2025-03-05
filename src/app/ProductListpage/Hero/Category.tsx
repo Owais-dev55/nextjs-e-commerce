@@ -1,52 +1,66 @@
+"use client"
+
+import { useState } from "react"
+
 const Category = () => {
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
 
   return (
-    <div>
-              <div className="w-full lg:w-screen h-auto lg:h-24 px-4 lg:px-0">
-        <div className="lg:h-full lg:w-[1288px] lg:gap-22 lg:pt-6 lg:bt-6 lg:pl-44">
-          <div className="flex flex-col items-center lg:items-start lg:flex-row lg:justify-between gap-4 lg:gap-0 py-6 lg:py-0">
-            <div className="w-full lg:w-[168px] lg:h-6 gap-4">
-              <h6 className="text-[#4A4A4A] font-bold text-sm leading-6 tracking-[0.2px] text-center lg:text-left">
-                Showing all 24 results
-              </h6>
+    <div className="w-full flex justify-center bg-white py-6">
+      <div className="w-full max-w-[1250px] px-4 lg:px-6">
+        <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-8 md:gap-16 lg:gap-24">
+          {/* Results count */}
+          <div className="w-full md:w-auto text-center md:text-left">
+            <h6 className="text-[#4A4A4A] font-bold text-sm leading-6 tracking-[0.2px]">Showing all 24 results</h6>
+          </div>
+
+          {/* View switcher */}
+          <div className="flex items-center gap-4">
+            <h6 className="text-[#4A4A4A] font-bold text-sm leading-6 tracking-[0.2px]">Views:</h6>
+            <div className="flex gap-3">
+              <button
+                className={`w-11 h-11 rounded-md border flex justify-center items-center transition-colors ${
+                  viewMode === "grid" ? "border-[#0E3A5D] bg-[#F5F8FA]" : "border-[#ECECEC] hover:bg-[#F5F8FA]"
+                }`}
+                onClick={() => setViewMode("grid")}
+                aria-label="Grid view"
+              >
+                <i className="fa-regular fa-square-full text-[#1A1A1A]"></i>
+              </button>
+              <button
+                className={`w-11 h-11 rounded-md border flex justify-center items-center transition-colors ${
+                  viewMode === "list" ? "border-[#0E3A5D] bg-[#F5F8FA]" : "border-[#ECECEC] hover:bg-[#F5F8FA]"
+                }`}
+                onClick={() => setViewMode("list")}
+                aria-label="List view"
+              >
+                <i className="fa-solid fa-list text-[#1A1A1A]"></i>
+              </button>
             </div>
-            <div className="flex items-center gap-4 lg:w-44 lg:h-11">
-              <h6 className="text-[#4A4A4A] font-bold text-sm leading-6 tracking-[0.2px]">
-                Views:
-              </h6>
-              <div className="flex gap-2 lg:w-[107px] lg:h-full lg:-mt-2">
-                <div className="w-11 h-[50px] rounded-md border-[1px] flex justify-center items-center border-[#ECECEC]">
-                  <i className="fa-regular fa-square-full w-[14px] h-[14px] text-[#1A1A1A]"></i>
-                </div>
-                <div className="w-11 h-[50px] rounded-md border-[1px] flex justify-center items-center border-[#ECECEC]">
-                  <i className="fa-solid fa-list w-[14px] h-[14px] text-[#1A1A1A]"></i>
-                </div>
-              </div>
-            </div>
-            <div className="flex gap-2 lg:w-[252px] lg:h-full lg:-mt-2 z-10">
-              <div className="flex-1 lg:h-full lg:w-[141px]">
-              <select className="w-full h-[50px] bg-[#FAFAFA] border rounded-md px-3">
-              <option >All Products</option>
-              <option >Modern</option>
-              <option >Furniture</option>
-              <option >Sleep</option>
+          </div>
+
+          {/* Filter controls */}
+          <div className="flex w-full md:w-auto gap-3">
+            <div className="relative flex-1 md:w-[180px]">
+              <select className="w-full h-11 appearance-none bg-[#FAFAFA] border border-[#ECECEC] rounded-md px-4 pr-10 text-sm font-medium text-[#4A4A4A] focus:outline-none focus:border-[#0E3A5D] cursor-pointer">
+                <option>All Products</option>
+                <option>Modern</option>
+                <option>Furniture</option>
+                <option>Sleep</option>
               </select>
-              </div>
-              <div className="h-[50px] lg:w-24 bg-[#0E3A5D] flex justify-center rounded-md">
-                <button className="px-6 lg:px-0 py-[12px]">
-                  <h6 className="lg:w-10 h-[26px] leading-6 tracking-[0.2px] text-sm font-bold text-[#FFFFFF]">
-                    Filter
-                  </h6>
-                </button>
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                <i className="fa-solid fa-chevron-down text-[#4A4A4A] text-xs"></i>
               </div>
             </div>
+            <button className="h-11 px-5 bg-[#0E3A5D] rounded-md text-white font-bold text-sm tracking-[0.2px] hover:bg-[#0c2e49] transition-colors">
+              Filter
+            </button>
           </div>
         </div>
       </div>
-
     </div>
   )
 }
 
-
 export default Category
+

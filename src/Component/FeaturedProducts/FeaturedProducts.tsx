@@ -49,7 +49,7 @@ const FeaturedProducts = () => {
                   <span>10 comments</span>
                 </div>
 
-                <h4 className="mt-4 text-[#4A4A4A] font-bold text-[14px] tracking-[0.2px] cursor-pointer hover:underline">
+                <h4 className="mt-4 w-20 text-[#4A4A4A] font-bold text-[14px] tracking-[0.2px] cursor-pointer hover:underline">
                   Learn More
                 </h4>
               </div>

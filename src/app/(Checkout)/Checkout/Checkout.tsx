@@ -108,188 +108,234 @@ const Checkout: React.FC = () => {
     <div className="max-w-[100%] mx-auto p-10 bg-white shadow-lg font-sans text-[Montserrat]">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-wrap justify-between">
-          <div className="w-full lg:w-[48%] p-5">
-            <h2 className="text-3xl text-[#1A1A1A] font-bold mb-5 pb-2 border-b-2 border-gray-300">
-              Billing Address
-            </h2>
-            <div className="mb-5">
-              <label htmlFor="fullName" className="label">
-                full name :
-              </label>
-              <input
-                type="text"
-                id="fullName"
-                name="name"
-                placeholder="Mr You"
-                required
-                className="checkInput"
-                value={fullName}
-                onChange={(e) => setfullName(e.target.value)}
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="email" className="label">
-                email :
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="you@you.com"
-                required
-                className="checkInput"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="number" className="label">
-                number :
-              </label>
-              <input
-                type="number"
-                id="number"
-                name="number"
-                placeholder="+92 300 1234567"
-                required
-                className="checkInput"
-                value={number}
-                onChange={(e) => setNumber(e.target.value)}
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="address" className="label">
-                address :
-              </label>
-              <input
-                type="text"
-                name="address"
-                placeholder="Apartment-Street-suit"
-                id="address"
-                required
-                className="checkInput"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="city" className="label">
-                city :
-              </label>
-              <input
-                type="text"
-                name="city"
-                placeholder="Hyderabad"
-                required
-                id="city"
-                className="checkInput"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-            </div>
-            <div className="flex gap-5">
-              <div className="mb-5 flex-1">
-                <label htmlFor="state" className="label">
-                  state :
-                </label>
-                <input
-                  type="text"
-                  name="state"
-                  id="state"
-                  placeholder="Pakistan"
-                  required
-                  className="checkInput"
-                  value={state}
-                  onChange={(e) => setState(e.target.value)}
-                />
-              </div>
-              <div className="mb-5 flex-1">
-                <label htmlFor="zip-code" className="label">
-                  zip code :
-                </label>
-                <input
-                  type="number"
-                  name="zip code"
-                  id="zip-code"
-                  placeholder="71000"
-                  required
-                  className="checkInput"
-                  value={zipCode}
-                  onChange={(e) => setZipCode(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
+        <div className="w-full lg:w-[48%] p-6 ">
+        <h2 className="text-3xl text-[#1A1A1A] font-bold mb-6 pb-3 border-b-2 border-gray-300">
+          Billing Address
+        </h2>
 
-          <div className="w-full lg:w-[48%] p-5">
-            <h2 className="text-3xl text-[#1A1A1A] font-bold mb-5 pb-2 border-b-2 border-gray-300">
-              Payment
-            </h2>
-            <div className="mb-5">
-              <label className="label">Payment Method:</label>
-              <div className="flex gap-4 mt-2">
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value="card"
-                    checked={paymentMethod === "card"}
-                    onChange={() => setPaymentMethod("card")}
-                    className="mr-2"
-                  />
-                  Card Payment
-                </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value="cod"
-                    checked={paymentMethod === "cod"}
-                    onChange={() => setPaymentMethod("cod")}
-                    className="mr-2"
-                  />
-                  Cash on Delivery
-                </label>
-              </div>
-            </div>
-
-            {paymentMethod === "card" && (
-              <>
-                <div className="mb-5">
-                  <span className="label">cards accepted :</span>
-                  <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mt-4">
-                    {Images.map((image, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-center p-2 border rounded-lg bg-gray-100 hover:shadow-md transition duration-300"
-                      >
-                        <Image
-                          src={image || "/placeholder.svg"}
-                          alt={`Card logo ${index + 1}`}
-                          className="w-12 h-auto object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mb-5">
-                  <label className="label">Card Information</label>
-                  <CardElement className="checkInput" />
-                </div>
-              </>
-            )}
-            {paymentMethod === "cod" && (
-              <div className="mb-5">
-                <p className="text-gray-600 text-xl ">
-                  You will pay for your order when it is delivered to your
-                  address.
-                </p>
-              </div>
-            )}
-          </div>
+        {/* Full Name */}
+        <div className="mb-5">
+          <label htmlFor="fullName" className="block text-lg font-medium text-gray-700">
+            Full Name:
+          </label>
+          <input
+            type="text"
+            id="fullName"
+            name="name"
+            placeholder="Mr You"
+            required
+            className="w-full p-3 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition"
+            value={fullName}
+            onChange={(e) => setfullName(e.target.value)}
+          />
         </div>
 
+        {/* Email */}
+        <div className="mb-5">
+          <label htmlFor="email" className="block text-lg font-medium text-gray-700">
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@you.com"
+            required
+            className="w-full p-3 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        {/* Phone Number */}
+        <div className="mb-5">
+          <label htmlFor="number" className="block text-lg font-medium text-gray-700">
+            Phone Number:
+          </label>
+          <input
+            type="number"
+            id="number"
+            name="number"
+            placeholder="+92 300 1234567"
+            required
+            className="w-full p-3 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition"
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
+          />
+        </div>
+
+        {/* Address */}
+        <div className="mb-5">
+          <label htmlFor="address" className="block text-lg font-medium text-gray-700">
+            Address:
+          </label>
+          <input
+            type="text"
+            name="address"
+            placeholder="Apartment, Street, Suite"
+            id="address"
+            required
+            className="w-full p-3 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+        </div>
+
+        {/* City */}
+        <div className="mb-5">
+          <label htmlFor="city" className="block text-lg font-medium text-gray-700">
+            City:
+          </label>
+          <input
+            type="text"
+            name="city"
+            placeholder="Hyderabad"
+            required
+            id="city"
+            className="w-full p-3 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </div>
+
+        {/* State & ZIP Code */}
+        <div className="flex gap-5">
+          <div className="mb-5 flex-1">
+            <label htmlFor="state" className="block text-lg font-medium text-gray-700">
+              State:
+            </label>
+            <input
+              type="text"
+              name="state"
+              id="state"
+              placeholder="Pakistan"
+              required
+              className="w-full p-3 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            />
+          </div>
+          <div className="mb-5 flex-1">
+            <label htmlFor="zip-code" className="block text-lg font-medium text-gray-700">
+              ZIP Code:
+            </label>
+            <input
+              type="number"
+              name="zip code"
+              id="zip-code"
+              placeholder="71000"
+              required
+              className="w-full p-3 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
+            />
+          </div>
+        </div>
+      </div>
+          <div className="w-full lg:w-[48%] p-5 bg-white  ">
+  <h2 className="text-3xl text-[#1A1A1A] font-bold mb-5 pb-2 border-b-2 border-gray-300">
+    Payment
+  </h2>
+
+  {/* Payment Method Selection */}
+  <div className="mb-6">
+    <label className="text-lg font-medium text-gray-700">Select Payment Method:</label>
+    <div className="grid grid-cols-2 gap-4 mt-3">
+      
+      {/* Card Payment Option */}
+      <div
+        className={`border p-4 rounded-lg cursor-pointer transition-all duration-300 ${
+          paymentMethod === "card" ? "border-blue-500 shadow-md" : "border-gray-300"
+        }`}
+        onClick={() => setPaymentMethod("card")}
+      >
+        <label className="flex items-center cursor-pointer">
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="card"
+            checked={paymentMethod === "card"}
+            onChange={() => setPaymentMethod("card")}
+            className="hidden"
+          />
+          <span
+            className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+              paymentMethod === "card" ? "border-blue-500 bg-blue-500" : "border-gray-400"
+            }`}
+          >
+            {paymentMethod === "card" && <span className="w-2.5 h-2.5 bg-white rounded-full"></span>}
+          </span>
+          <span className="ml-3 text-gray-800 font-medium">Card Payment</span>
+        </label>
+      </div>
+
+      {/* Cash on Delivery Option */}
+      <div
+        className={`border p-4 rounded-lg cursor-pointer transition-all duration-300 ${
+          paymentMethod === "cod" ? "border-green-500 shadow-md" : "border-gray-300"
+        }`}
+        onClick={() => setPaymentMethod("cod")}
+      >
+        <label className="flex items-center cursor-pointer">
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="cod"
+            checked={paymentMethod === "cod"}
+            onChange={() => setPaymentMethod("cod")}
+            className="hidden"
+          />
+          <span
+            className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+              paymentMethod === "cod" ? "border-green-500 bg-green-500" : "border-gray-400"
+            }`}
+          >
+            {paymentMethod === "cod" && <span className="w-2.5 h-2.5 bg-white rounded-full"></span>}
+          </span>
+          <span className="ml-3 text-gray-800 font-medium">Cash on Delivery</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  {/* Card Payment Details */}
+  {paymentMethod === "card" && (
+    <>
+      <div className="mb-5">
+        <span className="text-gray-700 font-medium">Cards Accepted:</span>
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mt-3">
+          {Images.map((image, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-center p-2 border rounded-lg bg-gray-100 hover:shadow-md transition duration-300"
+            >
+              <Image
+                src={image || "/placeholder.svg"}
+                alt={`Card logo ${index + 1}`}
+                className="w-12 h-auto object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-5">
+        <label className="text-gray-700 font-medium">Card Information</label>
+        <div className="border rounded-lg p-3 bg-gray-50">
+          <CardElement className="w-full bg-white p-2 rounded-md" />
+        </div>
+      </div>
+    </>
+  )}
+
+  {/* Cash on Delivery Message */}
+  {paymentMethod === "cod" && (
+    <div className="mb-5 p-4 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-lg">
+      You will pay for your order when it is delivered to your address.
+    </div>
+  )}
+</div>
+        </div>
         <button
           type="submit"
           className="w-full py-4 px-6 bg-[#0E3A5D] text-white text-lg font-semibold rounded-lg uppercase cursor-pointer transition duration-300 hover:opacity-90 hover:shadow-lg"

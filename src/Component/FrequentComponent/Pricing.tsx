@@ -21,8 +21,8 @@ const Pricing = () => {
     </div>
     <div className="flex gap-8 lg:ml-8">
       <i className="fa-brands fa-twitter text-[#55ACEE] text-3xl"></i>
-      <div className="bg-[#395185] w-8 h-8 flex justify-end">
-        <i className="fa-brands fa-facebook-f text-white text-3xl pt-1 pr-1"></i>
+      <div className="bg-[#395185] w-7 h-7 flex justify-end">
+        <i className="fa-brands fa-facebook-f text-white text-xl pt-[5px] pr-[7px]"></i>
       </div>
       <i className="fa-brands fa-instagram text-black text-3xl"></i>
       <i className="fa-brands fa-linkedin text-[#0A66C2] text-3xl"></i>

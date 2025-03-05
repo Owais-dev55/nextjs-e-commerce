@@ -1,4 +1,4 @@
-import Navbar from "../ProductListpage/Navbar/Navbar"
+import Navbar from "@/Component/Navbar/Navbar";
 import WishlistItems from "./WishList"
 
 export default function WishlistPage() {

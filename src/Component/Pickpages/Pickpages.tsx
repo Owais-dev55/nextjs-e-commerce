@@ -111,7 +111,7 @@ const Pickpages = () => {
 
         <div className="hidden lg:flex">
           <div className="w-1/2 flex justify-center items-center">
-            <div className="w-[704px] h-[682px] -mt-24">
+            <div className="w-[704px] h-[682px] -mt-10">
               <div className="w-[632px] h-[682px] ml-9 absolute -z-40">
                 <Image
                   src={image2}
@@ -121,7 +121,7 @@ const Pickpages = () => {
               </div>
             </div>
           </div>
-          <div className="w-1/2 flex flex-col justify-center ml-[100px] -mt-10 text-[Montserrat]">
+          <div className="w-1/2 flex flex-col justify-center ml-[100px]  text-[Montserrat]">
             <div className="w-[573px] h-[326px] gap-7">
               <h5 className="font-bold text-base leading-6 tracking-widest uppercase text-[#4A4A4A] mb-10">
                 SUMMER 2020
@@ -133,13 +133,13 @@ const Pickpages = () => {
                 We know how large objects will act, but things on a small scale.
               </p>
               <div className="h-14 w-[339px] flex gap-2">
-                <div className="w-[156px] rounded-md bg-[#0E3A5D] flex justify-center items-center">
+                <div className="w-[156px] rounded-md bg-[#0E3A5D] hover:bg-[#1C4B6E] flex justify-center items-center">
                   <button className="font-bold text-sm leading-6 tracking-[0.2] text-[#FFFFFF]">
                     BUY NOW
                   </button>
                 </div>
-                <div className="h-14 w-[156px] rounded-md border border-[#0E3A5D] flex justify-center items-center">
-                  <button className="font-bold text-sm leading-6 tracking-[0.2] text-[#0E3A5D]">
+                <div className="h-14 w-[156px] rounded-md border border-[#0E3A5D] text-[#0E3A5D] hover:bg-[#0E3A5D] hover:text-white flex justify-center items-center">
+                  <button className="font-bold text-sm leading-6 tracking-[0.2] ">
                     READ MORE
                   </button>
                 </div>

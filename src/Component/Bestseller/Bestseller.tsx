@@ -54,7 +54,7 @@ export default function BestSeller() {
         </p>
       </div>
 
-      <div className="min-h-screen lg:min-h-0 lg:h-[615px]">
+      <div className="min-h-screen lg:min-h-0 lg:h-[215px]">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 h-full">
           {products.length > 0 ? (
             products.map((product: ProductsProps) => (

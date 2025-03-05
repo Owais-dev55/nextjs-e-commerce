@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import image from "@/public/image/heroimage.jpeg";
+import image from "@/public/image/airpods.jpg";
 import Link from "next/link";
 
 const Hero = () => {
@@ -11,13 +11,13 @@ const Hero = () => {
         alt="Background"
         fill
         quality={100}
-        className="-z-10"
+        className="-z-10 "
         priority
         style={{ objectFit: "cover" }}
       />
       <div className="container mx-auto h-full flex flex-col justify-center items-start px-4 sm:px-6 lg:px-48 text-white ">
         <div className="w-full max-w-[600px] space-y-6 -mt-20">
-          <h5 className="font-bold text-xs sm:text-sm md:text-base leading-6 tracking-wider">
+          <h5 className="font-bold lg:text-xl sm:text-sm md:text-base leading-6 tracking-wider">
             SUMMER 2020
           </h5>
           <h1 className="font-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
@@ -27,7 +27,7 @@ const Hero = () => {
             We know how large objects will act, but things on a small scale.
           </h5>
           <Link href={"/ProductListpage"}>
-            <button className="bg-[#2DC071] hover:bg-[#25A861] transition-colors w-full sm:w-[221px] h-16 rounded-md mt-8">
+            <button className="bg-[#0E3A5D] hover:bg-[#1C4B6E]  transition-colors w-full sm:w-[221px] h-16 rounded-lg mt-8">
               <h3 className="font-bold text-sm sm:text-base uppercase text-center">
                 Shop now
               </h3>

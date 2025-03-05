@@ -20,3 +20,22 @@
       60%{background-position:0%  50%, 50% 100%,100%   0%}
       80%{background-position:0%  50%, 50%  50%,100% 100%}
   }
+  /* ✨ Ultra-Slim White Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px; /* Slim and elegant */
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F5F5; /* Soft white */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 200, 200, 0.7); /* Subtle grey */
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 180, 180, 0.9); /* Slightly darker hover */
+}

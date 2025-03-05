@@ -1,8 +1,8 @@
 import React from "react";
-import image1 from "@/public/image/card1.jpeg";
-import image2 from "@/public/image/card2.jpeg";
-import image4 from "@/public/image/card03.jpeg";
-import image5 from "@/public/image/card4.jpeg";
+import image1 from "@/public/image/man.jpg";
+import image2 from "@/public/image/woman.jpg";
+import image4 from "@/public/image/accessories.jpg";
+import image5 from "@/public/image/child.jpg";
 import Image from "next/image";
 
 function EditorPick() {
@@ -20,7 +20,7 @@ function EditorPick() {
           <Image
             src={image1}
             alt="Men"
-            className="w-full h-[300px] sm:h-[500px] object-cover rounded-lg"
+              className="w-full h-[300px] sm:h-[500px] object-cover rounded-lg"
             
           />
           <div className="absolute bottom-6 left-4">

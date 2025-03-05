@@ -31,14 +31,14 @@ const Footer = ({ backgroundColor }: bgcolor) => {
     <footer className="font-sans">
       <div className="w-full">
         <div
-          className="w-full py-8 px-4 sm:px-6 lg:px-8"
+          className="w-full py-8 px-6 sm:px-6 lg:px-8"
           style={{ backgroundColor }}
         >
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center">
             <h3 className="text-[#1A1A1A] font-bold text-2xl leading-8 mb-4 sm:mb-0">
               VogueAura
             </h3>
-            <div className="flex space-x-4 text-[#0E3A5D]">
+            <div className="flex space-x-6 text-[#0E3A5D]">
               <i className="fab fa-facebook-f"></i>
               <i className="fab fa-instagram"></i>
               <i className="fab fa-twitter"></i>
@@ -70,7 +70,7 @@ const Footer = ({ backgroundColor }: bgcolor) => {
                 Get In Touch
               </h5>
               <div className="space-y-4">
-                <div className="relative">
+                <div className="relative w-full lg:w-[300px]">
                   <input
                     type="text"
                     placeholder="Your Email"
@@ -80,6 +80,7 @@ const Footer = ({ backgroundColor }: bgcolor) => {
                     Subscribe
                   </button>
                 </div>
+
                 <p className="text-[#4A4A4A] text-xs leading-6">
                   Lorem ipsum dolor sit Amet
                 </p>

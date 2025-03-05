@@ -51,7 +51,7 @@ const Hero = () => {
       </div>
       <div className="w-full flex justify-center items-center px-4">
         <div className="max-w-screen-md text-center mb-8">
-          <h2 className="text-[#1A1A1A] font-bold text-4xl">Pricing</h2>
+          <h2 className="text-[#1A1A1A] font-bold text-4xl pt-7">Pricing</h2>
           <p className="text-[#4A4A4A] text-sm mt-4 max-w-md mx-auto">
             Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian mechanics.
           </p>

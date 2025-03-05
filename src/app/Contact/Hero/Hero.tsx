@@ -11,7 +11,7 @@ const Hero = () => {
             <div className="lg:gap-7 lg:h-[432px] lg:w-[509px]">
               {/* Contact Us Header */}
               <div className="w-full h-7 mb-6 lg:mb-10 text-center lg:text-left ">
-                <h4 className="font-bold text-base leading-6 tracking-[0.1px]">
+                <h4 className="font-bold text-xl leading-6 tracking-[0.1px]">
                   CONTACT US
                 </h4>
               </div>
@@ -50,7 +50,7 @@ const Hero = () => {
             </div>
 
             {/* Image - Maintaining original positioning for large screens */}
-            <div className="w-full lg:w-[443px] h-[450px] lg:h-[650px] mt-8 lg:mt-[-75px] lg:absolute lg:ml-[590px]">
+            <div className="w-full lg:w-[443px] h-[450px] lg:h-[650px] mt-8 lg:mt-[-35px] lg:absolute lg:ml-[590px]">
               <Image
                 src={image}
                 alt="Contact Hero Image"

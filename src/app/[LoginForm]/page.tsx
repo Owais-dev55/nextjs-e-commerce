@@ -1,6 +1,6 @@
 import React from 'react'
 import SignIn from './SignIn/SignIn'
-import Navbar from '../ProductListpage/Navbar/Navbar'
+import Navbar from '@/Component/Navbar/Navbar'
 
 const page = () => {
   return (

@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState, useEffect } from "react";
-import "./Navbar.css";
+import React, { useContext, useState, useEffect } from "react";
 import Image from "next/image";
-import { auth } from "@/firebase/config"; 
-import { onAuthStateChanged, signOut, User } from "firebase/auth"; 
+import { auth } from "@/firebase/config";
+import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import avator from "@/public/image/avator image.jpg";
+import { CartContext } from "@/Utilities/Context";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -19,70 +19,145 @@ const navLinks = [
 const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [user, setUser] = useState<User | null>(null);
-    const [loading, setLoading] = useState(true); 
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const { count } = useContext(CartContext);
 
-    
-      useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (user) {
-            setUser(user); 
-          } else {
-            setUser(null); 
-          }
-          setLoading(false);
-        });
-    
-        return () => unsubscribe();
-      }, []);
-    
-      const handleSignOut = async () => {
-        try {
-          await signOut(auth);
-        } catch (error) {
-          console.error("Error signing out: ", error);
-        }
-      };
-    
-      if (loading) return null; 
-    
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user || null);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
+
+  if (loading) return null;
 
   return (
-    <nav className="w-full bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-24">
-          <div className="flex items-center">
-            <Link href="/" className="font-bold text-2xl text-[#252B42]">
-              VogueAura
+    <nav className="w-full bg-[#111827] shadow-md border-b border-[#2C2F36] text-white font-[Inter]">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="text-2xl font-semibold tracking-wide text-[#E5E7EB] uppercase"
+        >
+          VogueAura
+        </Link>
+
+        {/* Navigation Links (Desktop) */}
+        <div className="hidden lg:flex items-center space-x-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`relative px-3 py-1 transition-all duration-300 ${
+                pathname === link.href
+                  ? "text-[#E5E7EB] font-medium border-b border-[#E5E7EB]"
+                  : "text-gray-400 hover:text-[#E5E7EB]"
+              }`}
+            >
+              {link.label}
             </Link>
-          </div>
-          <div className="hidden lg:flex items-center space-x-8">
+          ))}
+        </div>
+
+        {/* Right Section (Cart, Wishlist, Profile) */}
+        <div className="hidden lg:flex items-center space-x-6">
+          <Link
+            href="/WishList"
+            className="text-gray-400 hover:text-[#E5E7EB] transition-all"
+          >
+            <i className="fas fa-heart text-lg"></i>
+          </Link>
+
+          <Link
+            href="/Cart"
+            className="relative text-gray-400 hover:text-[#E5E7EB] transition-all"
+          >
+            <i className="fas fa-shopping-bag text-lg"></i>
+            <span className="absolute -top-2 -right-2 bg-[#E5E7EB] text-black text-xs font-semibold w-5 h-5 flex items-center justify-center rounded-full">
+              {count}
+            </span>
+          </Link>
+
+          {user ? (
+            <div className="flex items-center space-x-3">
+              <Image
+                src={user.photoURL || avator}
+                alt="User Avatar"
+                width={36}
+                height={36}
+                className="rounded-full border border-[#E5E7EB]"
+              />
+              <button
+                onClick={handleSignOut}
+                className="text-sm text-[#E5E7EB] hover:text-gray-300 transition-all"
+              >
+                Sign out
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/signin"
+              className="text-[#E5E7EB] hover:text-gray-300 text-sm transition-all"
+            >
+              Login
+            </Link>
+          )}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden flex items-center">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="text-[#E5E7EB] p-2"
+            aria-label="Toggle mobile menu"
+          >
+            <i
+              className={`fas ${isMobileMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}
+            ></i>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden bg-[#111827] border-t border-[#2C2F36]">
+          <div className="px-4 pt-4 pb-6 flex flex-col items-center space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`nav-link ${pathname === link.href ? "active" : ""}`}
+                className={`text-lg font-medium ${
+                  pathname === link.href
+                    ? "text-[#E5E7EB] border-b border-[#E5E7EB] pb-1"
+                    : "text-gray-400 hover:text-[#E5E7EB]"
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-          </div>
-          <div className="hidden lg:flex items-center space-x-4">
-          {user ? (
-              <div className="flex items-center space-x-2">
+            {user ? (
+              <div className="flex flex-col items-center space-y-2">
                 <Image
                   src={user.photoURL || avator}
                   alt="User Avatar"
-                  width={32}
-                  height={32}
-                  className="rounded-full"
+                  width={40}
+                  height={40}
+                  className="rounded-full border border-[#E5E7EB]"
                 />
-                <span className="text-sm font-medium">{user.displayName}</span>
                 <button
                   onClick={handleSignOut}
-                  className="text-sm text-[#23A6F0] hover:text-[#1A7BB9]"
+                  className="text-sm text-[#E5E7EB] hover:text-gray-300 transition-all"
                 >
                   Sign out
                 </button>
@@ -90,64 +165,11 @@ const Navbar = () => {
             ) : (
               <Link
                 href="/signin"
-                className="text-[#23A6F0] hover:text-[#1A7BB9] text-sm"
+                className="text-[#E5E7EB] hover:text-gray-300 text-lg transition-all"
               >
                 Login
               </Link>
             )}
-            <Link
-              href="/Pricing"
-              className="bg-[#23A6F0] text-white font-bold text-sm py-2 px-4 rounded-md hover:bg-[#1E8AC0] transition-colors duration-300"
-            >
-              Become a member
-            </Link>
-          </div>
-          <div className="lg:hidden flex items-center">
-            <button
-              onClick={toggleMobileMenu}
-              className="text-[#737373] p-2"
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? (
-                <i className="fa-solid fa-bars text-xl"></i>
-              ) : (
-                <i className="fa-solid fa-bars text-xl"></i>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-      {isMobileMenuOpen && (
-        <div className="lg:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`block px-3 py-2 rounded-md text-base font-medium text-center ${
-                  pathname === link.href
-                    ? "bg-gray-100 text-[#23A6F0] font-semibold"
-                    : "text-[#737373] hover:bg-gray-50"
-                }`}
-                onClick={toggleMobileMenu}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/LoginForm"
-              className="block px-3 py-2 rounded-md text-base font-medium text-[#23A6F0] text-center"
-              onClick={toggleMobileMenu}
-            >
-              Login
-            </Link>
-            <Link
-              href="/Pricing"
-              className="block px-3 py-2 rounded-md text-base font-medium bg-[#23A6F0] text-white hover:bg-[#1E8AC0] transition-colors duration-300 text-center shadow-md hover:shadow-lg"
-              onClick={toggleMobileMenu}
-            >
-              Become a member
-            </Link>
           </div>
         </div>
       )}

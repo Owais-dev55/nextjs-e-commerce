@@ -26,7 +26,7 @@ const DescriptionPage = ({
         <Link href="" className="mx-4">
           <h6 className="font-semibold text-sm text-[#4A4A4A]">
             Reviews
-            <span className="font-bold text-sm text-[#D8A31A] pl-2">( 10 )</span>
+            <span className="font-bold text-sm text-[#D8A31A] pl-2">(10)</span>
           </h6>
         </Link>
       </div>

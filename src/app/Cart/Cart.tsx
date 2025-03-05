@@ -120,55 +120,63 @@ const CartPage = () => {
             ) : (
               cartItems.map((item) => (
                 <div
-                  key={item._id}
-                  className="cartitems-format cartitems-format-main flex flex-col sm:flex-row items-start sm:items-center gap-4 border-b border-gray-200 pb-6 mb-6 transition-all duration-300 hover:bg-gray-50 rounded-lg p-4"
-                >
-                  <Image
-                    src={item.imageUrl || "/placeholder.svg"}
-                    alt={item.title}
-                    width={120}
-                    height={120}
-                    className="w-24 h-24 lg:w-32 lg:h-32 object-cover rounded-md"
-                  />
-                  <div className="flex-grow">
-                    <p className="font-semibold text-sm sm:text-base lg:text-lg text-[#1A1A1A]">
-                      {item.title}
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1">
-                      ${item.price.toFixed(2)}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-4 mt-2 sm:mt-0">
-                    <div className="quantity-controls flex items-center border border-gray-300 rounded-full overflow-hidden">
-                      <button
-                        className="px-3 py-1 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
-                        onClick={() =>
-                          handleUpdateQuantity(item._id, item.quantity! - 1)
-                        }
-                      >
-                        -
-                      </button>
-                      <p className="quan px-3 py-1 bg-white">{item.quantity}</p>
-                      <button
-                        className="px-3 py-1 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
-                        onClick={() =>
-                          handleUpdateQuantity(item._id, item.quantity! + 1)
-                        }
-                      >
-                        +
-                      </button>
-                    </div>
-                    <p className="text-sm lg:text-base font-semibold text-[#1A1A1A]">
-                      Total: ${(item.price * item.quantity!).toFixed(2)}
+                key={item._id}
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-6 border border-gray-200 bg-white shadow-md rounded-2xl p-6 transition-all duration-300 hover:shadow-lg"
+              >
+                {/* Product Image */}
+                <Image
+                  src={item.imageUrl || "/placeholder.svg"}
+                  alt={item.title}
+                  width={130}
+                  height={130}
+                  className="w-28 h-28 lg:w-36 lg:h-36 object-cover rounded-xl border border-gray-300"
+                />
+              
+                {/* Product Details */}
+                <div className="flex-grow">
+                  <p className="font-semibold text-lg lg:text-xl text-[#252B42] tracking-wide">
+                    {item.title}
+                  </p>
+                  <p className="text-md text-[#737373] mt-1 font-medium">
+                    ${item.price.toFixed(2)}
+                  </p>
+                </div>
+              
+                {/* Quantity and Total */}
+                <div className="flex items-center gap-6 mt-2 sm:mt-0">
+                  <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white shadow-sm">
+                    <button
+                      className="px-4 py-2 bg-gray-100 hover:bg-gray-200 transition-all text-lg font-bold text-[#252B42] rounded-l-full"
+                      onClick={() => handleUpdateQuantity(item._id, item.quantity! - 1)}
+                    >
+                      -
+                    </button>
+                    <p className="px-5 py-2 bg-white text-lg font-semibold text-[#252B42]">
+                      {item.quantity}
                     </p>
                     <button
-                      className="text-red-500 hover:text-red-600 transition-colors duration-200 ml-2"
-                      onClick={() => handleRemoveItem(item._id)}
+                      className="px-4 py-2 bg-gray-100 hover:bg-gray-200 transition-all text-lg font-bold text-[#252B42] rounded-r-full"
+                      onClick={() => handleUpdateQuantity(item._id, item.quantity! + 1)}
                     >
-                      <i className="fa-solid fa-trash"></i>
+                      +
                     </button>
                   </div>
+              
+                  <p className="text-lg lg:text-xl font-semibold text-[#252B42]">
+                    Total: ${(item.price * item.quantity!).toFixed(2)}
+                  </p>
+              
+                  {/* Remove Button */}
+                  <button
+                    className="border border-gray-300 text-[#737373] px-3 py-2 rounded-lg hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                    onClick={() => handleRemoveItem(item._id)}
+                  >
+                    <i className="fa-solid fa-trash"></i>
+                  </button>
                 </div>
+              </div>
+              
+
               ))
             )}
             <Link href={"/"} className="inline-block">
@@ -241,7 +249,7 @@ const CartPage = () => {
                 <button
                   onClick={applyCoupon}
                   className={`px-4 py-2 rounded-md text-white font-semibold ${
-                    couponApplied
+                    couponApplied && cartItems.length === 0
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-[#0E3A5D] hover:bg-[#1C4B6E]"
                   } transition duration-300`}
@@ -252,7 +260,7 @@ const CartPage = () => {
               {couponApplied !== undefined && (
                 <div
                   className={`p-3 rounded-md ${
-                    couponApplied
+                    couponApplied 
                       ? "bg-green-100 text-green-700"
                       : "bg-red-100 text-red-500"
                   } mt-2`}

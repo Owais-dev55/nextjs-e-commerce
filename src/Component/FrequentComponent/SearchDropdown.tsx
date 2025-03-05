@@ -65,16 +65,21 @@ const SearchDropdown = () => {
 
   return (
     <div className="relative w-[340px]" ref={dropdownRef}>
+      {/* Search Input */}
       <input
-        className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full pl-4 pr-10 py-2 rounded-full border border-[#2C2F36] bg-[#1F2937] text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#E5E7EB] transition-all placeholder-gray-400"
         type="text"
-        placeholder="Search..."
+        placeholder="Search for watches..."
         value={search}
         onChange={(e) => handleChange(e.target.value)}
       />
-      {isLoading && <p className="mt-2 text-gray-600">Loading...</p>}
+
+      {/* Loading Indicator */}
+      {isLoading && <p className="mt-2 text-gray-400">Searching...</p>}
+
+      {/* Dropdown Results */}
       {results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white shadow-md rounded-lg p-4 overflow-y-auto max-h-60 z-50">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-[#1F2937] border border-[#2C2F36] shadow-lg rounded-lg overflow-y-auto max-h-60 z-50">
           {results.map((item) => (
             <Link
               href={`/products/${item._id}`}
@@ -84,7 +89,7 @@ const SearchDropdown = () => {
                 setResults([]);
               }}
             >
-              <div className="py-2 border-b last:border-none cursor-pointer hover:bg-gray-100 flex items-center gap-4">
+              <div className="flex items-center gap-4 py-2 px-4 border-b border-[#2C2F36] cursor-pointer hover:bg-[#374151] transition-all">
                 <Image
                   src={item.imageUrl}
                   alt={item.title}
@@ -92,7 +97,7 @@ const SearchDropdown = () => {
                   height={40}
                   className="w-10 h-10 object-cover rounded-md"
                 />
-                <p className="text-gray-700 font-medium text-sm truncate">
+                <p className="text-gray-300 font-medium text-sm truncate">
                   {item.title}
                 </p>
               </div>

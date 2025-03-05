@@ -48,7 +48,7 @@ const Hero = () => {
           <div className="w-[1050px] h-[545px] py-[112px] gap-[80px] pl-[195px]">
             <div className="gap-8 h-[321px] w-[1044px]">
               <div className="gap-9 h-full w-[599px]">
-                <h5 className="font-bold text-base tracking-[0.1px] leading-6 h-6">
+                <h5 className="font-bold text-xl tracking-[0.1px] leading-6 h-6">
                   ABOUT COMPANY
                 </h5>
                 <h1 className="font-bold text-[58px] tracking-[0.2px] leading-[80px] h-[80px] pt-10">

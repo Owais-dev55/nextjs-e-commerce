@@ -1,6 +1,6 @@
 import React from 'react'
 import SignUp from './SignUp'
-import Navbar from '@/app/ProductListpage/Navbar/Navbar'
+import Navbar from '@/Component/Navbar/Navbar'
 
 const page = () => {
   return (

@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import Navbar from "@/app/ProductListpage/Navbar/Navbar";
+import Navbar from "@/Component/Navbar/Navbar";
 import Link from "next/link";
 import AddtoCart from "@/Component/FrequentComponent/AddtoCart";
 import AddtoWishList from "@/Component/FrequentComponent/AddtoWishList";

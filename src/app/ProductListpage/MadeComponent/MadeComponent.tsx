@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
 import ProductCard from "@/Component/ProductCard/ProductCard";
-import { ProductsProps } from "@/Component/ProductCard/ProductCard";
+import type { ProductsProps } from "@/Component/ProductCard/ProductCard";
 const ITEMS_PER_PAGE = 8;
 
 const MadeComponent = () => {
@@ -37,9 +37,11 @@ const MadeComponent = () => {
   }, []);
 
   if (loading) {
-     return <div className="w-screen h-screen flex justify-center items-center">
-          <div className="loader"></div>
-        </div>; 
+    return (
+      <div className="w-screen h-screen flex justify-center items-center">
+        <div className="loader"></div>
+      </div>
+    );
   }
 
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
@@ -55,8 +57,8 @@ const MadeComponent = () => {
   };
 
   return (
-    <div>
-      <div className="lg:w-[1049px] lg:h-auto md:w-[414px] md:h-[3510px] gap-8 grid lg:grid-cols-4 md:grid-cols-1 mx-auto">
+    <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {currentPosts.length > 0 ? (
           currentPosts.map((product: ProductsProps) => (
             <ProductCard
@@ -75,53 +77,53 @@ const MadeComponent = () => {
           </p>
         )}
       </div>
-      <div className="lg:w-[1049px] lg:ml-[470px] w-full mr-10  flex justify-center mt-8">
-        <div className="h-[76px] lg:w-[813px] md:w-[313px] flex items-center justify-center rounded-md bg-[#FFFFFF] border-[#BDBDBD]">
-          <div className="w-full h-full flex flex-row -mt-5">
-            <div
-              className={`bg-[#F3F3F3] h-full w-[84px] flex justify-center items-center border-[#BDBDBD] border rounded-l-lg ${
-                currentPage === 1
-                  ? "text-gray-300 cursor-not-allowed"
-                  : "cursor-pointer"
-              } hover:bg-[#E9E9E9]`}
-              onClick={() => goToPage(1)}
-            >
-              <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-10 h-6 text-[#BDBDBD]">
-                Previous
-              </h6>
-            </div>
 
+      {/* Compact Pagination */}
+      <div className="flex justify-center mt-8 mb-12">
+        <div className="inline-flex rounded-md bg-white border border-[#BDBDBD] shadow-sm">
+          <button
+            className={`h-20 px-3 flex items-center border-r justify-center border-[#BDBDBD] bg-[#F3F3F3] rounded-l-md ${
+              currentPage === 1
+                ? "text-gray-300 cursor-not-allowed"
+                : "cursor-pointer text-[#BDBDBD] hover:bg-[#E9E9E9]"
+            }`}
+            onClick={() => currentPage > 1 && goToPage(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            <span className="text-sm font-medium">Previous</span>
+          </button>
+
+          <div className="flex">
             {Array.from({ length: totalPages }, (_, index) => index + 1).map(
               (page) => (
-                <div
+                <button
                   key={page}
-                  className={`w-[46px] flex justify-center items-center h-full border border-[#E9E9E9] ${
+                  className={`w-10 h-20 flex justify-center items-center border-r border-[#E9E9E9] ${
                     page === currentPage
                       ? "bg-[#0E3A5D] text-white"
                       : "text-[#0E3A5D] hover:bg-[#E9E9E9]"
-                  } cursor-pointer`}
+                  }`}
                   onClick={() => goToPage(page)}
                 >
-                  <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-[6px] h-6">
-                    {page}
-                  </h6>
-                </div>
+                  <span className="text-sm font-medium">{page}</span>
+                </button>
               )
             )}
-
-            <div
-              className={`h-full w-[84px] flex justify-center items-center border-[#BDBDBD] border rounded-r-lg ${
-                currentPage === totalPages
-                  ? "text-gray-300 cursor-not-allowed"
-                  : "cursor-pointer"
-              } hover:bg-[#E9E9E9]`}
-              onClick={() => goToPage(currentPage + 1)}
-            >
-              <h6 className="font-bold tracking-[0.2px] leading-6 text-sm w-8 h-6 text-[#0E3A5D]">
-                Next
-              </h6>
-            </div>
           </div>
+
+          <button
+            className={`h-20 w-20 px-3 flex justify-center  items-center rounded-r-md ${
+              currentPage === totalPages
+                ? "text-gray-300 cursor-not-allowed"
+                : "cursor-pointer text-[#0E3A5D] hover:bg-[#E9E9E9]"
+            }`}
+            onClick={() =>
+              currentPage < totalPages && goToPage(currentPage + 1)
+            }
+            disabled={currentPage === totalPages}
+          >
+            <span className="text-sm font-medium">Next</span>
+          </button>
         </div>
       </div>
     </div>
