@@ -82,10 +82,10 @@ const MadeComponent = () => {
       <div className="flex justify-center mt-8 mb-12">
         <div className="inline-flex rounded-md bg-white border border-[#BDBDBD] shadow-sm">
           <button
-            className={`h-20 px-3 flex items-center border-r justify-center border-[#BDBDBD] bg-[#F3F3F3] rounded-l-md ${
+            className={`h-20 px-3 flex items-center border-r justify-center border-[#BDBDBD] rounded-l-md ${
               currentPage === 1
                 ? "text-gray-300 cursor-not-allowed"
-                : "cursor-pointer text-[#BDBDBD] hover:bg-[#E9E9E9]"
+                : "cursor-pointer text-[#0E3A5D] hover:bg-[#E9E9E9]"
             }`}
             onClick={() => currentPage > 1 && goToPage(currentPage - 1)}
             disabled={currentPage === 1}

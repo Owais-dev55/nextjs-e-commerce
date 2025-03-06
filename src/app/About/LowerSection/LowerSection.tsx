@@ -6,10 +6,10 @@ import image from "@/public/image/lowersectionimage.jpg";
 const LowerSection = () => {
   return (
     <div className="w-full">
-      <div className="bg-[#FAFAFA] lg:w-full lg:h-[479px]  h-[950px] -mt-16">
+      <div className="bg-[#FAFAFA] lg:w-full lg:h-[479px]  h-[950px] ">
         <div className="flex flex-col items-center text-center pt-16 pb-16">
           <div className="h-[120px] w-full flex flex-col justify-center items-center text-center">
-            <h2 className="font-bold tracking-[0.2px]  lg:w-[469px] w-[313px] lg:h-[50px] h-[100px] text-[40px] leading-[50px] text-[#252B42]">
+            <h2 className="font-bold tracking-[0.2px]  lg:w-[499px] w-[313px] lg:h-[50px] h-[100px] text-[40px] leading-[50px] text-[#252B42]">
               Big Companies Are Here
             </h2>
             <p className="font-normal tracking-[0.2px] text-sm leading-5 lg:w-[469px] w-[313px] mx-auto h-10 mt-2 text-[#737373] pt-5">
