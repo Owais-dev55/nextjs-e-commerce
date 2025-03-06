@@ -44,7 +44,7 @@ export default function DashboardPage() {
     });
 
     return () => unsubscribe();
-  }, [adminEmails]);
+  }, [adminEmails , router]);
 
   const fetchUsers = async () => {
     try {

@@ -34,7 +34,7 @@ export default function DashboardPage() {
     });
 
     return () => unsubscribe();
-  }, [adminEmails]);
+  }, [adminEmails , router]);
 
   if (loading) {
     return (

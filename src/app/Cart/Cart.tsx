@@ -46,9 +46,8 @@ const CartPage = () => {
       }
       setLoading(false);
     });
-
     return () => unsubscribe();
-  }, [router]);
+  }, [router , user]);
 
   if (loading) return <p>Loading...</p>;
 

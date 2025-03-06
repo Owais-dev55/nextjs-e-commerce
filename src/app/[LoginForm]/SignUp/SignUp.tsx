@@ -48,6 +48,7 @@ const SignUp = () => {
       toast.error(error?.message || "Error signing up", {
         position: "top-center",
       });
+      console.log(err)
     }
   };
 
