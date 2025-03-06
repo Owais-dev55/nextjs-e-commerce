@@ -5,7 +5,6 @@ import Link from "next/link"
 const Hero = () => {
   return (
     <section className="w-full flex flex-col-reverse lg:flex-row bg-black h-auto min-h-[100svh]">
-      {/* Left Side: Text Content */}
       <div className="flex w-full lg:w-1/2">
         <div className="container mx-auto h-full flex flex-col justify-center items-start px-6 sm:px-10 lg:px-12 xl:px-20 text-white py-12 lg:py-0">
           <div className="w-full max-w-[600px] space-y-4 sm:space-y-6">
@@ -26,8 +25,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Right Side: Image */}
       <div className="w-full lg:w-1/2 h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-auto relative">
         <Image
           src={image || "/placeholder.svg"}

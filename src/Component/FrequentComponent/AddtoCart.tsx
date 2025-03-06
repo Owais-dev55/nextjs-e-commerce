@@ -2,7 +2,7 @@
 import React from "react";
 import { useContext } from "react";
 import { CartContext, Products } from "@/Utilities/Context";
-
+import {  toast } from 'react-toastify';
 const AddtoCart = ({ _id, title, price, imageUrl }: Products) => {
   const { setCount, count, cartItems, setCartItems } = useContext(CartContext);
   
@@ -23,7 +23,11 @@ const AddtoCart = ({ _id, title, price, imageUrl }: Products) => {
     }
 
     setCount(count + 1);
+      toast.success("Item added to Cart")
+    
   };
+
+  
   return (
     <div>
       <button

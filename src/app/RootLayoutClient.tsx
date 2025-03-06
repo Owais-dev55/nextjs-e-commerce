@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react";
 
 import { Elements } from '@stripe/react-stripe-js';
 import { stripePromise } from '@/Utilities/stripe'; 
+import  { Bounce, ToastContainer } from "react-toastify";
 
 
 export default function RootLayoutClient({
@@ -58,6 +59,19 @@ export default function RootLayoutClient({
   return (
     <CartContext.Provider value={{ count, setCount , cartItems , setCartItems  , wishlitItems , setWishlitItems , clearCart }}>
       <SessionProvider >    
+      <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+transition={Bounce}
+/>
         <Elements stripe={stripePromise}>
           {children}
         </Elements>

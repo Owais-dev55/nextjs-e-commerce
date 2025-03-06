@@ -1,10 +1,10 @@
 "use client";
-
 import Link from "next/link";
 import { useState } from "react";
 import { auth, app } from "@/firebase/config";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { getFirestore, addDoc, collection } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [fullName, setFullName] = useState("");
@@ -17,45 +17,37 @@ const SignUp = () => {
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match", { position: "top-center" });
+      console.log(user);
       return;
     }
 
-    const res = await createUserWithEmailAndPassword(email, password);
-    if (res && user) {
-      await addDoc(collection(firestore, "users"), {
-        name: fullName,
-        email: email,
-        password: password,
-        createdAt: new Date(),
-        uid: res.user.uid,
-      });
+    try {
+      const res = await createUserWithEmailAndPassword(email, password);
+      if (res && res.user) {
+        await addDoc(collection(firestore, "users"), {
+          name: fullName,
+          email: email,
+          password: password,
+          createdAt: new Date(),
+          uid: res.user.uid,
+        });
 
-      setFullName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-    } else {
-      if (error instanceof Error) {
-        alert(error.message);
-      } else {
-        alert("Error signing up");
+        toast.success("User signed up successfully!", {
+          position: "top-center",
+        });
+
+        setFullName("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
       }
-    }
-    if (res) {
-      console.log("User signed up successfully:", res.user);
-      setFullName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-    } else {
-      console.error("Error signing up:", error);
-      if (error instanceof Error) {
-        alert(error.message);
-      } else {
-        alert("Error signing up");
-      }
+    } catch (err) {
+      toast.error(error?.message || "Error signing up", {
+        position: "top-center",
+      });
     }
   };
 

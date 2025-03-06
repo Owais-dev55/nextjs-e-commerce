@@ -6,7 +6,7 @@ import image from "@/public/image/lowersectionimage.jpg";
 const LowerSection = () => {
   return (
     <div className="w-full">
-      <div className="bg-[#FAFAFA] lg:w-full lg:h-[479px]  h-[950px] ">
+      <div className="bg-[#FAFAFA] lg:w-full lg:h-[479px]  h-[420px] ">
         <div className="flex flex-col items-center text-center pt-16 pb-16">
           <div className="h-[120px] w-full flex flex-col justify-center items-center text-center">
             <h2 className="font-bold tracking-[0.2px]  lg:w-[499px] w-[313px] lg:h-[50px] h-[100px] text-[40px] leading-[50px] text-[#252B42]">

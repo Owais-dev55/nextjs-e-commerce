@@ -23,6 +23,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-firebase-hooks": "^5.1.1",
+    "react-toastify": "^11.0.5",
     "sanity": "^3.69.0",
     "sharp": "^0.33.5",
     "stripe": "^17.6.0",

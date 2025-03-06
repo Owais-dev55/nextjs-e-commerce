@@ -1,7 +1,6 @@
 "use client";
 import { signInWithEmailAndPassword, UserCredential } from "firebase/auth";
 
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -12,13 +11,13 @@ import {
 } from "@/firebase/config";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-
+import { toast } from "react-toastify";
+import Link from "next/link";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [userError, setUserError] = useState(false);
   const router = useRouter();
 
   const checkUserExists = async (email: string) => {
@@ -30,13 +29,13 @@ const SignIn = () => {
     } catch (error) {
       console.error("Error checking user existence:", error);
       return false;
+      console.log(errorMessage);
     }
   };
 
   const handleSignIn = async (provider: string) => {
     setLoading(true);
     setErrorMessage("");
-    setUserError(false);
 
     try {
       let result: UserCredential | null = null;
@@ -60,8 +59,9 @@ const SignIn = () => {
       } else if (provider === "email") {
         const userExists = await checkUserExists(email);
         if (!userExists) {
-          setUserError(true);
-          setTimeout(() => setUserError(false), 3000);
+          toast.error("User does not exist. Please sign up first.", {
+            position: "top-center",
+          });
           setLoading(false);
           return;
         }
@@ -71,37 +71,46 @@ const SignIn = () => {
       }
 
       if (result) {
-        console.log("User signed in successfully:", result.user);
+        toast.success("Login successful!");
         router.push("/");
       }
     } catch (error: unknown) {
       if (error instanceof Error && "code" in error) {
         const firebaseError = error as { code: string };
-    
+
         if (firebaseError.code === "auth/user-not-found") {
           setErrorMessage("User does not exist. Please sign up first.");
+          toast.error("User does not exist. Please sign up first.", {
+            position: "top-center",
+          });
         } else if (firebaseError.code === "auth/wrong-password") {
           setErrorMessage("Incorrect password. Please try again.");
+          toast.error("Incorrect password. Please try again.", {
+            position: "top-center",
+          });
         } else if (firebaseError.code === "auth/too-many-requests") {
           setErrorMessage("Too many failed attempts. Please try again later.");
+          toast.error("Too many failed attempts. Please try again later.", {
+            position: "top-center",
+          });
         } else {
           setErrorMessage("Failed to sign in. Please check your credentials.");
+          toast.error("Failed to sign in. Please check your credentials.", {
+            position: "top-center",
+          });
         }
       } else {
-        console.error("Unexpected error:", error);
         setErrorMessage("An unexpected error occurred. Please try again.");
+        toast.error("An unexpected error occurred. Please try again.", {
+          position: "top-center",
+        });
       }
+    } finally {
+      setLoading(false);
     }
-    
   };
-
   return (
     <div className="grid place-items-center min-h-screen bg-[#FFFFFF] bg-opacity-50">
-      {userError && (
-        <div className="bg-red-500 p-4 rounded-lg text-white mb-4">
-          <p>User does not exist. Please sign up first.</p>
-        </div>
-      )}
       <div className="bg-[#FAFAFA] rounded-[15px] shadow-[0_10px_50px_rgba(0,0,0,0.1)] p-8 w-[400px] text-center">
         <h2 className="text-[28px] font-semibold text-[#252B42] mb-6 uppercase tracking-[2px]">
           Sign In
@@ -185,14 +194,11 @@ const SignIn = () => {
             )}
           </button>
         </form>
-        {errorMessage && (
-          <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
-        )}
         <p className="text-sm text-[#737373] mt-[15px]">
           Don&apos;t have an account?
           <Link
             href="/LoginForm/SignUp"
-            className="text-[#23A6F0] no-underline font-semibold hover:underline"
+            className="text-[#23A6F0] no-underline font-semibold hover:underline p-2"
           >
             Sign Up
           </Link>
