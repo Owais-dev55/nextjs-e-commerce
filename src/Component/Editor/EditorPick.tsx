@@ -1,8 +1,8 @@
 import React from "react";
-import image1 from "@/public/image/man.jpg";
-import image2 from "@/public/image/woman.jpg";
-import image4 from "@/public/image/accessories.jpg";
-import image5 from "@/public/image/child.jpg";
+import image1 from "@/public/image/man_11zon.webp";
+import image2 from "@/public/image/woman_11zon.webp";
+import image4 from "@/public/image/accessories_11zon.webp";
+import image5 from "@/public/image/child_11zon.webp";
 import Image from "next/image";
 
 function EditorPick() {
