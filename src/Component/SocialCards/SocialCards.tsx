@@ -6,9 +6,6 @@ import image1 from "@/public/image/ceo-man.jpg"
 import image2 from "@/public/image/Co-Founder.jpg"
 import image3 from "@/public/image/socailcard3.jpg"
 
-interface CardProps {
-  image?: string | StaticImageData
-}
 
 const members = [
   {
@@ -28,7 +25,7 @@ const members = [
   },
 ]
 
-const SocialCards: React.FC<CardProps> = ({ image }) => {
+const SocialCards = () => {
   return (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">

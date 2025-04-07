@@ -11,7 +11,7 @@ const questions = [
   } ,
   {
     question : 'Do you accept returns ?',
-    answer: "Yes! We offer hassle-free returns within 90 days of purchase. If you're not satisfied, we're here to help with a smooth return process."
+    answer: "Yes! We offer hassle-free returns within 90 days of purchase. If you're not satisfied, were here to help with a smooth return process."
   } , 
   {
     question : "What is the delivery time ?",
@@ -19,7 +19,7 @@ const questions = [
   } ,
   {
     question : "Can I cancel my order after placing it?" ,
-    answer: "Yes, you can cancel your order via email within 12 hours of placing it. After that, if the order has been shipped, cancellation won't be possible, but you can request a return once received."
+    answer: "Yes, you can cancel your order via email within 12 hours of placing it. After that, if the order has been shipped, cancellation wont be possible, but you can request a return once received."
   } ,
   {
     question : "What should I do if I receive a wrong or damaged product ?",
@@ -157,7 +157,7 @@ const FAQSection = () => {
           <div className="order-1 lg:order-2">
             <h2 className="text-3xl font-bold mb-6 text-gray-900">Contact Information</h2>
             <p className="text-gray-600 mb-10 max-w-md">
-              We're open for any suggestion or just to have a chat. Feel free to reach out using any of the methods
+              We&apos;re open for any suggestion or just to have a chat. Feel free to reach out using any of the methods
               below.
             </p>
 

@@ -69,6 +69,7 @@ const MadeComponent = () => {
         {currentPosts.length > 0 ? (
           currentPosts.map((product: ProductsProps) => (
             <ProductCard
+            key={product._id}
             _id={product._id}
                   MainImage={product.MainImage}
                   Title={product.Title}

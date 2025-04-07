@@ -44,7 +44,7 @@ const Pickpages = () => {
     }
 
     fetchProducts()
-  }, [])
+  }, [loading])
 
   const featuredProduct = products && products.length > 0 ? products[0] : null
   const featuredProductId = featuredProduct ? featuredProduct._id : ""

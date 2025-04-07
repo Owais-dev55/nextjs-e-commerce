@@ -23,6 +23,30 @@ const VideoPage = () => {
       description: "Top Partners",
     },
   ]
+  const startCounters = () => {
+    const targetValues = details.map((detail) => getNumericValue(detail.title))
+  
+    const duration = 2000
+    const steps = 50
+    const stepTime = duration / steps
+  
+    let currentStep = 0
+  
+    const interval = setInterval(() => {
+      currentStep++
+  
+      if (currentStep <= steps) {
+        const progress = currentStep / steps
+  
+        setCounters(targetValues.map((target) => Math.floor(target * progress)))
+      } else {
+        setCounters(targetValues)
+        clearInterval(interval)
+      }
+    }, stepTime)
+  
+    return () => clearInterval(interval)
+  }
 
   const [counters, setCounters] = useState(details.map(() => 0))
   const statsRef = useRef<HTMLDivElement>(null)
@@ -57,32 +81,8 @@ const VideoPage = () => {
     return () => {
       observer.disconnect()
     }
-  }, [hasAnimated])
+  }, [hasAnimated , startCounters])
 
-  const startCounters = () => {
-    const targetValues = details.map((detail) => getNumericValue(detail.title))
-
-    const duration = 2000
-    const steps = 50
-    const stepTime = duration / steps
-
-    let currentStep = 0
-
-    const interval = setInterval(() => {
-      currentStep++
-
-      if (currentStep <= steps) {
-        const progress = currentStep / steps
-
-        setCounters(targetValues.map((target) => Math.floor(target * progress)))
-      } else {
-        setCounters(targetValues)
-        clearInterval(interval)
-      }
-    }, stepTime)
-
-    return () => clearInterval(interval)
-  }
 
   return (
     <div className="w-full bg-white">

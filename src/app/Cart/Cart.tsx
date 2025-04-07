@@ -366,7 +366,7 @@ const CartPage = () => {
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-3">Your cart is empty</h2>
             <p className="text-gray-600 mb-8 max-w-md mx-auto">
-              Looks like you haven't added any products to your cart yet.
+              Looks like you haven&apos;t added any products to your cart yet.
             </p>
             <Link href="/ProductListpage">
               <motion.button

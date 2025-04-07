@@ -17,6 +17,7 @@ const SignUp = () => {
   const firestore = getFirestore(app);
   const router = useRouter();
 
+  // Check if email already exists
   const checkEmailExists = async (email: string) => {
     try {
       setCheckingEmail(true);
@@ -30,6 +31,7 @@ const SignUp = () => {
     }
   };
 
+  // Handle email input blur to check availability
   const handleEmailBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
     const email = e.target.value;
     if (email && email.includes('@')) {
@@ -62,27 +64,22 @@ const SignUp = () => {
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      
+
       if (user) {
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
         try {
           await setDoc(doc(firestore, "users", user.uid), {
             name: fullName,
             email: email,
-            password : password ,
+            password: password,
             createdAt: new Date(),
             uid: user.uid,
-            provider: "email"
+            provider: "email",
           });
-          
+
           toast.success("User signed up successfully!", {
             position: "top-center",
           });
@@ -90,42 +87,49 @@ const SignUp = () => {
           setEmail("");
           setPassword("");
           setConfirmPassword("");
-          
           router.push("/");
         } catch (firestoreError) {
           console.error("Error saving user data:", firestoreError);
-          toast.warning("Account created but profile data couldn't be saved. Some features may be limited.", {
-            position: "top-center",
-          });
-          
+          toast.warning(
+            "Account created but profile data couldn't be saved. Some features may be limited.",
+            {
+              position: "top-center",
+            }
+          );
           router.push("/");
         }
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Sign-up error:", error);
-      
+
       let errorMessage = "Error signing up";
-      
-      switch (error.code) {
-        case 'auth/email-already-in-use':
-          errorMessage = "This email is already registered. Please sign in instead.";
-          break;
-        case 'auth/invalid-email':
-          errorMessage = "Invalid email address";
-          break;
-        case 'auth/weak-password':
-          errorMessage = "Password is too weak (minimum 6 characters)";
-          break;
-        case 'auth/network-request-failed':
-          errorMessage = "Network error. Please check your internet connection.";
-          break;
-        case 'auth/operation-not-allowed':
-          errorMessage = "Email/password accounts are not enabled. Please contact support.";
-          break;
-        default:
-          errorMessage = error.message || "Error signing up";
+
+      if (typeof error === "object" && error !== null && "code" in error) {
+        const errorCode = (error as { code: string }).code;
+
+        switch (errorCode) {
+          case "auth/email-already-in-use":
+            errorMessage = "This email is already registered. Please sign in instead.";
+            break;
+          case "auth/invalid-email":
+            errorMessage = "Invalid email address";
+            break;
+          case "auth/weak-password":
+            errorMessage = "Password is too weak (minimum 6 characters)";
+            break;
+          case "auth/network-request-failed":
+            errorMessage = "Network error. Please check your internet connection.";
+            break;
+          case "auth/operation-not-allowed":
+            errorMessage =
+              "Email/password accounts are not enabled. Please contact support.";
+            break;
+          default:
+            errorMessage =
+              (error as { message?: string }).message || "Error signing up";
+        }
       }
-      
+
       toast.error(errorMessage, {
         position: "top-center",
       });

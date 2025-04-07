@@ -11,6 +11,7 @@ import {
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import { FirebaseError } from "firebase/app";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -18,23 +19,20 @@ const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleSignIn = async (provider: string) => {
+  const handleSignIn = async (provider: "google" | "email") => {
     setLoading(true);
-    
+
     try {
       let result: UserCredential | null = null;
-      
+
       if (provider === "google") {
         result = await signInWithPopup(auth, new GoogleAuthProvider());
-  
+
         if (result.user) {
-          console.log("Google Sign-In User:", result.user);
-  
           const userRef = doc(db, "users", result.user.uid);
           const userSnap = await getDoc(userRef);
-  
+
           if (!userSnap.exists()) {
-            console.log("Saving new user to Firestore...");
             await setDoc(userRef, {
               uid: result.user.uid,
               name: result.user.displayName,
@@ -42,57 +40,43 @@ const SignIn = () => {
               provider: "google",
               createdAt: new Date(),
             });
-            console.log("User successfully stored in Firestore!");
-          } else {
-            console.log("User already exists in Firestore.");
           }
         }
       } else if (provider === "email") {
-        try {
-          result = await signInWithEmailAndPassword(auth, email, password);
-          
-          console.log("Email Sign-In User:", result.user);
-          
-          setEmail("");
-          setPassword("");
-        } catch (authError: any) {
-          console.error("Authentication error:", authError);
-          
-          if (authError.code === 'auth/user-not-found') {
-            toast.error("User does not exist. Please sign up first.", {
-              position: "top-center",
-            });
-          } else if (authError.code === 'auth/wrong-password') {
-            toast.error("Incorrect password. Please try again.", {
-              position: "top-center",
-            });
-          } else if (authError.code === 'auth/invalid-credential') {
-            toast.error("Invalid credentials. Please check your email and password.", {
-              position: "top-center",
-            });
-          } else {
-            toast.error("Failed to sign in: " + (authError.message || "Unknown error"), {
-              position: "top-center",
-            });
-          }
-          
-          setLoading(false);
-          return;
-        }
+        result = await signInWithEmailAndPassword(auth, email, password);
+        setEmail("");
+        setPassword("");
       }
-  
+
       if (result) {
         toast.success("Login successful!");
         router.push("/");
       }
-    } catch (error: any) {
-      console.error("Sign-in error:", error);
-      toast.error("Failed to sign in: " + (error.message || "Unknown error"));
+    } catch (error: unknown) {
+      let message = "Failed to sign in.";
+
+      if (error instanceof FirebaseError) {
+        switch (error.code) {
+          case "auth/user-not-found":
+            message = "User does not exist. Please sign up first.";
+            break;
+          case "auth/wrong-password":
+            message = "Incorrect password. Please try again.";
+            break;
+          case "auth/invalid-credential":
+            message = "Invalid credentials. Please check your email and password.";
+            break;
+          default:
+            message = error.message || message;
+        }
+      }
+
+      toast.error(message, { position: "top-center" });
     } finally {
       setLoading(false);
     }
   };
-  
+
   return (
     <div className="grid place-items-center min-h-screen bg-[#FFFFFF] bg-opacity-50">
       <div className="bg-[#FAFAFA] rounded-[15px] shadow-[0_10px_50px_rgba(0,0,0,0.1)] p-8 w-[400px] text-center">
@@ -113,7 +97,7 @@ const SignIn = () => {
         </div>
         <form
           className="flex flex-col"
-          onSubmit={(e) => {
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
             handleSignIn("email");
           }}
