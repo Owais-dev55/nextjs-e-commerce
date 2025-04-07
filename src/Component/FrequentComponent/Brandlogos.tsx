@@ -3,24 +3,21 @@
 import Image, { type StaticImageData } from "next/image"
 import { motion } from "framer-motion"
 
-import logo1 from "@/public/image/Brand-logo1.png"
-import logo2 from "@/public/image/Brand-logo2.png"
-import logo3 from "@/public/image/Brand-logo3.png"
-import logo4 from "@/public/image/Brand-logo4.png"
-import logo5 from "@/public/image/Brand-logo5.png"
-import logo6 from "@/public/image/Brand-logo6.png"
+import logo1 from "@/public/image/sony logo.png"
+import logo2 from "@/public/image/jbl-logo.png"
+import logo3 from "@/public/image/Beats-logo.png"
+import logo4 from "@/public/image/aurdonic logo.webp"
+import logo5 from "@/public/image/Apple-Logo.png"
+import logo6 from "@/public/image/ronin-logo.png"
 
-// Base logos
 const baseLogos = [logo1, logo2, logo3, logo4, logo5, logo6]
 
-// Function to create a shuffled array with no consecutive duplicates
 const createNonRepeatingShuffle = (logos: StaticImageData[], count: number) => {
   const result: StaticImageData[] = []
 
   while (result.length < count) {
     const shuffled = [...logos].sort(() => Math.random() - 0.5)
 
-    // Only add if it doesn't start with the last logo of the result (no duplicates together)
     if (result.length === 0 || result[result.length - 1] !== shuffled[0]) {
       result.push(...shuffled)
     }
@@ -29,7 +26,6 @@ const createNonRepeatingShuffle = (logos: StaticImageData[], count: number) => {
   return result.slice(0, count)
 }
 
-// Generate 3 full sets of non-repeating shuffled logos
 const allLogos = createNonRepeatingShuffle(baseLogos, baseLogos.length * 4)
 
 const BrandLogos = () => {
