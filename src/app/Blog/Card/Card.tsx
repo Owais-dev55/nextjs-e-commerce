@@ -1,26 +1,4 @@
-import SocialCards from "@/Component/SocialCards/SocialCards";
 import React from "react";
-import image1 from "@/public/image/socialcard4.jpg";
-import image2 from "@/public/image/socailcard5.jpg";
-import image3 from "@/public/image/socailcard6.jpg";
-import image4 from "@/public/image/socailcard3.jpg";
-import image5 from "@/public/image/socailcard7.jpg";
-import image6 from "@/public/image/socailcard1.jpg";
-import image7 from "@/public/image/socailcard2.jpg";
-import image8 from "@/public/image/socailcard8.jpg";
-import image9 from "@/public/image/socailcard9.jpg";
-
-const images = [
-  image1,
-  image2,
-  image3,
-  image4,
-  image5,
-  image6,
-  image7,
-  image8,
-  image9,
-];
 
 const Card = () => {
   return (
@@ -30,10 +8,7 @@ const Card = () => {
           Meet Our Team
         </h6>
       </div>
-      <div className="w-full h-full grid lg:grid-cols-3 grid-cols-1 justify-items-center max-w-[1200px] min-w-[414px]">
-        {images.map((image, index) => {
-          return <SocialCards image={image} key={index} />;
-        })}
+      <div className="w-full h-full grid lg:grid-cols-3 grid-cols-1 justify-items-center max-w-[1200px] min-w-[414px]">       
       </div>
     </div>
   );
