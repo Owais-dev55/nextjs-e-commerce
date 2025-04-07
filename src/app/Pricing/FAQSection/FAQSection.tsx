@@ -35,7 +35,7 @@ const FAQSection = () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">Get in Touch</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl">
-            We're here to help and answer any questions you might have. We look forward to hearing from you.
+            We`&apos;`re here to help and answer any questions you might have. We look forward to hearing from you.
           </p>
         </div>
       </div>
@@ -47,7 +47,7 @@ const FAQSection = () => {
           <div className="order-2 lg:order-1">
             <div className="bg-white border border-gray-100 rounded-xl shadow-xl p-8 md:p-10">
               <h2 className="text-3xl font-bold mb-2 text-gray-900">Send a Message</h2>
-              <p className="text-gray-600 mb-8">Fill out the form below and we'll get back to you shortly.</p>
+              <p className="text-gray-600 mb-8">Fill out the form below and we`&apos;`ll get back to you shortly.</p>
 
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

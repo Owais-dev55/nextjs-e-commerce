@@ -23,30 +23,6 @@ const VideoPage = () => {
       description: "Top Partners",
     },
   ]
-  const startCounters = () => {
-    const targetValues = details.map((detail) => getNumericValue(detail.title))
-  
-    const duration = 2000
-    const steps = 50
-    const stepTime = duration / steps
-  
-    let currentStep = 0
-  
-    const interval = setInterval(() => {
-      currentStep++
-  
-      if (currentStep <= steps) {
-        const progress = currentStep / steps
-  
-        setCounters(targetValues.map((target) => Math.floor(target * progress)))
-      } else {
-        setCounters(targetValues)
-        clearInterval(interval)
-      }
-    }, stepTime)
-  
-    return () => clearInterval(interval)
-  }
 
   const [counters, setCounters] = useState(details.map(() => 0))
   const statsRef = useRef<HTMLDivElement>(null)
@@ -62,6 +38,28 @@ const VideoPage = () => {
 
   useEffect(() => {
     if (hasAnimated) return
+
+    const startCounters = () => {
+      const targetValues = details.map((detail) => getNumericValue(detail.title))
+
+      const duration = 2000
+      const steps = 50
+      const stepTime = duration / steps
+
+      let currentStep = 0
+
+      const interval = setInterval(() => {
+        currentStep++
+
+        if (currentStep <= steps) {
+          const progress = currentStep / steps
+          setCounters(targetValues.map((target) => Math.floor(target * progress)))
+        } else {
+          setCounters(targetValues)
+          clearInterval(interval)
+        }
+      }, stepTime)
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -81,8 +79,7 @@ const VideoPage = () => {
     return () => {
       observer.disconnect()
     }
-  }, [hasAnimated , startCounters])
-
+  }, [hasAnimated])
 
   return (
     <div className="w-full bg-white">
@@ -104,21 +101,6 @@ const VideoPage = () => {
           ))}
         </div>
       </div>
-
-      {/* <div className="container mx-auto px-4 py-10 lg:py-16">
-        <div className="relative w-full max-w-[989px] mx-auto aspect-video">
-          <Image
-            src={image || "/placeholder.svg"}
-            alt="VideoImage"
-            fill
-            style={{ objectFit: "cover" }}
-            className="rounded-xl lg:rounded-3xl"
-          />
-          <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#23A6F0] w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center">
-            <i className="fa-solid fa-play text-white text-xl sm:text-2xl lg:text-3xl"></i>
-          </button>
-        </div>
-      </div> */}
 
       {/* Second part - Enhanced for all devices */}
       <div className="container mx-auto px-4 sm:px-6 md:px-8 py-10 md:py-12 lg:py-16">
@@ -144,4 +126,3 @@ const VideoPage = () => {
 }
 
 export default VideoPage
-

@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import Image, { type StaticImageData } from "next/image"
+import Image from "next/image"
 import image1 from "@/public/image/ceo-man.jpg"
 import image2 from "@/public/image/Co-Founder.jpg"
 import image3 from "@/public/image/socailcard3.jpg"
