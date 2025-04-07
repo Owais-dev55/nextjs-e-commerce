@@ -12,15 +12,13 @@ const BestsellerProduct = () => {
     const fetchProducts = async () => {
       try {
         const data:ProductsProps[] = await client.fetch(
-          `*[_type == "product" && ("modern" in tags || "elegance" in tags || "furniture" in tags)] {
+          `*[_type == "apiproduct" ] {
             _id,
-            title,
-            "imageUrl": productImage.asset->url,
-            price,
-            tags,
-            dicountPercentage,
-            description,
-            isNew
+            Title,
+            "MainImage": MainImage.asset->url,
+            OriginalPrice,
+            DiscountedPrice,
+            Category,
           }`
         );
         setProducts(data);
@@ -55,11 +53,11 @@ const BestsellerProduct = () => {
               <ProductCard
               key={product._id}
               _id={product._id}
-              imageUrl={product.imageUrl}
-              title={product.title}
-              price={product.price}
-              dicountPercentage={product.dicountPercentage}
-              category='furniture'
+              MainImage={product.MainImage}
+              Title={product.Title}
+              OriginalPrice={product.OriginalPrice}
+              DiscountedPrice={product.DiscountedPrice}
+              Category={product.Category}
             />
             ))
           ) : (

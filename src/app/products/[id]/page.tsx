@@ -2,7 +2,6 @@ import { client } from '@/sanity/lib/client';
 import Hero from '@/app/ProductPage/Hero/Hero';
 import DescriptionPage from '@/app/ProductPage/DescriptionPage/DescriptionPage';
 import React from 'react';
-import BestsellerProduct from '@/app/ProductPage/BestsellerProduct/BestsellerProduct';
 import Footer from '@/Component/Footer/Footer';
 import Brandlogos from '@/Component/FrequentComponent/Brandlogos';
 import { Metadata } from 'next';
@@ -22,12 +21,22 @@ interface ProductPageProps {
 const ProductPage = async ({ params }: ProductPageProps) => {
   try {
     const data = await client.fetch(
-      `*[_type == "product" && _id == $id][0] {
-        _id,
-        title,
-        "imageUrl": productImage.asset->url,
-        price,
-        description
+      `*[_type == "apiproduct" && _id == $id][0] {
+        _id ,
+              Title , 
+              Description , 
+              BulletPoints , 
+              DiscountedPrice ,
+              OriginalPrice,
+              "MainImage": MainImage.asset->url ,
+              "Images": Images[].asset->url ,
+              "DescriptionImages": DescriptionImages.asset->url ,
+              Category,
+              Tags,
+              Rating,
+              Reviews,
+              Stock,
+              Colors,
       }`,
       { id: params.id }
     );
@@ -37,9 +46,9 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     }
 
     return (<><Hero
-      {...data} /><DescriptionPage description={data.description} imageUrl={data.imageUrl} />
+      {...data} /><DescriptionPage Description={data.Description} DescriptionImages={data.DescriptionImages} Reviews={data.Reviews} />
       <ReviewSection   productId={data._id}/>
-      <BestsellerProduct />
+
       <Brandlogos />
       <Footer  backgroundColor='#FFFFFF'/>
       </>

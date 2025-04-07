@@ -3,13 +3,15 @@ import Link from "next/link";
 import React from "react";
 
 interface DescriptionProps {
-  imageUrl: string | StaticImageData;
-  description: string;
+  DescriptionImages: string | StaticImageData;
+  Description: string;
+  Reviews: number
 }
 
 const DescriptionPage = ({
-  imageUrl ,
-  description 
+  DescriptionImages ,
+  Description ,
+  Reviews
 }: DescriptionProps) => {
   return (
     <div className="w-full bg-white">
@@ -26,7 +28,7 @@ const DescriptionPage = ({
         <Link href="" className="mx-4">
           <h6 className="font-semibold text-sm text-[#4A4A4A]">
             Reviews
-            <span className="font-bold text-sm text-[#D8A31A] pl-2">(10)</span>
+            <span className="font-bold text-sm text-[#D8A31A] pl-2">({Reviews})</span>
           </h6>
         </Link>
       </div>
@@ -36,7 +38,7 @@ const DescriptionPage = ({
         {/* Image Section */}
         <div className="flex-shrink-0 w-full lg:w-1/2">
           <Image
-            src={imageUrl}
+            src={DescriptionImages}
             alt="description image"
             className="rounded-lg w-full h-auto"
             width={500}
@@ -47,7 +49,7 @@ const DescriptionPage = ({
         {/* Description Section */}
         <div className="flex-grow w-full lg:w-1/2">
           <p className="text-[#4A4A4A] text-base leading-6">
-            {description}
+            {Description}
           </p>
         </div>
       </div>

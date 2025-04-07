@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
 import ProductCard from "@/Component/ProductCard/ProductCard";
 import type { ProductsProps } from "@/Component/ProductCard/ProductCard";
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 4;
 
 const MadeComponent = () => {
   const [products, setProducts] = useState<ProductsProps[]>([]);
@@ -14,15 +14,22 @@ const MadeComponent = () => {
     const fetchProducts = async () => {
       try {
         const data: ProductsProps[] = await client.fetch(
-          `*[_type == "product"] {
-            _id,
-            title,
-            "imageUrl": productImage.asset->url,
-            price,
-            tags,
-            dicountPercentage,
-            description,
-            isNew
+         `*[_type == "apiproduct"] {
+          _id ,
+              Title , 
+              Description , 
+              BulletPoints , 
+              DiscountedPrice ,
+              OriginalPrice,
+              "MainImage": MainImage.asset->url ,
+              "Images": Images.asset->url ,
+              DescriptionImages,
+              Category,
+              Tags,
+              Rating,
+              Reviews,
+              Stock,
+              Colors,
           }`
         );
         setProducts(data);
@@ -62,13 +69,12 @@ const MadeComponent = () => {
         {currentPosts.length > 0 ? (
           currentPosts.map((product: ProductsProps) => (
             <ProductCard
-              key={product._id}
-              _id={product._id}
-              imageUrl={product.imageUrl}
-              title={product.title}
-              price={product.price}
-              dicountPercentage={product.dicountPercentage}
-              category="furniture"
+            _id={product._id}
+                  MainImage={product.MainImage}
+                  Title={product.Title}
+                  OriginalPrice={product.OriginalPrice}
+                  DiscountedPrice={product.DiscountedPrice}
+                  Category={product.Category}
             />
           ))
         ) : (

@@ -4,7 +4,6 @@ import EditorPick from "../Component/Editor/EditorPick";
 import Bestseller from "@/Component/Bestseller/Bestseller";
 import Footer from "@/Component/Footer/Footer";
 import Pickpages from "@/Component/Pickpages/Pickpages";
-import FeaturedProducts from "@/Component/FeaturedProducts/FeaturedProducts";
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
     <EditorPick/>
     <Bestseller/>
     <Pickpages/>
-    <FeaturedProducts/>
     <Footer backgroundColor="#FAFAFA"/>
     </div>
   );

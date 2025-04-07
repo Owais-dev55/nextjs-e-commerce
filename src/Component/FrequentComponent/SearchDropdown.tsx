@@ -7,8 +7,8 @@ import { client } from "@/sanity/lib/client";
 
 interface Product {
   _id: string;
-  title: string;
-  imageUrl: string;
+  Title: string;
+  MainImage: string;
   price: number;
 }
 
@@ -22,11 +22,11 @@ const SearchDropdown = () => {
     setIsLoading(true);
     try {
       const data = await client.fetch<Product[]>(
-        `*[_type == "product" && title match $searchTerm] {
+        `*[_type == "apiproduct" && Title match $searchTerm] {
           _id,
-          title,
-          "imageUrl": productImage.asset->url,
-          price
+          Title,
+          "MainImage": MainImage.asset->url,
+          OriginalPrice
         }`,
         { searchTerm: `*${value}*` }
       );
@@ -64,7 +64,7 @@ const SearchDropdown = () => {
   }, []);
 
   return (
-    <div className="relative w-[340px]" ref={dropdownRef}>
+    <div className="relative w-[340px] z-20" ref={dropdownRef}>
       {/* Search Input */}
       <input
         className="w-full pl-4 pr-10 py-2 rounded-full border border-[#2C2F36] bg-[#1F2937] text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#E5E7EB] transition-all placeholder-gray-400"
@@ -91,14 +91,14 @@ const SearchDropdown = () => {
             >
               <div className="flex items-center gap-4 py-2 px-4 border-b border-[#2C2F36] cursor-pointer hover:bg-[#374151] transition-all">
                 <Image
-                  src={item.imageUrl}
-                  alt={item.title}
+                  src={item.MainImage}
+                  alt={item.Title}
                   width={40}
                   height={40}
                   className="w-10 h-10 object-cover rounded-md"
                 />
                 <p className="text-gray-300 font-medium text-sm truncate">
-                  {item.title}
+                  {item.Title.substring(0 , 100)}
                 </p>
               </div>
             </Link>

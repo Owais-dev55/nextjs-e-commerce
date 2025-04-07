@@ -23,14 +23,11 @@ const Navbar = () => {
     { href: "/", label: "Home" },
     { href: "/ProductListpage", label: "Shop" },
     { href: "/About", label: "About" },
-    { href: "/Blog", label: "Blog" },
     { href: "/Contact", label: "Contact" },
   ]
 
-  // Check if the device is a tablet (iPad Mini or iPad Air)
   useEffect(() => {
     const checkTablet = () => {
-      // iPad Mini and iPad Air typically have widths between 768px and 1024px
       const width = window.innerWidth
       setIsTablet(width >= 768 && width <= 1024)
     }
@@ -61,18 +58,13 @@ const Navbar = () => {
 
   return (
     <nav className="w-full bg-[#111827] bg-opacity-95 backdrop-blur-md shadow-lg border-b border-[#2C2F36] text-white font-[Inter] z-50">
-      {/* Main navbar container */}
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <Link href={"/"}>
-          <div className="text-xl sm:text-2xl font-semibold tracking-wide text-[#E5E7EB] uppercase">VogueAura</div>
+          <div className="text-xl sm:text-2xl font-semibold tracking-wide text-[#E5E7EB] font-[Montserrat]">Pakbeats</div>
         </Link>
-
-        {/* Search bar - hidden on mobile, visible on desktop */}
         <div className={`${isTablet || isOpen ? "hidden" : "hidden xl:flex"} flex-grow justify-center max-w-md mx-4`}>
           <SearchDropdown />
         </div>
-
-        {/* Navigation links - hidden on mobile and tablet, visible on desktop */}
         <ul className="hidden xl:flex space-x-8 text-[15px]">
           {navLinks.map((link) => (
             <li key={link.href}>
@@ -117,7 +109,7 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <Link href="/signin" className="text-[#E5E7EB] hover:text-gray-300 text-sm transition-all">
+            <Link href="/signIn" className="text-[#E5E7EB] hover:text-gray-300 text-sm transition-all">
               Login
             </Link>
           )}
@@ -193,7 +185,7 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="mt-6 text-center">
-              <Link href="/signin" className="text-[#E5E7EB] hover:text-gray-300 text-sm transition-all">
+              <Link href="/signIn" className="text-[#E5E7EB] hover:text-gray-300 text-sm transition-all">
                 Login
               </Link>
             </div>

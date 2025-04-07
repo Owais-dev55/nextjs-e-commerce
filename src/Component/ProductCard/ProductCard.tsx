@@ -1,79 +1,103 @@
-import React from "react";
-import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
+"use client"
+import Image, { type StaticImageData } from "next/image"
+import Link from "next/link"
 
 export interface ProductsProps {
-  price: string | number;
-  _id: string | number;
-  title: string;
-  imageUrl: string | StaticImageData;
-  category: string;
-  dicountPercentage: number | string | undefined;
-  onclick?: () => void;
+  OriginalPrice: string | number
+  _id: string | number
+  Title: string
+  MainImage: string | StaticImageData
+  Category: string
+  DiscountedPrice: number | string | undefined
+  isNew?: boolean
+  isSale?: boolean
+  rating?: number
+  onclick?: () => void
 }
 
 const ProductCard = ({
-  imageUrl,
+  MainImage,
   _id,
-  title,
-  price,
-  dicountPercentage,
-  category,
+  Title,
+  OriginalPrice,
+  DiscountedPrice,
+  Category,
+  isSale = false,
+  rating = 4.5,
   onclick,
 }: ProductsProps) => {
   return (
-    <div
-      key={_id}
-      onClick={onclick}
-      className="w-full max-w-[260px] mx-auto flex justify-center items-center mt-4 transition-transform transform hover:scale-[1.02]"
-    >
-      <div className="relative flex flex-col h-auto w-full border border-[#DDD] rounded-2xl bg-white text-[#333] shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
-        {/* Image Section */}
-        <div className="relative w-full pb-[110%] overflow-hidden rounded-t-2xl">
+    <div key={_id} onClick={onclick} className="w-full max-w-[390px] mx-auto group relative">
+      <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <button className="w-9 h-9 rounded-full shadow-md bg-white/90 hover:bg-white flex items-center justify-center transition-colors">
+          <i className="text-gray-600 hover:text-rose-500 transition-colors">♥</i>
+        </button>
+      </div>
+
+      <div className="relative flex flex-col h-full w-full rounded-xl bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
+        {/* Badges */}
+        <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
+          
+          {isSale && DiscountedPrice && (
+            <span className="px-2 py-1 text-xs font-medium rounded-md bg-rose-500 text-white">Sale</span>
+          )}
+        </div>
+
+
+        <div className="relative w-full h-64 overflow-hidden">
           <Link href={`/products/${_id}`}>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent z-0"></div>
             <Image
-              src={imageUrl}
-              alt="Product"
-              className="absolute inset-0 h-full w-full object-cover transition-all duration-500 hover:scale-105"
+              src={MainImage || "/placeholder.svg"}
+              alt={Title}
               fill
+              className="object-cover transition-all duration-500 group-hover:scale-105"
             />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
           </Link>
         </div>
 
+        <div className="absolute bottom-[6.5rem] left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+          <button className="px-4 py-2 bg-white text-gray-800 hover:bg-gray-100 shadow-md rounded-md flex items-center">
+            <i className="mr-2">🛒</i>
+            <span className="text-sm font-medium">Quick Add</span>
+          </button>
+        </div>
+
         {/* Product Details */}
-        <div className="flex-grow flex flex-col justify-center items-center gap-2 p-3">
-          {/* Title */}
-          <h5 className="text-[#252B42] font-medium text-sm tracking-wide">
-            {title}
-          </h5>
+        <div className="flex-grow flex flex-col p-5 gap-3">
+          <div className="flex justify-between items-start">
+            <Link
+              href="#"
+              className="text-blue-600 font-medium text-xs uppercase tracking-wider hover:text-blue-700 transition-colors"
+            >
+              {Category}
+            </Link>
 
-          {/* Category */}
-          <Link href="#" className="text-[#888] font-light text-[10px] uppercase tracking-widest">
-            {category}
-          </Link>
-
-          {/* Pricing */}
-          <div className="flex gap-2 items-center justify-center w-full">
-            {dicountPercentage && (
-              <h5 className="text-[#AAA] text-xs font-light line-through">
-                ${dicountPercentage}
-              </h5>
-            )}
-            <h5 className="font-semibold text-[#252B42] text-lg tracking-wide">
-              ${price}
-            </h5>
+            {/* Star Rating */}
+            <div className="flex items-center gap-1">
+              <i className="text-amber-400">★</i>
+              <span className="text-xs font-medium text-gray-600">{rating}</span>
+            </div>
           </div>
 
-          {/* Color Options */}
-          <div className="flex gap-2 justify-center w-full mt-1">
-            <div className="w-3.5 h-3.5 rounded-full bg-[#1B263B] border border-[#AAA] hover:ring-2 hover:ring-[#AAA] cursor-pointer"></div>
-            <div className="w-3.5 h-3.5 rounded-full bg-[#495057] border border-[#AAA] hover:ring-2 hover:ring-[#AAA] cursor-pointer"></div>
-            <div className="w-3.5 h-3.5 rounded-full bg-[#ADB5BD] border border-[#AAA] hover:ring-2 hover:ring-[#AAA] cursor-pointer"></div>
+          <Link href={`/products/${_id}`} className="group-hover:text-blue-600 transition-colors">
+            <h3 className="text-gray-800 font-medium text-base tracking-wide line-clamp-2 h-12">{Title}</h3>
+          </Link>
+
+          <div className="flex items-baseline mt-auto">
+            {DiscountedPrice && (
+              <span className="text-gray-400 text-sm font-normal line-through mr-2">PKR{DiscountedPrice}</span>
+            )}
+            <span className={`font-semibold text-lg ${DiscountedPrice ? "text-rose-600" : "text-gray-800"}`}>
+              PKR{OriginalPrice}
+            </span>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductCard
+

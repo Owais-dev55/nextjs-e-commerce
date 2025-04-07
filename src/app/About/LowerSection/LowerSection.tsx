@@ -13,8 +13,6 @@ const LowerSection = () => {
               Big Companies Are Here
             </h2>
             <p className="font-normal tracking-[0.2px] text-sm leading-5 lg:w-[469px] w-[313px] mx-auto h-10 mt-2 text-[#737373] pt-5">
-              Problems trying to resolve the conflict between the two major
-              realms of Classical physics: Newtonian mechanics
             </p>
           </div>
         </div>

@@ -12,15 +12,23 @@ export default function BestSeller() {
     const fetchProducts = async () => {
       try {
         const products: ProductsProps[] = await client.fetch(
-          `*[_type == "product" && ("modern" in tags  || "furniture" in tags)] {
-            _id,
-            title,
-            "imageUrl": productImage.asset->url,
-            price,
-            tags,
-            dicountPercentage,
-            description,
-            isNew
+          `*[_type == "apiproduct" && 
+   ("Featured Products" in Tags)] {
+          _id ,
+              Title , 
+              Description , 
+              BulletPoints , 
+              DiscountedPrice ,
+              OriginalPrice,
+              "MainImage": MainImage.asset->url ,
+              "Images": Images.asset->url ,
+              DescriptionImages,
+              Category,
+              Tags,
+              Rating,
+              Reviews,
+              Stock,
+              Colors,
           }`
         );
         setProducts(products);
@@ -54,18 +62,18 @@ export default function BestSeller() {
         </p>
       </div>
 
-      <div className="min-h-screen lg:min-h-0 lg:h-[215px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 h-full">
+      <div className=" lg:min-h-0 lg:h-[215px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 h-full">
           {products.length > 0 ? (
             products.map((product: ProductsProps) => (
               <div key={product._id} className="relative h-full">
                 <ProductCard
                   _id={product._id}
-                  imageUrl={product.imageUrl}
-                  title={product.title}
-                  price={product.price}
-                  dicountPercentage={product.dicountPercentage}
-                  category="furniture"
+                  MainImage={product.MainImage}
+                  Title={product.Title}
+                  OriginalPrice={product.OriginalPrice}
+                  DiscountedPrice={product.DiscountedPrice}
+                  Category={product.Category}
                 />
               </div>
             ))

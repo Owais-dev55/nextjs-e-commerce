@@ -11,7 +11,7 @@ const Hero = () => {
             <h5 className="font-bold text-base tracking-[0.1px] leading-6">ABOUT COMPANY</h5>
             <h1 className="font-bold text-4xl tracking-[0.2px] leading-tight mt-6">ABOUT US</h1>
             <h5 className="font-normal text-lg tracking-[0.2px] leading-8 text-[#4A4A4A] mt-8 max-w-[346px] mx-auto">
-              We know how large objects will act, but things on a small scale
+              Power up your day, tune into your passion, and move forward without limits—because nothing should hold you back
             </h5>
             <div className="mt-12">
               <button className="w-[195px] h-[52px] py-4 px-10 rounded-md bg-[#0E3A5D]">
@@ -34,7 +34,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Desktop Layout - Fixed */}
+        {/* Desktop Layout */}
         <div className="hidden lg:block relative">
           <div className="container mx-auto  px-4 xl:px-0 py-[100px] flex flex-wrap">
             <div className="w-full lg:w-1/2 pr-4">
@@ -42,7 +42,7 @@ const Hero = () => {
                 <h5 className="font-bold text-xl tracking-[0.1px] leading-6">ABOUT COMPANY</h5>
                 <h1 className="font-bold text-[58px] tracking-[0.2px] leading-[80px] pt-7">ABOUT US</h1>
                 <h5 className="font-normal text-xl tracking-[0.2px] leading-8 max-w-[346px] text-[#4A4A4A] pt-10">
-                  We know how large objects will act, but things on a small scale
+                Power up your day, tune into your passion, and move forward without limits—because nothing should hold you back
                 </h5>
                 <div className="pt-10">
                   <button className="w-[195px] h-[52px] py-4 px-10 rounded-md bg-[#0E3A5D] flex justify-center items-center gap-2">
@@ -78,11 +78,10 @@ const Hero = () => {
         <div className="block lg:hidden text-center py-8">
           <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#E74040] mb-5">Problems trying</p>
           <h2 className="font-bold text-xl leading-8 tracking-[0.1px] text-[#1A1A1A] mb-6 w-[321px] mx-auto">
-            Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
+          Unleashing Freedom with Seamless Sound & Power.
           </h2>
           <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#737373] w-[321px] mx-auto">
-            Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian
-            mechanics
+          We provide high-quality wireless audio and long-lasting power solutions to keep you connected without limits. No more low battery or tangled wires—just uninterrupted sound and power wherever you go.
           </p>
         </div>
         {/* Desktop Layout - Fixed */}
@@ -91,13 +90,12 @@ const Hero = () => {
             <div className="w-full lg:w-1/2 pr-4">
               <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#E74040] pb-5">Problems trying</p>
               <h2 className="font-bold text-2xl leading-8 tracking-[0.1px] text-[#1A1A1A] max-w-[394px]">
-                Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
+              Unleashing Freedom with Seamless Sound & Power.
               </h2>
             </div>
             <div className="w-full lg:w-1/2 flex items-center">
               <p className="font-normal text-sm leading-5 tracking-[0.2px] text-[#4A4A4A] max-w-[500px]">
-                Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian
-                mechanics
+                We provide high-quality wireless audio and long-lasting power solutions to keep you connected without limits. No more low battery or tangled wires—just uninterrupted sound and power wherever you go.
               </p>
             </div>
           </div>

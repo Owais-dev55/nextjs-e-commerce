@@ -11,15 +11,14 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         const data:ProductsProps[] = await client.fetch(
-          `*[_type == "product" ] {
+          `*[_type == "apiproduct" ] {
             _id,
-            title,
-            "imageUrl": productImage.asset->url,
-            price,
+            Title,
+            "MainImage": MainImage.asset->url,
+            OriginalPrice,
             tags,
-            dicountPercentage,
-            description,
-            isNew
+            DsicountedPercentage,
+            Description,
           }`
         );
         setProducts(data);
@@ -46,18 +45,18 @@ const Products = () => {
         {products.map((product) => (
           <div key={product._id} className="bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="relative h-48">
-              <Image src={product.imageUrl || "/placeholder.svg"} alt={product.title} layout="fill" objectFit="cover" />
-              {product. dicountPercentage && (
+              <Image src={product.MainImage || "/placeholder.svg"} alt={product.Title} layout="fill" objectFit="cover" />
+              {product. DiscountedPrice && (
                 <div className="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 m-2 rounded-md text-sm font-bold">
-                  {product. dicountPercentage}% OFF
+                  {product. DiscountedPrice}% OFF
                 </div>
               )}
             </div>
             <div className="p-4">
-              <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
+              <h2 className="text-xl font-semibold mb-2">{product.Title.substring(0 , 50)}</h2>
               
               <div className="flex justify-between items-center">
-                <span className="text-xl font-bold">${typeof product.price === 'number' ? product.price.toFixed(2) : parseFloat(product.price).toFixed(2)}</span>
+                <span className="text-xl font-bold">${typeof product.OriginalPrice === 'number' ? product.OriginalPrice.toFixed(2) : parseFloat(product.OriginalPrice).toFixed(2)}</span>
                 
               </div>
             </div>

@@ -1,14 +1,29 @@
 import Image from "next/image"
 import React from "react"
-import image1 from "@/public/image/herocard1.jpg"
-import image2 from "@/public/image/heroimage.jpeg"
-import image3 from "@/public/image/herocard2.jpg"
-import image4 from "@/public/image/herocard3.jpg"
-import image5 from "@/public/image/herocard4.jpg"
-import Category from "./Category"
+import image1 from "@/public/image/airpods-shop.jpg"
+import image2 from "@/public/image/earbuds.jpg"
+import image3 from "@/public/image/power-bank.jpg"
 
 const Hero = () => {
-  const images = [image1, image2, image3, image4, image5]
+  const images = [
+    {
+      _id: 1,
+      title: "Airpods",
+      items: '3 items',
+      image: image1
+    }, 
+    {
+      _id: 2, 
+      title: "Earbuds",
+      items: '2 items',
+      image: image2
+    }, {
+      _id: 3,
+      title: "PowerBanks",
+      items: '1 items',
+      image: image3
+    }
+  ]
 
   return (
     <main className="w-full">
@@ -27,15 +42,15 @@ const Hero = () => {
 
       <div className="bg-[#FAFAFA] w-full px-4 lg:px-20 py-6">
         <div className="flex flex-col sm:flex-row flex-wrap">
-          {images.map((image, index) => (
-            <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2">
+          {images.map((item, index) => (
+            <div key={item._id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-2">
               <div className="relative aspect-[1.5/1]">
                 <div className="absolute inset-0 z-20 text-white flex justify-center items-center flex-col">
-                  <h5 className="font-bold text-base leading-6 tracking-wider">CLOTHS</h5>
-                  <h5 className="font-normal text-sm leading-6 tracking-[0.2px]">5 Items</h5>
+                  <h5 className="font-bold text-base leading-6 tracking-wider">{item.title}</h5>
+                  <h5 className="font-normal text-sm leading-6 tracking-[0.2px]">{item.items}</h5>
                 </div>
                 <Image
-                  src={image || "/placeholder.svg"}
+                  src={item.image || "/placeholder.svg"}
                   alt={`product${index}`}
                   layout="fill"
                   style={{objectFit: 'cover'}}
@@ -46,7 +61,6 @@ const Hero = () => {
           ))}
         </div>
       </div>
-      <Category />
     </main>
   )
 }

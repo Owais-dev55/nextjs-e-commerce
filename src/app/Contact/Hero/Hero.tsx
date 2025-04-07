@@ -23,18 +23,16 @@ const Hero = () => {
             {/* Description */}
             <div className="mb-6 text-center md:text-left">
               <p className="max-w-xs md:max-w-sm mx-auto md:mx-0 font-normal text-lg md:text-xl leading-8 text-[#4A4A4A] tracking-[0.2px]">
-                We know how large objects will act, but things on a small scale
+              Have questions? Need support? We’re here to keep you powered and connected—because every great experience starts with seamless communication.
               </p>
             </div>
 
             {/* Contact Information */}
             <div className="w-full max-w-md text-center md:text-left mb-6">
               <h3 className="font-bold text-xl md:text-2xl tracking-[0.1px] leading-8 text-[#1A1A1A]">
-                Phone ; +451 215 215
+                Phone ; +92 333 238 6556
               </h3>
-              <h3 className="font-bold text-xl md:text-2xl pt-2 tracking-[0.1px] leading-8 text-[#1A1A1A]">
-                Fax : +451 215 215
-              </h3>
+              
             </div>
 
             {/* Social Media Icons */}
@@ -53,7 +51,7 @@ const Hero = () => {
                 src={image || "/placeholder.svg"}
                 alt="Contact Hero Image"
                 className="object-cover w-full h-full"
-                priority
+                priority  
               />
             </div>
           </div>

@@ -12,7 +12,6 @@ import { CartContext } from "@/Utilities/Context";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/ProductListpage", label: "Product" },
-  { href: "/Pricing", label: "Pricing" },
   { href: "/Contact", label: "Contact" },
 ];
 

@@ -24,7 +24,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        router.replace("/LoginForm");
+        router.replace("/signIn");
         return;
       }
 
