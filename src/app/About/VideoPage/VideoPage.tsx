@@ -79,7 +79,7 @@ const VideoPage = () => {
     return () => {
       observer.disconnect()
     }
-  }, [hasAnimated , details])
+  })
 
   return (
     <div className="w-full bg-white">
