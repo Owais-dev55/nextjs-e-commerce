@@ -48,7 +48,7 @@ const Navbar = () => {
           href="/"
           className="text-2xl font-semibold tracking-wide text-[#E5E7EB] uppercase"
         >
-          VogueAura
+          Pakbeats
         </Link>
 
         {/* Navigation Links (Desktop) */}
