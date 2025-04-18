@@ -38,7 +38,7 @@ const BrandLogos = () => {
             initial={{ x: 0 }}
             animate={{ x: "-50%" }}
             transition={{
-              duration: 30,
+              duration: 15,
               ease: "linear",
               repeat: Number.POSITIVE_INFINITY,
             }}

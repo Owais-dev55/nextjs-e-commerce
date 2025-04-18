@@ -92,7 +92,7 @@ export default function Hero() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black -z-10">
+    <div className="relative min-h-screen overflow-hidden bg-black ">
       {/* Particle background */}
       <canvas id="particle-canvas" className="absolute inset-0 z-0"></canvas>
 
@@ -147,7 +147,7 @@ export default function Hero() {
         <div
           className={`flex flex-col sm:flex-row gap-4 mb-16 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
-          <Link href="/shop">
+          <Link href="/ProductListpage">
             <button
               className="px-8 py-4 bg-navy-800 hover:bg-navy-700 text-white font-bold rounded-lg shadow-lg hover:shadow-navy-500/50 transform hover:-translate-y-1 transition-all duration-300"
               style={{ boxShadow: "0 10px 25px -5px rgba(0, 30, 60, 0.5)" }}
@@ -155,7 +155,7 @@ export default function Hero() {
               Shop Collection
             </button>
           </Link>
-          <Link href="/learn-more">
+          <Link href="terms-of-services">
             <button className="px-8 py-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-bold rounded-lg border border-white/20 transform hover:-translate-y-1 transition-all duration-300">
               Watch Demo <i className="ml-2">▶</i>
             </button>

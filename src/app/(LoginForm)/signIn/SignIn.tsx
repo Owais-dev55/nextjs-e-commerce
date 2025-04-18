@@ -24,7 +24,7 @@ const SignIn = () => {
 
     try {
       let result: UserCredential | null = null;
-
+      let isFirstTimeLogin = false;
       if (provider === "google") {
         result = await signInWithPopup(auth, new GoogleAuthProvider());
 
@@ -33,6 +33,7 @@ const SignIn = () => {
           const userSnap = await getDoc(userRef);
 
           if (!userSnap.exists()) {
+            isFirstTimeLogin = true;
             await setDoc(userRef, {
               uid: result.user.uid,
               name: result.user.displayName,
@@ -46,6 +47,23 @@ const SignIn = () => {
         result = await signInWithEmailAndPassword(auth, email, password);
         setEmail("");
         setPassword("");
+        if(result?.user){
+          const user = result.user;
+          isFirstTimeLogin = user.metadata.creationTime === user.metadata.lastSignInTime;
+        }
+      }
+      if(result?.user && isFirstTimeLogin){
+        await fetch('/api/email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: result.user.email,
+            name: result.user.displayName || "User",
+            uid: result.user.uid,
+          }),
+        })
       }
 
       if (result) {
@@ -103,33 +121,35 @@ const SignIn = () => {
           }}
         >
           <div className="flex items-center border-b border-[#e0e0e0] mb-5 py-2.5 relative focus-within:border-[#23A6F0]">
-            <label className="hidden">Email</label>
-            <input
-              type="email"
-              className="w-full pl-8 pr-3 py-2 bg-transparent text-[#737373] text-base outline-none"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <span>
-              <i className="fa-solid fa-envelope absolute left-2.5 text-[#737373] text-base"></i>
-            </span>
-          </div>
-          <div className="flex items-center border-b border-[#e0e0e0] mb-5 py-2.5 relative focus-within:border-[#23A6F0]">
-            <label className="hidden">Password</label>
-            <input
-              type="password"
-              className="w-full pl-8 pr-3 py-2 bg-transparent text-[#737373] text-base outline-none"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <span>
-              <i className="fa-solid fa-lock absolute left-2.5 text-[#737373] text-base"></i>
-            </span>
-          </div>
+  <label className="hidden">Email</label>
+  <span className="absolute left-2.5 inset-y-0 flex items-center">
+    <i className="fa-solid fa-envelope text-[#737373] text-base"></i>
+  </span>
+  <input
+    type="email"
+    className="w-full pl-8 pr-3 py-2 bg-transparent text-[#737373] text-base outline-none"
+    placeholder="Enter your email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    required
+  />
+</div>
+
+<div className="flex items-center border-b border-[#e0e0e0] mb-5 py-2.5 relative focus-within:border-[#23A6F0]">
+  <label className="hidden">Password</label>
+  <span className="absolute left-2.5 inset-y-0 flex items-center">
+    <i className="fa-solid fa-lock text-[#737373] text-base"></i>
+  </span>
+  <input
+    type="password"
+    className="w-full pl-8 pr-3 py-2 bg-transparent text-[#737373] text-base outline-none"
+    placeholder="Enter your password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    required
+  />
+</div>
+
           <button
             type="submit"
             className="bg-[#23A6F0] text-white border-none rounded-[25px] py-3 text-base font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#1E95D6] hover:-translate-y-0.5 w-full mt-2.5 flex items-center justify-center"
@@ -174,7 +194,7 @@ const SignIn = () => {
           </Link>
         </p>
       </div>
-    </div>
+    </div>  
   );
 };
 

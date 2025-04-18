@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import image from "@/public/image/Adobe Express - file.png"
 import image2 from "@/public/image/decription airpods.webp"
 import Link from "next/link"
 import { client } from "@/sanity/lib/client"
@@ -51,65 +50,7 @@ const Pickpages = () => {
 
   return (
     <div className="w-full overflow-x-hidden">
-      {/* First Section - Blue Background */}
-      <div className="w-full max-w-[1440px] text-white h-auto mx-auto mt-[120px] sm:mt-[150px] md:mt-[200px] lg:mt-[370px] font-montserrat bg-[#0E3A5D] relative">
-        {/* Mobile & Tablet Layout */}
-        <div className="block lg:hidden px-4 sm:px-8 py-8 sm:py-10 md:py-12 text-center">
-          <h4 className="font-normal text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 tracking-[0.2px]">Summer 2025</h4>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 tracking-[0.2px] w-[262px] sm:w-[350px] md:w-[450px] mx-auto">
-            Vita Classic Product
-          </h1>
-          <p className="text-sm sm:text-base md:text-lg mb-4 tracking-[0.2px] px-4 w-[262px] sm:w-[350px] md:w-[450px] mx-auto">
-            Immerse in Pure Sound: Every Beat Tells a Story.
-          </p>
-          <div className="flex flex-col items-center gap-4 mb-8 sm:mb-10 md:mb-12">
-            <h3 className="font-bold text-xl sm:text-2xl md:text-3xl tracking-[0.1px]">
-              {featuredProduct && featuredProduct.DiscountedPrice ? `PKR${featuredProduct.DiscountedPrice}` : "16.48"}
-            </h3>
-          </div>
-          <div className="w-full sm:w-[80%] md:w-[70%] aspect-[3/4] sm:aspect-[4/5] relative mb-8 mx-auto">
-            <Image
-              src={image || "/placeholder.svg"}
-              alt="Vita Classic Product"
-              className="object-contain bg-transparent"
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1024px) 70vw"
-            />
-          </div>
-        </div>
-
-        {/* Desktop Layout */}
-        <div className="hidden lg:flex items-center justify-between px-8 xl:px-16 py-12">
-          {/* Left Side - Text Content */}
-          <div className="max-w-[500px] xl:max-w-[600px]">
-            <h4 className="font-normal text-xl xl:text-2xl mb-4 xl:mb-6 tracking-[0.2px]">Summer 2025</h4>
-            <h1 className="text-5xl xl:text-6xl font-bold mb-4 xl:mb-6 leading-tight tracking-[0.2px]">
-              Vita Classic Product
-            </h1>
-            <p className="font-normal text-lg xl:text-xl mb-4 xl:mb-6 tracking-[0.4px]">
-              Immerse in Pure Sound: Every Beat Tells a Story.
-            </p>
-            <div className="flex items-center gap-6">
-              <h3 className="font-bold text-xl xl:text-2xl tracking-[0.1px]">
-                {featuredProduct && featuredProduct.DiscountedPrice
-                  ? `PKR: ${featuredProduct.DiscountedPrice}`
-                  : "16.48"}
-              </h3>
-            </div>
-          </div>
-          {/* Right Side - Product Image */}
-          <div className="w-[400px] xl:w-[543px] h-[500px] xl:h-[650px] relative">
-            <Image
-              src={image || "/placeholder.svg"}
-              alt="Vita Classic Product"
-              className="object-contain w-full h-full"
-              width={543}
-              height={650}
-            />
-          </div>
-        </div>
-      </div>
-
+  
       {/* Second Section */}
       <div className="w-full max-w-[1440px] h-auto mx-auto">
         {/* Mobile & Small Tablet layout */}

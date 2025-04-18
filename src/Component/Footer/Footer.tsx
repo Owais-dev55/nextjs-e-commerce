@@ -112,7 +112,7 @@ const Footer = ({ backgroundColor }: bgcolor) => {
 
         <div className="bg-[#FAFAFA] py-4">
           <div className="max-w-7xl mx-auto text-center text-[#4A4A4A] text-sm font-medium px-4">
-            <p className="text-gray-600 mb-6 md:mb-0">© {new Date().getFullYear()} Pakbeats. All rights reserved.</p>
+            <p className="text-gray-600 mb-6 md:mb-0">© {new Date().getFullYear()} Pakbeats. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
       </div>

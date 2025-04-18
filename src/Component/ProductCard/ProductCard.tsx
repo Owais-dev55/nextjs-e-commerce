@@ -1,18 +1,21 @@
-"use client"
-import Image, { type StaticImageData } from "next/image"
-import Link from "next/link"
+"use client";
+import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
+import AddtoCart from "../FrequentComponent/AddtoCart";
+import AddtoWishList from "../FrequentComponent/AddtoWishList";
 
 export interface ProductsProps {
-  OriginalPrice: string | number
-  _id: string | number
-  Title: string
-  MainImage: string | StaticImageData
-  Category: string
-  DiscountedPrice: number | string | undefined
-  isNew?: boolean
-  isSale?: boolean
-  rating?: number
-  onclick?: () => void
+  OriginalPrice: string | number;
+  _id: string | number;
+  Title: string;
+  MainImage: string | StaticImageData;
+  Category: string;
+  DiscountedPrice: number | string | undefined;
+  isNew?: boolean;
+  isSale?: boolean;
+  rating?: number;
+  Description?: string;
+  onclick?: () => void;
 }
 
 const ProductCard = ({
@@ -27,22 +30,30 @@ const ProductCard = ({
   onclick,
 }: ProductsProps) => {
   return (
-    <div key={_id} onClick={onclick} className="w-full max-w-[390px] mx-auto group relative">
+    <div
+      key={_id}
+      onClick={onclick}
+      className="w-full max-w-[390px] mx-auto group relative"
+    >
       <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <button className="w-9 h-9 rounded-full shadow-md bg-white/90 hover:bg-white flex items-center justify-center transition-colors">
-          <i className="text-gray-600 hover:text-rose-500 transition-colors">♥</i>
-        </button>
+        <AddtoWishList 
+      _id={String(_id)}
+      imageUrl={MainImage}
+      price={Number(DiscountedPrice || OriginalPrice)}
+      title={Title}
+      key={_id}
+        />
       </div>
 
       <div className="relative flex flex-col h-full w-full rounded-xl bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
         {/* Badges */}
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
-          
           {isSale && DiscountedPrice && (
-            <span className="px-2 py-1 text-xs font-medium rounded-md bg-rose-500 text-white">Sale</span>
+            <span className="px-2 py-1 text-xs font-medium rounded-md bg-rose-500 text-white">
+              Sale
+            </span>
           )}
         </div>
-
 
         <div className="relative w-full h-64 overflow-hidden">
           <Link href={`/products/${_id}`}>
@@ -58,10 +69,14 @@ const ProductCard = ({
         </div>
 
         <div className="absolute bottom-[6.5rem] left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-          <button className="px-4 py-2 bg-white text-gray-800 hover:bg-gray-100 shadow-md rounded-md flex items-center">
-            <i className="mr-2">🛒</i>
-            <span className="text-sm font-medium">Quick Add</span>
-          </button>
+          <AddtoCart
+            _id={String(_id)}
+            imageUrl={MainImage}
+            price={Number(DiscountedPrice || OriginalPrice)}
+            title={Title}
+            quantity={1}
+            key={_id}
+          />
         </div>
 
         {/* Product Details */}
@@ -77,27 +92,37 @@ const ProductCard = ({
             {/* Star Rating */}
             <div className="flex items-center gap-1">
               <i className="text-amber-400">★</i>
-              <span className="text-xs font-medium text-gray-600">{rating}</span>
+              <span className="text-xs font-medium text-gray-600">
+                {rating}
+              </span>
             </div>
           </div>
 
-          <Link href={`/products/${_id}`} className="group-hover:text-blue-600 transition-colors">
-            <h3 className="text-gray-800 font-medium text-base tracking-wide line-clamp-2 h-12">{Title}</h3>
+          <Link
+            href={`/products/${_id}`}
+            className="group-hover:text-blue-600 transition-colors"
+          >
+            <h3 className="text-gray-800 font-medium text-base tracking-wide line-clamp-2 h-12">
+              {Title}
+            </h3>
           </Link>
 
           <div className="flex items-baseline mt-auto">
             {DiscountedPrice && (
-              <span className="text-gray-400 text-sm font-normal line-through mr-2">PKR{DiscountedPrice}</span>
+              <span className="text-gray-400 text-sm font-normal line-through mr-2">
+                PKR{DiscountedPrice}
+              </span>
             )}
-            <span className={`font-semibold text-lg ${DiscountedPrice ? "text-rose-600" : "text-gray-800"}`}>
+            <span
+              className={`font-semibold text-lg ${DiscountedPrice ? "text-rose-600" : "text-gray-800"}`}
+            >
               PKR{OriginalPrice}
             </span>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
-
+export default ProductCard;

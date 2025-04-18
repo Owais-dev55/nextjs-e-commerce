@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { CartContext , Products } from "@/Utilities/Context";
-import { SessionProvider } from "next-auth/react";
 
 import { Elements } from '@stripe/react-stripe-js';
 import { stripePromise } from '@/Utilities/stripe'; 
@@ -58,7 +57,6 @@ export default function RootLayoutClient({
   
   return (
     <CartContext.Provider value={{ count, setCount , cartItems , setCartItems  , wishlitItems , setWishlitItems , clearCart }}>
-      <SessionProvider >    
       <ToastContainer
 position="top-right"
 autoClose={5000}
@@ -75,7 +73,6 @@ transition={Bounce}
         <Elements stripe={stripePromise}>
           {children}
         </Elements>
-      </SessionProvider>
     </CartContext.Provider>
   );
 }
